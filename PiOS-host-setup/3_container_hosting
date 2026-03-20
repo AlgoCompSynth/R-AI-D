@@ -4,16 +4,16 @@ set -e
 
 echo "** Container Hosting **"
 
-export LOGFILES=$HOME/Logfiles
-mkdir --parents $LOGFILES
+source set_script_envars
+
 export LOGFILE=$LOGFILES/container_hosting.log
+rm --force $LOGFILE
 
 echo "..Activating Linuxbrew"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 echo "..Installing podman from Linuxbrew"
-brew install podman \
-  >> $LOGFILE 2>&1
+brew install distrobox podman > $LOGFILE
 
 echo "** Finished Container Hosting **"
 echo ""

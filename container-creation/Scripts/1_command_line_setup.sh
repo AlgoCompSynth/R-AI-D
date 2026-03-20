@@ -4,144 +4,34 @@ set -e
 
 echo "** Command Line Setup **"
 
+source set_script_envars
+
+echo "Setting up desktop directories"
+mkdir --parents $LOCALBIN $LOGFILES $PROJECTS $SCRIPTS
+cp * $HOME/Scripts
+
 export LOGFILES=$HOME/Logfiles
 mkdir --parents $LOGFILES
 export LOGFILE=$LOGFILES/command_line_setup.log
+rm --force $LOGFILE
 
-echo "..Setting R dotfiles"
-cp Rprofile $HOME/.Rprofile
-cp Renviron $HOME/.Renviron
+echo "Setting R dotfiles"
+cp $HOME/Scripts/Rprofile $HOME/.Rprofile
+cp $HOME/Scripts/Renviron $HOME/.Renviron
 
-if [[ "$(grep 'End AlgoCompSynth' $HOME/.bashrc | wc -l)" == "0" ]]
-then
-  echo "..Adding 'aliases' to \$HOME/.bashrc"
-  cat aliases >> $HOME/.bashrc
-  source $HOME/.bashrc
+pushd $HOME/Scripts
+  for script in \
+    "linuxbrew.sh" \
+    "starship.sh" \
+    "coding-assistants.sh" \
+    "nerd-fonts.sh"
 
-  if [[ -f $HOME/.zshrc ]]
-  then
-    echo "..Adding 'aliases' to \$HOME/.zshrc"
-    cat aliases >> $HOME/.zshrc
+  do
+    ./$script
 
-  fi
+  done
 
-fi
-
-echo "..Testing for Linuxbrew"
-if [[ "$(which brew | wc -l)" == "0" ]]
-then
-  echo "..Installing Linuxbrew"
-  /bin/bash -c \
-    "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-  echo "..Adding brew activation to $HOME/.bashrc"
-  echo >> $HOME/.bashrc
-  echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> $HOME/.bashrc
-
-  if [[ -f $HOME/.zshrc && "$(grep linuxbrew $HOME/.zshrc | wc -l)" == "0" ]]
-  then
-    echo "..Adding brew activation to $HOME/.zshrc"
-    echo >> $HOME/.zshrc
-    echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> $HOME/.zshrc
-
-  fi
-
-else
-  echo "..Linuxbrew is installed"
-
-fi
-
-echo "..Testing for starship"
-if [[ "$(which starship | wc -l)" == "0" ]]
-then
-  echo "..Activating Linuxbrew"
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-  echo "..Installing starship from Linuxbrew"
-  brew install starship \
-    >> $LOGFILE 2>&1
-
-  echo "..Setting starship configuration file"
-  mkdir --parents $HOME/.config
-  cp starship.toml $HOME/.config/starship.toml
-
-  if [[ "$(grep starship $HOME/.bashrc | wc -l)" == 0 ]]
-  then
-    echo "..Appending starship init to $HOME/.bashrc"
-    echo 'eval "$(starship init bash)"' >> $HOME/.bashrc
-
-  fi
-
-  if [[ -f $HOME/.zshrc && "$(grep starship $HOME/.zshrc | wc -l)" == 0 ]]
-  then
-    echo "..Appending starship init to $HOME/.zshrc"
-    echo 'eval "$(starship init zsh)"' >> $HOME/.zshrc
-
-  fi
-
-else
-  echo "..Starship is installed"
-
-fi
-
-echo "..Testing for opencode"
-if [[ "$(which opencode | wc -l)" == "0" ]]
-then
-  echo "..Installing opencode from Linuxbrew"
-  brew tap anomalyco/opencode \
-    >> $LOGFILE 2>&1
-  brew install opencode \
-    >> $LOGFILE 2>&1
-
-else
-  echo "..opencode is installed"
-
-fi
-
-echo "..Testing for codex"
-if [[ "$(which codex | wc -l)" == "0" ]]
-then
-  echo "..Installing codex from Linuxbrew"
-  brew install codex \
-    >> $LOGFILE 2>&1
-
-else
-  echo "..codex is installed"
-
-fi
-
-echo "..Testing for claude-code"
-if [[ "$(which claude | wc -l)" == "0" ]]
-then
-  echo "..Installing claude-code from Linuxbrew"
-  brew install --cask claude-code \
-    >> $LOGFILE 2>&1
-
-else
-  echo "..claude is installed"
-
-fi
-
-echo "..Testing for nerd fonts"
-if [[ "$(brew list | grep 'font-caskaydia-cove-nerd-font' | wc -l)" == "0" ]]
-then
-  echo "..Installing nerd fonts from Linuxbrew"
-  brew install --cask font-0xproto-nerd-font >> $LOGFILE 2>&1 || true
-  brew install --cask font-blex-mono-nerd-font >> $LOGFILE 2>&1 || true
-  brew install --cask font-caskaydia-cove-nerd-font >> $LOGFILE 2>&1 || true
-  brew install --cask font-caskaydia-mono-nerd-font >> $LOGFILE 2>&1 || true
-  brew install --cask font-comic-shanns-mono-nerd-font >> $LOGFILE 2>&1 || true
-  brew install --cask font-droid-sans-mono-nerd-font >> $LOGFILE 2>&1 || true
-  brew install --cask font-fira-code-nerd-font >> $LOGFILE 2>&1 || true
-  brew install --cask font-go-mono-nerd-font >> $LOGFILE 2>&1 || true
-  brew install --cask font-jetbrains-mono-nerd-font >> $LOGFILE 2>&1 || true
-  brew install --cask font-sauce-code-pro-nerd-font >> $LOGFILE 2>&1 || true
-  brew install --cask font-ubuntu-nerd-font >> $LOGFILE 2>&1 || true
-
-else
-  echo "..nerd fonts are installed"
-
-fi
+popd
 
 echo ""
 echo "..Restart your terminal, add CascaydiaCove Nerd Font to your terminal profile and restart shell"

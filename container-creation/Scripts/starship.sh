@@ -10,7 +10,7 @@ if [[ "$(which starship | wc -l)" == "0" ]]
 then
 
   echo "..Installing starship from Linuxbrew"
-  brew install starship > /dev/null
+  brew install starship > $LOGFILE
 
   echo "..Setting starship configuration file"
   mkdir --parents $HOME/.config

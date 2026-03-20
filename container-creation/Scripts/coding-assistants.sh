@@ -5,11 +5,19 @@ set -e
 echo "..Activating Linuxbrew"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
+echo "..Testing for host install"
+if [[ "$(set | grep CONTAINER_ID | wc -l)" == "0" ]]
+then
+  echo "..Running in the host - coding assistants won't be installed"
+  exit
+
+fi
+
 echo "..Testing for opencode"
 if [[ "$(which opencode | wc -l)" == "0" ]]
 then
   echo "..Installing opencode from Linuxbrew"
-  brew install anomalyco/tap/opencode > /dev/null
+  brew install anomalyco/tap/opencode > $LOGFILE
 
   echo "..opencode is installed"
 
@@ -22,7 +30,7 @@ echo "..Testing for codex"
 if [[ "$(which codex | wc -l)" == "0" ]]
 then
   echo "..Installing codex from Linuxbrew"
-  brew install codex > /dev/null
+  brew install codex > $LOGFILE
 
   echo "..codex is installed"
 
@@ -35,7 +43,7 @@ echo "..Testing for claude"
 if [[ "$(which claude | wc -l)" == "0" ]]
 then
   echo "..Installing claude-code from Linuxbrew"
-  brew install --cask claude-code > /dev/null
+  brew install --cask claude-code > $LOGFILE
 
   echo "..claude is installed"
 

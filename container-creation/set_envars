@@ -1,22 +1,24 @@
 echo "Setting environment variables"
 
+# Desktop folders
+export LOCALBIN=$HOME/.local/bin
+export LOGFILES=$HOME/Logfiles
+export PROJECTS=$HOME/Projects
+export SCRIPTS=$HOME/Scripts
+
+if [[ ! "$PATH" =~ "$HOME/.local/bin" ]]
+then
+  echo "Prepending $LOCALBIN to \$PATH"
+  export PATH="$HOME/.local/bin:$PATH"
+
+fi
+
 # image and container names
 export CONTAINER_NAME="xen-assist"
 export BASE_CONTAINERFILE="Containerfile.base"
 export BASE_IMAGE_TAG="localhost/xen-assist-base:latest"
 export SERVER_CONTAINERFILE="Containerfile.server"
 export SERVER_IMAGE_TAG="localhost/xen-assist-server:latest"
-
-# Faust
-export CMAKE_BUILD_PARALLEL_LEVEL=$(nproc)
-export CMAKE_INSTALL_PARALLEL_LEVEL=$(nproc)
-export MAKE_BUILD_PARALLEL_LEVEL=$(nproc)
-export MAKE_INSTALL_PARALLEL_LEVEL=$(nproc)
-
-export FAUST_VERSION="2.83.1"
-export FAUST_TARBALL="${FAUST_VERSION}.tar.gz"
-export FAUST_URL="https://github.com/grame-cncm/faust/archive/refs/tags/${FAUST_TARBALL}"
-export FAUST_DIR="faust-${FAUST_VERSION}"
 
 # you can change this but it needs to be writeable for you
 export OLLAMA_MODELS_HOST="/home/data/.ollama"
@@ -30,8 +32,4 @@ export DBX_CONTAINER_HOME_PREFIX="$HOME/dbx-homes"
 export DBX_CONTAINER_DIRECTORY="$DBX_CONTAINER_HOME_PREFIX/$DBX_CONTAINER_NAME"
 export DBX_NON_INTERACTIVE=true
 
-export LOCALBIN=$HOME/.local/bin
-export LOGFILES=$HOME/Logfiles
-export PROJECTS=$HOME/Projects
-export SCRIPTS=$HOME/Scripts
 export ENTRY_SCRIPT=$LOCALBIN/$DBX_CONTAINER_NAME

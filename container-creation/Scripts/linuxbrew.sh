@@ -6,7 +6,7 @@ echo "..Testing for Linuxbrew"
 if [[ "$(which brew | wc -l)" == "0" ]]
 then
   echo "..Installing Linuxbrew"
-  NONINTERACTIVE=1 /bin/bash -c \
+  /bin/bash -c \
     "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
   echo "..Adding brew activation to $HOME/.bashrc"
