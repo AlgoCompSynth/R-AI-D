@@ -1,0 +1,19 @@
+#! /usr/bin/env bash
+
+set -e
+
+echo "** Container Hosting **"
+
+export LOGFILES=$HOME/Logfiles
+mkdir --parents $LOGFILES
+export LOGFILE=$LOGFILES/container_hosting.log
+
+echo "..Activating Linuxbrew"
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+echo "..Installing podman from Linuxbrew"
+brew install podman \
+  >> $LOGFILE 2>&1
+
+echo "** Finished Container Hosting **"
+echo ""

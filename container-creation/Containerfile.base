@@ -1,0 +1,26 @@
+# https://github.com/containers/toolbox/blob/main/images/ubuntu/24.04/Containerfile
+FROM quay.io/toolbx/ubuntu-toolbox:24.04
+LABEL maintainer="M. Edward (Ed) Borasky <znmeb@algocompsynth.com>"
+
+# set aside a script / logfile depository
+USER root
+ENV XEN_ASSIST=/usr/local/src/xen-assist
+WORKDIR $XEN_ASSIST
+
+# environment variables
+COPY set_envars ./
+
+# R development base
+COPY installers/r-devel-base.sh ./
+RUN ./r-devel-base.sh \
+  2>&1 | gzip -9c > $XEN_ASSIST/r-devel-base.log.gz
+
+# R developer and AI packages
+COPY installers/developer-packages.R ./
+RUN ./developer-packages.R \
+  | gzip -9c > $XEN_ASSIST/developer-packages.log.gz
+
+# Ollama
+COPY installers/ollama.sh ./
+RUN ./ollama.sh \
+  2>&1 | gzip -9c > $XEN_ASSIST/ollama.log.gz
