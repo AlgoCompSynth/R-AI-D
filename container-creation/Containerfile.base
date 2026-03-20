@@ -7,9 +7,6 @@ USER root
 ENV XEN_ASSIST=/usr/local/src/xen-assist
 WORKDIR $XEN_ASSIST
 
-# environment variables
-COPY set_envars ./
-
 # R development base
 COPY installers/r-devel-base.sh ./
 RUN ./r-devel-base.sh \

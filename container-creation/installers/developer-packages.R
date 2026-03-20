@@ -1,6 +1,6 @@
 #! /usr/bin/env Rscript
 
-# tools I use for R package development / documentation
+# tools I use for R package development / documentation / AI
 # see https://r-pkgs.org/
 
 print("** R Developer Packages **")

@@ -4,8 +4,7 @@ set -e
 
 echo "** R Development Base **"
 
-source set_envars
-
+# https://cran4linux.github.io/bspm/#ubuntu
 echo "..Installing R and bspm"
 . /etc/os-release # to get UBUNTU_CODENAME
 URL="https://raw.githubusercontent.com/eddelbuettel/r2u/master/inst/scripts"
@@ -19,5 +18,5 @@ sudo apt-get install -y --no-install-recommends \
   r-base-dev \
   vim-nox
 
-echo "** Finished Development Base **"
+echo "** Finished R Development Base **"
 echo ""

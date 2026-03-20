@@ -1,0 +1,34 @@
+echo "Setting container environment variables"
+
+export ARCH="$(uname -m)"
+echo "ARCH: $ARCH"
+
+if [[ "$(which nvidia-smi | wc -l)" == "0" ]]
+then
+  export COMPUTE_MODE="CPU"
+
+else
+  export COMPUTE_MODE="CUDA"
+
+fi
+echo "COMPUTE_MODE: $COMPUTE_MODE"
+
+# Host absolute path for Ollama model persistence - will be over-written!
+export OLLAMA_MODELS_HOST="/home/data/.ollama"
+
+# Contianer absolute path to mount the host path into
+export OLLAMA_MODELS_CONTAINER="/usr/share/ollama/.ollama"
+
+# container names
+export CONTAINERFILE="Containerfile.base"
+
+# Distrobox
+export DBX_CONTAINER_MANAGER="podman"
+export DBX_CONTAINER_NAME="R-AI-D-$COMPUTE_MODE"
+export DBX_CONTAINER_IMAGE="localhost/r-ai-d-base:latest"
+export DBX_CONTAINER_HOME_PREFIX="$HOME/dbx-homes"
+export DBX_CONTAINER_DIRECTORY="$DBX_CONTAINER_HOME_PREFIX/$DBX_CONTAINER_NAME"
+export DBX_NON_INTERACTIVE=true
+
+export LOCALBIN=$HOME/.local/bin; mkdir --parents $LOCALBIN
+export ENTRY_SCRIPT=$LOCALBIN/$DBX_CONTAINER_NAME
