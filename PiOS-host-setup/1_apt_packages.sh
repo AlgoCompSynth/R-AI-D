@@ -16,11 +16,12 @@ sudo apt-get install -qqy \
   apt-file \
   curl \
   file \
+  flatpak \
   plocate \
   time \
   tree \
   uidmap \
-  vim \
+  vim-nox \
   wget \
   zstd \
   >> $LOGFILE 2>&1
