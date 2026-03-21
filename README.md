@@ -1,2 +1,2 @@
-# RAID
-RAID - R AI Distrobox
+# R-AI-D
+R-AI-D - R AI Distrobox
