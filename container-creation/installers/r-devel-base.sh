@@ -11,6 +11,7 @@ URL="https://raw.githubusercontent.com/eddelbuettel/r2u/master/inst/scripts"
 curl -s "${URL}/add_cranapt_${UBUNTU_CODENAME}.sh" | sudo bash -s
 
 echo "..Installing r-base-dev"
+export DEBIAN_FRONTEND=noninteractive
 sudo apt-get install -y --no-install-recommends \
   apt-file \
   bibtool \
