@@ -8,8 +8,7 @@ echo "Setting permissions on host model storage"
 sudo chown --recursive ollama:ollama /usr/share/ollama
 
 for model in \
-  qwen3.5:9b-q4_K_M \
-  qwen3-vl:8b-thinking-q4_K_M \
+  qwen3.5:4b-q4_K_M \
   ministral-3:8b-instruct-2512-q4_K_M \
   deepseek-r1:8b-0528-qwen3-q4_K_M \
   granite3.3:8b \
