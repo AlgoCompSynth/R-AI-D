@@ -6,6 +6,7 @@ LABEL maintainer="M. Edward (Ed) Borasky <znmeb@algocompsynth.com>"
 USER root
 ENV WORKDIR=/usr/local/src/workdir
 WORKDIR $WORKDIR
+RUN cat /etc/resolv.conf # check DNS settings
 
 # R development base
 COPY installers/r-devel-base.sh ./
