@@ -2,17 +2,18 @@
 
 set -e
 
-echo "** Large Models **"
+echo "** Small Models **"
 
 echo "Setting permissions on host model storage"
 sudo chown --recursive ollama:ollama /usr/share/ollama
 
 for model in \
-  qwen3-vl:32b-thinking-q4_K_M \
-  glm-4.7-flash:q4_K_M \
-  deepseek-r1:32b-qwen-distill-q4_K_M \
-  cogito:32b-v1-preview-qwen-q4_K_M \
-  qwen3.5:27b-q4_K_M
+  qwen3.5:9b-q4_K_M \
+  qwen3-vl:8b-thinking-q4_K_M \
+  ministral-3:8b-instruct-2512-q4_K_M \
+  deepseek-r1:8b-0528-qwen3-q4_K_M \
+  granite3.3:8b \
+  cogito:8b-v1-preview-llama-q4_K_M
 
 do
   echo ""
@@ -23,5 +24,5 @@ done
 
 ollama list | sort -nr -k 3
 
-echo "** Finished Large Models **"
+echo "** Finished Small Models **"
 echo ""
