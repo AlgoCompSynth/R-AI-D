@@ -26,8 +26,7 @@ export OLLAMA_MODELS_HOST="/home/data/.ollama"
 ## when Ollama is installed on the base image. You should not need to
 ## change it.
 
-
-# Container home directories
+## Container home directories
 
 ## Distrobox has the option to allocate a separate home directory for
 ## the container, to avoid conflicts with the host configuration files
