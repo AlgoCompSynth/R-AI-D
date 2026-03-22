@@ -35,3 +35,6 @@ echo ""
 podman system prune --force
 echo ""
 podman image list
+
+echo "Inspecting built image to 'built-inspect.json'"
+podman image inspect $DBX_CONTAINER_IMAGE > built-inspect.json

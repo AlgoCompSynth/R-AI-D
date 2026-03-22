@@ -10,6 +10,14 @@ echo "Setting up desktop directories"
 mkdir --parents $LOCALBIN $LOGFILES $PROJECTS $SCRIPTS
 cp * $HOME/Scripts
 
+echo "Testing for container install"
+if [[ "$(set | grep CONTAINER_ID | wc -l)" != "0" ]]
+then
+  echo "..Running in a container - copying model scripts to $LOCALBIN"
+  cp *_models.sh $LOCALBIN/
+
+fi
+
 export LOGFILES=$HOME/Logfiles
 mkdir --parents $LOGFILES
 export LOGFILE=$LOGFILES/command_line_setup.log

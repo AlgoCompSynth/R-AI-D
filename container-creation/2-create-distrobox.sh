@@ -50,6 +50,9 @@ echo ""
 echo "After create:"
 podman images
 
+echo "Inspecting created image to 'created-inspect.json"
+podman image inspect $DBX_CONTAINER_IMAGE > created-inspect.json
+
 echo "Setting up container desktop and command line"
 pushd Scripts
   distrobox enter $DBX_CONTAINER_NAME -- su $USER -c "./1_command_line_setup.sh"
