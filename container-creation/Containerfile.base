@@ -18,6 +18,11 @@ COPY installers/developer-packages.R ./
 RUN ./developer-packages.R \
   | gzip -9c > $WORKDIR/developer-packages.log.gz
 
+# R audio packages
+COPY installers/audio-packages.R ./
+RUN ./audio-packages.R \
+  | gzip -9c > $WORKDIR/audio-packages.log.gz
+
 # Ollama
 COPY installers/ollama.sh ./
 RUN ./ollama.sh \

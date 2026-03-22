@@ -4,10 +4,6 @@ set -e
 
 echo "* Create Distrobox *"
 
-echo ""
-echo "Start:"
-podman images
-
 source set_container_envars
 
 if [[ "$(podman container list --all | grep $DBX_CONTAINER_NAME | wc -l)" != "0" ]]
@@ -46,21 +42,12 @@ else
 
 fi
 
-echo ""
-echo "After create:"
-podman images
-
-echo "Inspecting created image to 'created-inspect.json"
-podman image inspect $DBX_CONTAINER_IMAGE > created-inspect.json
-
 echo "Setting up container desktop and command line"
 pushd Scripts
   distrobox enter $DBX_CONTAINER_NAME -- su $USER -c "./1_command_line_setup.sh"
 popd
 
-echo ""
-echo "After command line setup:"
-podman images
+distrobox list
 
 echo ""
 echo "Creating entry script $ENTRY_SCRIPT"

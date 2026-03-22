@@ -2,6 +2,11 @@
 
 source set_container_envars
 
+# Why do we change the domain nameservers? The code for
+# installing the bridge to system package manager (bspm)
+# accesses a Ubuntu keyserver, and the DNS my ISP provides
+# does not appear to handle that correctly. Using CloudFlare
+# or Google nameservers works, so here they are.
 echo "Building $DBX_CONTAINER_IMAGE"
 if [[ "$ARCH" == "aarch64" || "$COMPUTE_MODE" == "CPU" ]]
 then
@@ -33,6 +38,3 @@ echo ""
 podman system prune --force
 echo ""
 podman image list
-
-echo "Inspecting built image to 'built-inspect.json'"
-podman image inspect $DBX_CONTAINER_IMAGE > built-inspect.json

@@ -1,16 +1,17 @@
 # Container Creation Scripts
 
-This directory contains scripts for building and running the xen.assist container images.
+This directory contains scripts for building and running the R-AI-D image
+and container.
 
 ## Overview
 
-The xen.assist project uses a two-stage container build process:
+The R-AI-D project uses a two-stage container build process:
 1. Base image with R development environment, audio packages, and AI tools
-2. Server image with user environment and configuration
+2. Distrobox container with user environment and configuration
 
 ## Prerequisites
 
-- Podman installed on your system
+- Distrobox and Podman installed on your system
 - NVIDIA GPU drivers (for GPU acceleration)
 - Sufficient disk space for container images
 
@@ -19,14 +20,13 @@ The xen.assist project uses a two-stage container build process:
 ### 1. Build Base Image
 
 ```bash
-./1-build-base-image.sh
+./1-squash-base-image.sh
 ```
 
 This script builds the base container image that includes:
-- R development environment
-- Audio packages for music composition
+- R development environment, including AI interface packages,
+- R packages for audio analysis and synthesis, and
 - OLLAMA AI tools
-- FAUST audio signal processing framework
 
 ### 2. Build Server Image
 
@@ -46,7 +46,7 @@ This script builds the server container image with:
 ./3-run-server.sh
 ```
 
-This script runs the xen.assist container with:
+This script runs the R-AI-D container with:
 - GPU access enabled
 - Host networking
 - OLLAMA models volume mounted
@@ -101,6 +101,6 @@ The `set_envars` script sets up necessary environment variables:
 - **Insufficient disk space**: Clean up old containers and images with `podman system prune`
 
 ### Debugging
-- Check container logs: `podman logs xen-assist`
-- Inspect container: `podman inspect xen-assist`
-- Enter container shell: `podman exec -it xen-assist /bin/bash`
+- Check container logs: `podman logs R-AI-D`
+- Inspect container: `podman inspect R-AI-D`
+- Enter container shell: `podman exec -it R-AI-D /bin/bash`
