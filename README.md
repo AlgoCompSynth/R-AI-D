@@ -1,4 +1,4 @@
-# R-AI-D - R AI Distrobx
+# R-AI-D - R AI Distrobox
 
 ## Introduction
 
