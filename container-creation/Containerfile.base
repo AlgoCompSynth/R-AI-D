@@ -8,10 +8,18 @@ ENV WORKDIR=/usr/local/src/workdir
 WORKDIR $WORKDIR
 RUN cat /etc/resolv.conf # check DNS settings
 
+# Environment variables
+COPY set_container_envars ./
+
 # R development base
 COPY installers/r-devel-base.sh ./
 RUN ./r-devel-base.sh \
   2>&1 | gzip -9c > $WORKDIR/r-devel-base.log.gz
+
+# Quarto
+COPY installers/quarto.sh ./
+RUN ./quarto.sh \
+  | gzip -9c > $WORKDIR/quarto.log.gz
 
 # R developer and AI packages
 COPY installers/developer-packages.R ./
