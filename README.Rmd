@@ -59,16 +59,8 @@ for them. If you do, open an issue and I'll put them in.
 
 Later in my exploration of AI I will probably need some AI engineering
 tools like JupyterLab, PyTorch, and CUDA, but the image is pretty big
-already, so I won't add them until I need them. And the R packages
+already, so I won't add them until I need them. And the R AI packages
 cover a lot of the bases already, such as interfacing with Ollama,
 retrieval augmented generation (RAG), and model context protocol (MCP).
-
-One final note:
-[RStudio Desktop](https://posit.co/download/rstudio-desktop/)
-and [Positron](https://positron.posit.co/) will run in the container
-and come up on your host system. I've installed them and used them. The
-reason they aren't on the image is that you need to agree to a license
-to use them, so I don't think it's appropriate to download them as
-part of the build process.
 
 ## References
