@@ -8,7 +8,7 @@ source set_container_envars
 # does not appear to handle that correctly. Using CloudFlare
 # or Google nameservers works, so here they are.
 echo "Building $DBX_CONTAINER_IMAGE"
-if [[ "$ARCH" == "aarch64" || "$COMPUTE_MODE" == "CPU" ]]
+if [[ "$COMPUTE_MODE" == "CPU" ]]
 then
   echo "Building CPU image"
   podman image build \

@@ -24,7 +24,7 @@ echo "Making sure $OLLAMA_MODELS_HOST exists"
 mkdir --parents $OLLAMA_MODELS_HOST
 
 echo "Creating $DBX_CONTAINER_NAME"
-if [[ "$ARCH" == "aarch64" || "$COMPUTE_MODE" == "CPU" ]]
+if [[ "$COMPUTE_MODE" == "CPU" ]]
 then
   echo "Creating CPU container"
   distrobox create \
