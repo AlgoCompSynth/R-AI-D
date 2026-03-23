@@ -2,8 +2,8 @@
 
 ## Introduction
 
-R-AI-D is a pet container for artificially intelligent sound analysis
-and synthesis. R-AI-D features:
+R-AI-D is a [Distrobox](https://distrobox.it/) pet container for
+artificially intelligent sound analysis and synthesis. R-AI-D features:
 
 - the Ubuntu 24.04 LTS "Noble Numbat" operating system,
 - the R programming language,
@@ -16,12 +16,11 @@ and synthesis. R-AI-D features:
   models, and
 - a modern command line including Ollama-supported coding assistants.
 
-R-AI-D was developed on [Bluefin DX](https://projectbluefin.io),
-but should run on any Linux host system supporting
-[Distrobox](https://distrobox.it/). I test on a Raspberry Pi 5, and the
-release includes scripts that should work on any recent Debian or
-Ubuntu host. On `x86_64` systems, an NVIDIA GPU will be detected and
-used automatically.
+R-AI-D was developed on [Bluefin DX](https://projectbluefin.io), but
+should run on any Linux host system supporting Distrobox. I test on a
+Raspberry Pi 5, so the release includes scripts that should work on any
+recent Debian or Ubuntu host. On `x86_64` systems, an NVIDIA GPU will
+be detected and used automatically.
 
 Like its Bluefix DX inspiration, the R-AI-D command line features
 [Homebrew](https://brew.sh/) and the [Starship](https://starship.rs/)
@@ -51,6 +50,16 @@ Subsystem for Linux. Hosting setup scripts for Fedora, CentOS Stream,
 Arch Linux and openSUSE Tumbleweed are easy to do but I have no need
 for them. If you do, open an issue and I'l put them in.
 
-Somewhere in my exploration of AI I will probably need some AI
-engineering tools like JupyterLab, PyTorch, and CUDA, but the image is
-pretty big already, so I won't add them until I need them. 
+Later in my exploration of AI I will probably need some AI engineering
+tools like JupyterLab, PyTorch, and CUDA, but the image is pretty big
+already, so I won't add them until I need them. And the R packages
+cover a lot of the bases already, such as interfacing with Ollama,
+retrieval augmented generation (RAG), and model context protocol (MCP).
+
+One final note:
+[RStudio Desktop](https://posit.co/download/rstudio-desktop/)
+and [Positron](https://positron.posit.co/) will run in the container
+and come up on your host system. I've installed them and used them. The
+reason they aren't on the image is that you need to agree to a license
+to use them, so I don't think it's appropriate to download them as
+part of the build process.
