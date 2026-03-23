@@ -46,14 +46,11 @@ are welcome. Pull requests, on the other hand, probably not. I don't
 have the time to review other peoples' code beyond fixing typos.
 
 The roadmap is mostly determined by what I need and when. The only
-feature I want to add at some time in the future is a "native" port to
-Ubuntu running in Windows Subsystem for Linux. Hosting setup scripts
-for Fedora, CentOS Stream, Arch Linux and openSUSE Tumbleweed are easy
-to do but I have no need for them. If you do, open an issue and I'l put
-them in.
+feature I want to add is a "native" port to Ubuntu running in Windows
+Subsystem for Linux. Hosting setup scripts for Fedora, CentOS Stream,
+Arch Linux and openSUSE Tumbleweed are easy to do but I have no need
+for them. If you do, open an issue and I'l put them in.
 
 Somewhere in my exploration of AI I will probably need some AI
 engineering tools like JupyterLab, PyTorch, and CUDA, but the image is
 pretty big already, so I won't add them until I need them. 
-
-## References
