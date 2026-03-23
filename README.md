@@ -48,7 +48,7 @@ The roadmap is mostly determined by what I need and when. The only
 feature I want to add is a "native" port to Ubuntu running in Windows
 Subsystem for Linux. Hosting setup scripts for Fedora, CentOS Stream,
 Arch Linux and openSUSE Tumbleweed are easy to do but I have no need
-for them. If you do, open an issue and I'l put them in.
+for them. If you do, open an issue and I'll put them in.
 
 Later in my exploration of AI I will probably need some AI engineering
 tools like JupyterLab, PyTorch, and CUDA, but the image is pretty big
