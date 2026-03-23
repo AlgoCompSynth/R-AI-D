@@ -10,6 +10,8 @@ artificially intelligent sound analysis and synthesis. R-AI-D features:
 - the Ubuntu 24.04 LTS “Noble Numbat” operating system,
 - the R programming language (R Core Team 2026),
 - bspm: Bridge to System Package Manager (Ucar 2026),
+- the [Quarto](https://quarto.org/) scientific and technical publishing
+  system,
 - R packages for package development (H. Wickham and Bryan 2023),
 - R packages for sound analysis and synthesis (Sueur 2018),
 - R packages for interfacing with AI tools (Hadley Wickham et al. 2025),
