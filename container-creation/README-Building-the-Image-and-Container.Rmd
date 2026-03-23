@@ -1,0 +1,155 @@
+---
+title: "Building the Image and Container"
+output: github_document
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This directory contains scripts for building the R-AI-D image and
+container.
+
+## Prerequisites
+
+-   Distrobox and Podman installed on your system. Docker can also be
+    used. R-AI-D was developed on [Bluefin
+    DX](https://projectbluefin.io "Bluefin Project Home Page"), which
+    has the hosting built in, but Distrobox and Podman are available in
+    most current Linux distributions. Scripts for installing hosting on
+    most recent Ubuntu and Debian systems, including the Raspberry Pi 5,
+    are available in the directory `R-AI-D/hosting-setup`.
+-   If you have an NVIDIA GPU, you will need the drivers. The R-AI-D
+    image and container build script will detect the GPU and install the
+    relevant software.
+-   Sufficient disk space for container images. The current image
+    requires about 17 gigabytes. You will also need to have space for
+    all of the models you will be saving to disk.
+
+## Build Process
+
+### 1. Edit environment variables
+
+There are a number of environment variables that control the building of
+the image and container. They are set in the file
+`set_container_envars`. Most of them can be left as is, but the two you
+will definitely need to attend to are
+
+-   `OLLAMA_MODELS_HOST`, which specifies where Ollama will store
+    downloaded models on your system, and
+-   `DBX_CONTAINER_HOME_PREFIX`, which specifies where Distrobox will
+    store the home directory for the container.
+
+#### `OLLAMA_MODELS_HOST`
+
+Ollama models, especially large models that can be run locally in a GPU,
+take up quite a bit of space. For example, the GPU I'm using to develop
+R-AI-D has 24 gigabytes of video RAM (VRAM) and I've run models as large
+as 22 gigabytes in it.
+
+These models take a long time to download, so R-AI-D provides a
+mechanism for storing them on the host disk and mounting them into the
+container at run time. This is controlled by two environment variables.
+`OLLAMA_MODELS_HOST` and `OLLAMA_MODELS_CONTAINER`.
+
+`OLLAMA_MODELS_HOST` specifies the place on the host where you want the
+models stored. This must be specified as an absolute path and must be
+readable and writeable by you. *Once the container starts up, it will
+change the permissions on this directory and you shouldn't touch them
+after that.*
+
+On my system this is
+
+``` bash
+export OLLAMA_MODELS_HOST="/home/data/.ollama"
+```
+
+and that's what's in `set_container_envars` after the installation. So
+you can simply create that directory with the right permissions if you
+don't want to change the environment variable.
+
+`OLLAMA_MODELS_CONTAINER` is the place in the *container* where Ollama
+stores the models. *The value in the file is where the installed version
+of Ollama stores them by default and you should not change it.*
+
+#### `DBX_CONTAINER_HOME_PREFIX`
+
+To avoid conflicts between host and container configuation files
+("dotfiles") in the user's home directory, Distrobox can allocate a
+separate home directory for the container. This is especially useful
+when the host and container run different Linux distros, as is the case
+in my development environment.
+
+The environment variable that controls this is called
+`DBX_CONTAINER_HOME_PREFIX`; the R-AI-D container's home directory will
+be `$DBX_CONTAINER_HOME_PREFIX/R-AI-CD`. This must be an absolute path
+and you can put it anywhere you have read and write permissions. The
+default is `$HOME/dbx-homes` which makes moving between the container
+and host homes easy.
+
+### 2. Build image and container
+
+``` bash
+./create-distrobox.sh
+```
+
+This script first builds the base container image that includes:
+
+-   Ubuntu 24.04.LTS,
+-   R development environment, including AI interface packages,
+-   R packages for audio analysis and synthesis,
+-   Quarto, and
+-   OLLAMA AI tools
+
+Once the image is built, the script creates the Distrobox container
+`R-AI-D-${COMPUTE_MODE}`, where `COMPUTE_MODE` is either `CPU` or
+`CUDA`. The container has all of the software on the base image, plus a
+dedicated container `$HOME` directory with sub-directories
+`$HOME/Logfiles`, `$HOME/Projects`, `$HOME/Scripts`, plus
+`$HOME/.local/bin` for storing user-specific executables.
+
+The command line in the container features
+
+-   Homebrew,
+-   the Starship cross-shell prompt,
+-   Ollama-launchable coding assistants `opencode`, `codex`, and
+    `claude`, and
+-   the Cascaydia Cove nerd font.
+
+After creating the container, the script creates a startup script in the
+***host*** `$HOME/.local/bin` with the name of the container, either
+`R-AI-D-CPU` or `R-AI-D-CUDA`.
+
+### 3. Running the container
+
+Once the container is built, simply enter
+
+``` bash
+R-AI-D-CUDA
+```
+
+or
+
+``` bash
+R-AI-D-CPU
+```
+
+depending on whether you have an NVIDIA GPU or not. These scripts make
+sure the Ollama server is running and then enter the container. You will
+be at the container command line in whatever directory you were in when
+you issued the start command.
+
+R-AI-D is an Ubuntu 24.04 LTS container. The container has its own
+system files `/usr`, `/etc`, `/opt`, and has its own `systemd` / init
+infrastructure.
+
+#### RStudio Desktop and Positron
+
+Both [RStudio
+Desktop](https://posit.co/download/rstudio-desktop/ "RStudio Desktop")
+and [Positron](https://positron.posit.co/ "Positron") can be installed in
+R-AI-D and can be used as they would on your host system. I've used
+RStudio Desktop to write the README files for R-AI-D.

@@ -17,6 +17,8 @@ sudo apt-get install -y --no-install-recommends \
   apt-file \
   bibtool \
   ffmpeg \
+  libnspr4 \
+  libnss3 \
   libsox-fmt-all \
   lsb-release \
   qpdf \
