@@ -1,76 +1,55 @@
 # R-AI-D: R AI Distrobox
+M. Edward (Ed) Borasky
 
 ## Introduction
 
-R-AI-D is the latest incarnation of my main scientific computing toolset.
-I built it as a tool for exploring AI as applied to scientific applications
-programming in general and audio analysis in particular.
+R-AI-D is ai pet container for artificially intelligent audio analysis
+and synthesis. R-AI-D features:
 
-Software bill of materials:
+- the Ubuntu 24.04 LTS “Noble Numbat” operating system,
+- the R programming language,
+- R packages for package development \[@wickham2023r\],
+- R packages for audio analysis and synthesis \[@sueur2018sound\],
+- R packages for interfacing with AI tools \[@wickham2026\],
+- the [Ollama](https://docs.ollama.com/) framework for managing local
+  models, and
+- a modern command line including Ollama-supported coding assistants.
 
-- Linux: Ubuntu 24.04 LTS "Noble Numbat". I plan to upgrade to 26.04 when
-Canonical release their upgrade-in-place.
+R-AI-D was developed on [Bluefin DX](https://projectbluefin.io), but
+should run on any Linux host system supporting
+[Distrobox](https://distrobox.it/). I test on a Raspberry Pi 5, and the
+release includes scripts that should work on any recent Debian or Ubuntu
+host. On `x86_64` systems, an NVIDIA GPU will be detected and used
+automatically.
 
-- R: I'm using the
-[bspm: Bridge to System Package Manager](https://cran4linux.github.io/bspm/)
-to install R, a selection of tools for package development, and a selection
-of tools for audio processing.
+Like its Bluefix DX inspiration, the R-AI-D command line features
+[Homebrew](https://brew.sh/) and the [Starship](https://starship.rs/)
+cross-shell prompt generator. The [Cascaydia Cove nerd
+font](https://www.nerdfonts.com/) is included and other nerd fonts are
+available. The Ollama-launchable coding assistants
+[OpenCode](https://opencode.ai/), [Codex](https://openai.com/codex/),
+and [Claude CLI](https://www.claudecli.org/) are also included.
 
-- Command line: I'm using a few packages from the Ubuntu repositories but
-the bulk of the command line utilities come from
-[Homebrew](https://cran4linux.github.io/bspm/). Most notably I'm using the
-[Starship](https://starship.rs/) cross-shell prompt generator and the
-[Cascaydia Cove nerd font](https://www.nerdfonts.com/).
+## Licensing, contributing, roadmap, etc.
 
-- AI: The
-[Ollama](https://docs.ollama.com/) framework for managing local large language
-models, and the
-[OpenCode](https://opencode.ai/), [Codex](https://openai.com/codex/) and
-[Claude CLI](https://www.claudecli.org/) command line coding assistants.
+R-AI-D uses the [Creative Commons
+CC0](https://creativecommons.org/public-domain/cc0/) license, which is a
+bunch of words that say mostly “R-AI-D is public domain.” R-AI-D is just
+some `bash` scripts that download some open source software and build it
+into a container. Why would I copyright that?
 
-## Distrobox
+Contributing? Forks, [bug reports and feature
+requests](https://github.com/AlgoCompSynth/R-AI-D/issues/new) are
+welcome. Pull requests, on the other hand, probably not. I don’t have
+the time to review other peoples’ code beyond fixing typos.
 
-I developed and maintain R-AI-D on a desktop system running
-[Bluefin DX](https://projectbluefin.io). Bluefin DX is a variant of Linux
-designed for container-based developer workflows.
-[Distrobox](https://distrobox.it/) is one of the workflows available.
+The roadmap is mostly determined by what I need and when. The only
+feature I want to add at some time in the future is a “native” port to
+Ubuntu running in Windows Subsystem for Linux. Hosting setup scripts for
+Fedora, CentOS Stream, Arch Linux and openSUSE Tumbleweed are easy to do
+but I have no need for them. If you do, open an issue and I’l put them
+in.
 
-A distrobox is a container that runs in a Linux container host system. It uses
-the host's Linux kernel, network, display, audio, and USB devices, and it can
-use the host's GPU if there is one. 
-
-A distrobox can also read from and write to the user's home directory. This has
-both conveniences and annoyances. It's convenient because the distrobox can use
-your data and code just like your host can. It's annoying because the operating
-system running in the distrobox may not be the same as the one in the host! 
-
-In particular, the Bluefin OS is based on Fedora or CentOS Stream, whilst R-AI-D
-is based on Ubuntu; the defaults for `.bashrc` and other dotfiles in your home
-directory are different. Fortunately, Distrobox provides an option for a 
-container-managed home directory at create time, and R-AI-D uses it.
-
-## What if I don't have Bluefin?
-
-I've included a set of scripts to set up container hosting on systems that use
-the `apt` package management system. I have a Raspberry Pi 5 that I test these
-on. but they should work on Ubuntu 24.04 and later and Debian 13; like R-AI-D,
-they get most of their binary packages from Homebrew. Then again, Bluefin is
-cool and has dinosaurs.
-
-## Licensing, contributing, etc.
-
-R-AI-D uses the
-[Creative Commons CC0](https://creativecommons.org/public-domain/cc0/) license,
-which is a bunch of words that say mostly "it's public domain." R-AI-D is just
-some `bash` scripts that download some open source software and build it into
-a container. Why would I copyright that?
-
-Contributing? Forks,
-[bug reports and feature requests](https://github.com/AlgoCompSynth/R-AI-D/issues/new)
-are welcome. Pull requests, on the other hand, probably not. I don't have the time
-to review other peoples' code beyond fixing typos. Hosting for Fedora, CentOS Stream,
-Arch Linux and openSUSE Tumbleweed is something I know how to do; if someone requests
-it I'll do it but I don't have a use case for those at the moment.
-
-Another thing I know how to do and might actually use is a "native" port to Ubuntu
-on Windows Subsystem for Linux.
+Somewhere in my exploration of AI I will probably need some AI
+engineering tools like JupyterLab, PyTorch, and CUDA, but the image is
+pretty big already, so I won’t add them until I need them.
