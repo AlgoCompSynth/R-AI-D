@@ -1,0 +1,95 @@
+echo "Setting container environment variables"
+
+# User-maintained options
+
+## Ollama model persistence
+
+## Ollama models, especially with a middle-to-high-end GPU like
+## an NVIDIA GeForce RTX 3090, take up quite a bit of disk space
+## and take a fair amount of time to download. So R-AI-D has the
+## ability to store these models on the host filesystem and mount
+## them into the container at run time.
+
+## This is controlled by two environment variables.
+## `OLLAMA_MODELS_HOST` specifies the place on the host where you
+## want the models stored. Initially, this must be readable and
+## writeable by you, but the container will change the permissions
+## and you shouldn't touch them after that. On my system this is
+
+export OLLAMA_MODELS_HOST="/home/data/.ollama"
+
+## so you can simply create that if you don't want to change this file.
+## It must be an ***absolute*** path!
+
+## The container resident directory that this directory is mounted into
+## is `OLLAMA_MODELS_CONTAINER` and is set to `/usr/share/ollama/.ollama`
+## when Ollama is installed on the base image. You should not need to
+## change it.
+
+## Container home directories
+
+## Distrobox has the option to allocate a separate home directory for
+## the container, to avoid conflicts with the host configuration files
+## that are usually hidden "dotfiles." This is especially useful when
+## the host and container run different Linux distros, as is the case
+## on my main environment.
+
+## The environment variable that controls this is called 
+## `DBX_CONTAINER_HOME_PREFIX`. You can put this anywhere you have
+## read and write permissions. I put it in `$HOME/dbx-homes` to
+## make moving between the container and host homes easy.
+
+export DBX_CONTAINER_HOME_PREFIX="$HOME/dbx-homes"
+
+
+# Container manager
+
+## Distrobox can use either Podman or Docker. I use Podman, but
+## if you want to use Docker, you can change this.
+
+export DBX_CONTAINER_MANAGER="podman"
+
+
+# `COMPUTE_MODE`
+
+## R-AI-D can build two types of containers:
+##
+## 1. COMPUTE_MODE=CPU - only the CPU will be used, and
+## 2. COMPUTE_MODE=CUDA - the CPU and an NVIDIA GPU will be used.
+
+## If the scripts detect the existence of the `nvidia-smi` program
+## *and* the architecture is `x86_64`, `COMPUTE_MODE` will be set to
+## `CUDA`; otherwise it will be set to `CPU`.
+export ARCH="$(uname -m)"
+echo "ARCH: $ARCH"
+
+if [[ \
+  "$ARCH" != "x86_64" \
+  || "$(which nvidia-smi | wc -l)" == "0" \
+  ]]
+then
+  export COMPUTE_MODE="CPU"
+
+else
+  export COMPUTE_MODE="CUDA"
+
+fi
+
+echo "COMPUTE_MODE: $COMPUTE_MODE"
+
+# ** You should not need to change anything below here **
+
+# Container absolute path to mount the host path into
+export OLLAMA_MODELS_CONTAINER="/usr/share/ollama/.ollama"
+
+# containerfile name
+export CONTAINERFILE="Containerfile.base"
+
+# Distrobox
+export DBX_CONTAINER_NAME="R-AI-D-$COMPUTE_MODE"
+export DBX_CONTAINER_IMAGE="localhost/r-ai-d-base:latest"
+export DBX_CONTAINER_DIRECTORY="$DBX_CONTAINER_HOME_PREFIX/$DBX_CONTAINER_NAME"
+export DBX_NON_INTERACTIVE=true
+
+export LOCALBIN=$HOME/.local/bin; mkdir --parents $LOCALBIN
+export ENTRY_SCRIPT=$LOCALBIN/$DBX_CONTAINER_NAME

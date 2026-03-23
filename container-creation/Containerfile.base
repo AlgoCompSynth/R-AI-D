@@ -1,0 +1,37 @@
+# https://github.com/containers/toolbox/blob/main/images/ubuntu/24.04/Containerfile
+FROM quay.io/toolbx/ubuntu-toolbox:24.04
+LABEL maintainer="M. Edward (Ed) Borasky <znmeb@algocompsynth.com>"
+
+# set aside a script / logfile depository
+USER root
+ENV WORKDIR=/usr/local/src/workdir
+WORKDIR $WORKDIR
+RUN cat /etc/resolv.conf # check DNS settings
+
+# Environment variables
+COPY set_container_envars ./
+
+# R development base
+COPY installers/r-devel-base.sh ./
+RUN ./r-devel-base.sh \
+  2>&1 | gzip -9c > $WORKDIR/r-devel-base.log.gz
+
+# Quarto
+COPY installers/quarto.sh ./
+RUN ./quarto.sh \
+  | gzip -9c > $WORKDIR/quarto.log.gz
+
+# R developer and AI packages
+COPY installers/developer-packages.R ./
+RUN ./developer-packages.R \
+  | gzip -9c > $WORKDIR/developer-packages.log.gz
+
+# R audio packages
+COPY installers/audio-packages.R ./
+RUN ./audio-packages.R \
+  | gzip -9c > $WORKDIR/audio-packages.log.gz
+
+# Ollama
+COPY installers/ollama.sh ./
+RUN ./ollama.sh \
+  2>&1 | gzip -9c > $WORKDIR/ollama.log.gz

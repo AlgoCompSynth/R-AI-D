@@ -1,0 +1,14 @@
+echo "Setting script environment variables"
+
+# Desktop folders
+export LOCALBIN=$HOME/.local/bin
+export LOGFILES=$HOME/Logfiles
+export PROJECTS=$HOME/Projects
+export SCRIPTS=$HOME/Scripts
+
+if [[ ! "$PATH" =~ "$HOME/.local/bin" ]]
+then
+  echo "Prepending $LOCALBIN to \$PATH"
+  export PATH="$HOME/.local/bin:$PATH"
+
+fi
