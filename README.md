@@ -1,4 +1,5 @@
 # R-AI-D - R AI Distrobox
+Artificially intelligent sound analysis and synthesis
 
 ## Introduction
 
