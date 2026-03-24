@@ -2,7 +2,7 @@
 
 set -e
 
-echo "** R Development Base **"
+echo "** R AI Distrobox Base **"
 
 # https://cran4linux.github.io/bspm/#ubuntu
 echo "..Installing R and bspm"
@@ -16,15 +16,19 @@ sudo apt-get install -y --no-install-recommends \
   alsa-utils \
   apt-file \
   bibtool \
-  ffmpeg \
+  flac \
   libnspr4 \
   libnss3 \
   libsox-fmt-all \
+  libsox3 \
+  libsoxr0 \
   lsb-release \
+  mp3splt \
+  pmidi \
   qpdf \
   r-base-dev \
   sox \
   vim-nox
 
-echo "** Finished R Development Base **"
+echo "** Finished R AI Distrobox Base **"
 echo ""

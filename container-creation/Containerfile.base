@@ -11,20 +11,25 @@ RUN cat /etc/resolv.conf # check DNS settings
 # Environment variables
 COPY set_container_envars ./
 
-# R development base
-COPY installers/r-devel-base.sh ./
-RUN ./r-devel-base.sh \
-  2>&1 | gzip -9c > $WORKDIR/r-devel-base.log.gz
+# R-AI-D base
+COPY installers/r-ai-d-base.sh ./
+RUN ./r-ai-d-base.sh \
+  2>&1 | gzip -9c > $WORKDIR/r-ai-d-base.log.gz
 
 # Quarto
 COPY installers/quarto.sh ./
 RUN ./quarto.sh \
   | gzip -9c > $WORKDIR/quarto.log.gz
 
-# R developer and AI packages
+# R developer packages
 COPY installers/developer-packages.R ./
 RUN ./developer-packages.R \
   | gzip -9c > $WORKDIR/developer-packages.log.gz
+
+# R AI packages
+COPY installers/ai-packages.R ./
+RUN ./ai-packages.R \
+  | gzip -9c > $WORKDIR/ai-packages.log.gz
 
 # R audio packages
 COPY installers/audio-packages.R ./
