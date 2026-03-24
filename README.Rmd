@@ -19,8 +19,14 @@ artificially intelligent sound analysis and synthesis. R-AI-D features:
 - the [Quarto](https://quarto.org/) scientific and technical publishing
   system,
 - R packages for package development [@wickham2023r],
+- R packages for interfacing with AI tools:
+    - ellmer [@wickham2026],
+    - mcptools [@couch2026m],
+    - ollamar [@lin2026o],
+    - ragnar [@kalinowski2026r],
+    - shinychat [@cheng2026s],
+    - vitals [@couch2026v],
 - R packages for sound analysis and synthesis [@sueur2018sound],
-- R packages for interfacing with AI tools [@wickham2026],
 - the [Ollama](https://docs.ollama.com/) framework for managing local
   models, and
 - a modern command line including Ollama-supported coding assistants.
