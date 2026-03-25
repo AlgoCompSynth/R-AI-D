@@ -93,3 +93,7 @@ export DBX_NON_INTERACTIVE=true
 
 export LOCALBIN=$HOME/.local/bin; mkdir --parents $LOCALBIN
 export ENTRY_SCRIPT=$LOCALBIN/$DBX_CONTAINER_NAME
+
+# CMake
+export CMAKE_BUILD_PARALLEL_LEVEL="$(nproc)"
+export CMAKE_INSTALL_PARALLEL_LEVEL="$(nproc)"
