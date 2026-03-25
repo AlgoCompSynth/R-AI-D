@@ -17,6 +17,7 @@ sudo apt-get install -y --no-install-recommends \
   apt-file \
   bibtool \
   flac \
+  gdebi-core \
   libnspr4 \
   libnss3 \
   libsox-fmt-all \

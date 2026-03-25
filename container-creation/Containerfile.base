@@ -21,6 +21,11 @@ COPY installers/quarto.sh ./
 RUN ./quarto.sh \
   | gzip -9c > $WORKDIR/quarto.log.gz
 
+# Faust
+COPY installers/faust.sh ./
+RUN ./faust.sh \
+  2>&1 | gzip -9c > $WORKDIR/faust.log.gz
+
 # R developer packages
 COPY installers/developer-packages.R ./
 RUN ./developer-packages.R \

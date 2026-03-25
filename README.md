@@ -10,8 +10,12 @@ artificially intelligent sound analysis and synthesis. R-AI-D features:
 - the Ubuntu 24.04 LTS “Noble Numbat” operating system,
 - the R programming language (R Core Team 2022),
 - bspm: Bridge to System Package Manager (Ucar 2026),
-- the [Quarto](https://quarto.org/) scientific and technical publishing
-  system,
+- the [Quarto](https://quarto.org/ "Quarto home page") scientific and
+  technical publishing system,
+- the
+  [Faust](https://github.com/grame-cncm/faust/blob/master-dev/documentation/faust-quick-reference.pdf "Faust Quick Reference (PDF)")
+  functional programming language for sound synthesis and audio
+  processing,
 - R packages for package development (H. Wickham and Bryan 2023),
 - R packages for interfacing with AI tools:
   - ellmer (Hadley Wickham et al. 2025),
@@ -21,13 +25,13 @@ artificially intelligent sound analysis and synthesis. R-AI-D features:
   - shinychat (Cheng et al. 2025),
   - vitals (Couch 2025),
 - R packages for sound analysis and synthesis (Sueur 2018),
-- the [Ollama](https://docs.ollama.com/) framework for managing local
-  models, and
+- the [Ollama](https://docs.ollama.com/ "Ollama Documentation")
+  framework for managing local models, and
 - a modern command line including Ollama-supported coding assistants.
 
 R-AI-D was developed on [Bluefin DX](https://projectbluefin.io), but
 should run on any Linux host system supporting Distrobox. I test on a
-Raspberry Pi 5, so the release includes scripts that should work on any
+Raspberry Pi 5, and the release includes scripts that should work on any
 recent Debian or Ubuntu host. On `x86_64` systems, an NVIDIA GPU will be
 detected and used automatically.
 
@@ -66,7 +70,8 @@ retrieval augmented generation (RAG), and model context protocol (MCP).
 
 ## References
 
-<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="refs" class="references csl-bib-body hanging-indent"
+entry-spacing="0">
 
 <div id="ref-cheng2026s" class="csl-entry">
 
