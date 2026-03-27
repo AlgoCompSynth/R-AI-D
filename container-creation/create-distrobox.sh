@@ -81,6 +81,7 @@ fi
 
 echo "Setting up container desktop and command line"
 pushd Scripts
+  distrobox enter $DBX_CONTAINER_NAME -- sudo chown --recursive ollama:ollama $OLLAMA_MODELS_CONTAINER
   distrobox enter $DBX_CONTAINER_NAME -- su $USER -c "./1_command_line_setup.sh"
 popd
 
