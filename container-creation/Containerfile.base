@@ -16,15 +16,15 @@ COPY installers/r-ai-d-base.sh ./
 RUN ./r-ai-d-base.sh \
   2>&1 | gzip -9c > $WORKDIR/r-ai-d-base.log.gz
 
+# RStudio Desktop
+COPY installers/rstudio-desktop-latest.sh ./
+RUN /usr/bin/time ./rstudio-desktop-latest.sh \
+  2>&1 | gzip -9c > $WORKDIR/rstudio-desktop-latest.log.gz
+
 # Quarto
 COPY installers/quarto.sh ./
 RUN /usr/bin/time ./quarto.sh \
   2>&1 | gzip -9c > $WORKDIR/quarto.log.gz
-
-# Faust
-COPY installers/faust.sh ./
-RUN /usr/bin/time ./faust.sh \
-  2>&1 | gzip -9c > $WORKDIR/faust.log.gz
 
 # R developer packages
 COPY installers/developer-packages.R ./
@@ -40,6 +40,11 @@ RUN /usr/bin/time ./ai-packages.R \
 COPY installers/audio-packages.R ./
 RUN /usr/bin/time ./audio-packages.R \
   2>&1 | gzip -9c > $WORKDIR/audio-packages.log.gz
+
+# Faust
+COPY installers/faust.sh ./
+RUN /usr/bin/time ./faust.sh \
+  2>&1 | gzip -9c > $WORKDIR/faust.log.gz
 
 # Ollama
 COPY installers/ollama.sh ./

@@ -7,27 +7,29 @@ Synthesis
 R-AI-D is a [Distrobox](https://distrobox.it/) pet container for
 artificially intelligent sound analysis and synthesis. R-AI-D features:
 
-- the Ubuntu 24.04 LTS “Noble Numbat” operating system,
+- the [Ubuntu 24.04 LTS “Noble Numbat”](https://help.ubuntu.com/)
+  operating system,
 - the R programming language (R Core Team 2022),
 - bspm: Bridge to System Package Manager (Ucar 2026),
+- [RStudio Desktop](https://docs.posit.co/ide/user/),
 - the [Quarto](https://quarto.org/ "Quarto home page") scientific and
   technical publishing system,
-- the
-  [Faust](https://github.com/grame-cncm/faust/blob/master-dev/documentation/faust-quick-reference.pdf "Faust Quick Reference (PDF)")
-  functional programming language for sound synthesis and audio
-  processing,
-- R packages for package development (H. Wickham and Bryan 2023),
-- R packages for interfacing with AI tools:
-  - ellmer (Hadley Wickham et al. 2025),
-  - mcptools (Couch, Chang, and Gao 2026),
+- R packages for package development (Wickham and Bryan 2023),
+- R packages for interfacing with AI tools (Verde Arregoitia 2026):
+  - ellmer (Wickham et al. 2025),
+  - mcptools (Couch et al. 2026),
   - ollamar (Lin and Safi 2025),
   - ragnar (Kalinowski and Falbel 2026),
   - shinychat (Cheng et al. 2025),
   - vitals (Couch 2025),
 - R packages for sound analysis and synthesis (Sueur 2018),
+- the
+  [Faust](https://github.com/grame-cncm/faust/blob/master-dev/documentation/faust-quick-reference.pdf "Faust Quick Reference (PDF)")
+  functional programming language for sound synthesis and audio
+  processing,
 - the [Ollama](https://docs.ollama.com/ "Ollama Documentation")
   framework for managing local models, and
-- a modern command line including Ollama-supported coding assistants.
+- a modern command line, including Ollama-supported coding assistants.
 
 R-AI-D was developed on [Bluefin DX](https://projectbluefin.io), but
 should run on any Linux host system supporting Distrobox. I test on a
@@ -70,8 +72,7 @@ retrieval augmented generation (RAG), and model context protocol (MCP).
 
 ## References
 
-<div id="refs" class="references csl-bib-body hanging-indent"
-entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
 
 <div id="ref-cheng2026s" class="csl-entry">
 
@@ -107,15 +108,15 @@ Retrieval-Augmented Generation (RAG) Workflows*.
 <div id="ref-lin2026o" class="csl-entry">
 
 Lin, Hause, and Tawab Safi. 2025. “Ollamar: An r Package for Running
-Large Language Models.” *Journal of Open Source Software*, January.
-<https://doi.org/10.21105/joss.07211>.
+Large Language Models.” *Journal of Open Source Software*, ahead of
+print, January. <https://doi.org/10.21105/joss.07211>.
 
 </div>
 
 <div id="ref-r-base" class="csl-entry">
 
 R Core Team. 2022. *R: A Language and Environment for Statistical
-Computing*. Vienna, Austria: R Foundation for Statistical Computing.
+Computing*. R Foundation for Statistical Computing.
 <https://www.R-project.org/>.
 
 </div>
@@ -131,6 +132,13 @@ International Publishing.
 
 Ucar, Iñaki. 2026. *Bspm: Bridge to System Package Manager*.
 <https://cran4linux.github.io/bspm/>.
+
+</div>
+
+<div id="ref-verdearregoitia2026llmsr" class="csl-entry">
+
+Verde Arregoitia, Luis D. 2026. *Large Language Model Tools for r*.
+<https://doi.org/10.5281/zenodo.19260391>.
 
 </div>
 

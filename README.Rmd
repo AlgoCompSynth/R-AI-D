@@ -13,15 +13,15 @@ knitr::opts_chunk$set(echo = TRUE)
 R-AI-D is a [Distrobox](https://distrobox.it/) pet container for
 artificially intelligent sound analysis and synthesis. R-AI-D features:
 
-- the Ubuntu 24.04 LTS "Noble Numbat" operating system,
+- the [Ubuntu 24.04 LTS "Noble Numbat"](https://help.ubuntu.com/) operating
+  system,
 - the R programming language [@r-base],
 - bspm: Bridge to System Package Manager [@ucar2026],
+- [RStudio Desktop](https://docs.posit.co/ide/user/),
 - the [Quarto](https://quarto.org/ "Quarto home page") scientific and technical publishing
   system,
-- the [Faust](https://github.com/grame-cncm/faust/blob/master-dev/documentation/faust-quick-reference.pdf "Faust Quick Reference (PDF)")
-  functional programming language for sound synthesis and audio processing,
 - R packages for package development [@wickham2023r],
-- R packages for interfacing with AI tools:
+- R packages for interfacing with AI tools [@verdearregoitia2026llmsr]:
     - ellmer [@wickham2026],
     - mcptools [@couch2026m],
     - ollamar [@lin2026o],
@@ -29,9 +29,12 @@ artificially intelligent sound analysis and synthesis. R-AI-D features:
     - shinychat [@cheng2026s],
     - vitals [@couch2026v],
 - R packages for sound analysis and synthesis [@sueur2018sound],
-- the [Ollama](https://docs.ollama.com/ "Ollama Documentation") framework for managing local
-  models, and
-- a modern command line including Ollama-supported coding assistants.
+- the
+[Faust](https://github.com/grame-cncm/faust/blob/master-dev/documentation/faust-quick-reference.pdf "Faust Quick Reference (PDF)")
+  functional programming language for sound synthesis and audio processing,
+- the [Ollama](https://docs.ollama.com/ "Ollama Documentation") framework for
+managing local models, and
+- a modern command line, including Ollama-supported coding assistants.
 
 R-AI-D was developed on [Bluefin DX](https://projectbluefin.io), but
 should run on any Linux host system supporting Distrobox. I test on a
