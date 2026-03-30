@@ -18,30 +18,30 @@ RUN ./r-ai-d-base.sh \
 
 # Quarto
 COPY installers/quarto.sh ./
-RUN ./quarto.sh \
-  | gzip -9c > $WORKDIR/quarto.log.gz
+RUN /usr/bin/time ./quarto.sh \
+  2>&1 | gzip -9c > $WORKDIR/quarto.log.gz
 
 # Faust
 COPY installers/faust.sh ./
-RUN ./faust.sh \
+RUN /usr/bin/time ./faust.sh \
   2>&1 | gzip -9c > $WORKDIR/faust.log.gz
 
 # R developer packages
 COPY installers/developer-packages.R ./
-RUN ./developer-packages.R \
-  | gzip -9c > $WORKDIR/developer-packages.log.gz
+RUN /usr/bin/time ./developer-packages.R \
+  2>&1 | gzip -9c > $WORKDIR/developer-packages.log.gz
 
 # R AI packages
 COPY installers/ai-packages.R ./
-RUN ./ai-packages.R \
-  | gzip -9c > $WORKDIR/ai-packages.log.gz
+RUN /usr/bin/time ./ai-packages.R \
+  2>&1 | gzip -9c > $WORKDIR/ai-packages.log.gz
 
 # R audio packages
 COPY installers/audio-packages.R ./
-RUN ./audio-packages.R \
-  | gzip -9c > $WORKDIR/audio-packages.log.gz
+RUN /usr/bin/time ./audio-packages.R \
+  2>&1 | gzip -9c > $WORKDIR/audio-packages.log.gz
 
 # Ollama
 COPY installers/ollama.sh ./
-RUN ./ollama.sh \
+RUN /usr/bin/time ./ollama.sh \
   2>&1 | gzip -9c > $WORKDIR/ollama.log.gz
