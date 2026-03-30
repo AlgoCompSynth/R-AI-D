@@ -19,6 +19,7 @@ sudo apt-get install -y --no-install-recommends \
   file \
   flac \
   gdebi-core \
+  jq \
   libnspr4 \
   libnss3 \
   libsox-fmt-all \
