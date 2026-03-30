@@ -11,6 +11,7 @@ required_packages <- c(
   "data.table",
   "devtools",
   "distill",
+  "pak",
   "quarto",
   "Rdpack",
   "reticulate",
