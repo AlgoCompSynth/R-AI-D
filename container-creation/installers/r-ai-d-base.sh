@@ -16,6 +16,7 @@ sudo apt-get install -y --no-install-recommends \
   alsa-utils \
   apt-file \
   bibtool \
+  file \
   flac \
   gdebi-core \
   libnspr4 \
@@ -29,6 +30,8 @@ sudo apt-get install -y --no-install-recommends \
   qpdf \
   r-base-dev \
   sox \
+  time \
+  tree \
   vim-nox
 
 echo "** Finished R AI Distrobox Base **"
