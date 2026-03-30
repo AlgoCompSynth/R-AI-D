@@ -17,6 +17,7 @@ artificially intelligent sound analysis and synthesis. R-AI-D features:
 - R packages for package development (Wickham and Bryan 2023),
 - R packages for interfacing with AI tools (Verde Arregoitia 2026):
   - ellmer (Wickham et al. 2025),
+  - localLLM (Yang and Xu 2026),
   - mcptools (Couch et al. 2026),
   - ollamar (Lin and Safi 2025),
   - ragnar (Kalinowski and Falbel 2026),
@@ -69,6 +70,8 @@ tools like JupyterLab, PyTorch, and CUDA, but the image is pretty big
 already, so I won’t add them until I need them. And the R AI packages
 cover a lot of the bases already, such as interfacing with Ollama,
 retrieval augmented generation (RAG), and model context protocol (MCP).
+
+## [Building the Image and Container](container-creation/README-Building-the-Image-and-Container.md)
 
 ## References
 
@@ -155,6 +158,13 @@ Schloerke. 2025. *Ellmer: Chat with Large Language Models*.
 Wickham, H., and J. Bryan. 2023. *R Packages: Organize, Test, Document,
 and Share Your Code*. O’Reilly Media.
 <https://books.google.com/books?id=kTHFEAAAQBAJ>.
+
+</div>
+
+<div id="ref-yang2026l" class="csl-entry">
+
+Yang, Eddie, and Yaosheng Xu. 2026. *localLLM: Running Local LLMs with
+’Llama.cpp’ Backend*. <https://github.com/EddieYang211/localLLM>.
 
 </div>
 
