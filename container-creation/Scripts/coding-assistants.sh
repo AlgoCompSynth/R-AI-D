@@ -23,7 +23,7 @@ echo "..Testing for opencode"
 if [[ "$(which opencode | wc -l)" == "0" ]]
 then
   echo "..Installing opencode from Linuxbrew"
-  brew install anomalyco/tap/opencode >> $LOGFILE
+  brew install anomalyco/tap/opencode >> $LOGFILE 2>&1
 
   echo "..opencode is installed"
 
@@ -36,7 +36,7 @@ echo "..Testing for codex"
 if [[ "$(which codex | wc -l)" == "0" ]]
 then
   echo "..Installing codex from Linuxbrew"
-  brew install codex >> $LOGFILE
+  brew install codex >> $LOGFILE 2>&1
 
   echo "..codex is installed"
 
@@ -49,7 +49,7 @@ echo "..Testing for claude"
 if [[ "$(which claude | wc -l)" == "0" ]]
 then
   echo "..Installing claude-code from Linuxbrew"
-  brew install --cask claude-code >> $LOGFILE
+  brew install --cask claude-code >> $LOGFILE 2>&1
 
   echo "..claude is installed"
 

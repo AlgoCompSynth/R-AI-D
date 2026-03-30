@@ -14,7 +14,7 @@ then
 fi
 
 echo "..Installing starship from Linuxbrew"
-brew install starship >> $LOGFILE
+brew install starship >> $LOGFILE 2>&1
 
 echo "..Setting starship configuration file"
 mkdir --parents $HOME/.config

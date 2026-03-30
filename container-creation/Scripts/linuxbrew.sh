@@ -16,7 +16,7 @@ if [[ "$(set | grep CONTAINER_ID | wc -l)" != "0" ]]
 then
   NONINTERACTIVE=1 /bin/bash -c \
     "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" \
-    >> $LOGFILE
+    >> $LOGFILE 2>&1
 
 else
   /bin/bash -c \
