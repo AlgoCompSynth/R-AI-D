@@ -10,16 +10,17 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Introduction
 
-R-AI-D is a [Distrobox](https://distrobox.it/) pet container for
-artificially intelligent sound analysis and synthesis. R-AI-D features:
+R-AI-D is a [Distrobox](https://distrobox.it/ "Distrobox documentation") pet
+container for artificially intelligent sound analysis and synthesis. R-AI-D
+features:
 
-- the [Ubuntu 24.04 LTS "Noble Numbat"](https://help.ubuntu.com/) operating
-  system,
+- the [Ubuntu 24.04 LTS "Noble Numbat"](https://help.ubuntu.com/ "Ubuntu help")
+  operating system,
 - the R programming language [@r-base],
 - bspm: Bridge to System Package Manager [@ucar2026],
-- [RStudio Desktop](https://docs.posit.co/ide/user/),
-- the [Quarto](https://quarto.org/ "Quarto home page") scientific and technical publishing
-  system,
+- [RStudio Desktop](https://docs.posit.co/ide/user/ "RStudio IDE documentation"),
+- the [Quarto](https://quarto.org/ "Quarto home page") scientific and technical
+  publishing system,
 - R packages for package development [@wickham2023r],
 - R packages for interfacing with AI tools [@verdearregoitia2026llmsr]:
     - ellmer [@wickham2026],
@@ -37,31 +38,34 @@ artificially intelligent sound analysis and synthesis. R-AI-D features:
 managing local models, and
 - a modern command line, including Ollama-supported coding assistants.
 
-R-AI-D was developed on [Bluefin DX](https://projectbluefin.io), but
-should run on any Linux host system supporting Distrobox. I test on a
-Raspberry Pi 5, and the release includes scripts that should work on any
-recent Debian or Ubuntu host. On `x86_64` systems, an NVIDIA GPU will
-be detected and used automatically.
+R-AI-D was developed on
+[Bluefin DX](https://projectbluefin.io "Bluefin home page"), but should run on
+any Linux host system supporting Distrobox. I test on a Raspberry Pi 5, and the
+release includes scripts that should work on any recent Debian or Ubuntu host.
+On `x86_64` systems, an NVIDIA GPU will be detected and used automatically.
 
 Like its Bluefix DX inspiration, the R-AI-D command line features
-[Homebrew](https://brew.sh/) and the [Starship](https://starship.rs/)
-cross-shell prompt generator. The
-[Cascaydia Cove nerd font](https://www.nerdfonts.com/) is included and
-other nerd fonts are available. The Ollama-launchable coding assistants
-[OpenCode](https://opencode.ai/), [Codex](https://openai.com/codex/),
-and [Claude CLI](https://www.claudecli.org/) are also included.
+[Homebrew](https://brew.sh/ "Homebrew home page") and the
+[Starship](https://starship.rs/ "Starship home page") cross-shell prompt
+generator. The
+[Cascaydia Cove nerd font](https://www.nerdfonts.com/ "nerd font aggregator")
+is included and other nerd fonts are available. The Ollama-launchable coding
+assistants [OpenCode](https://opencode.ai/ "opencode home page"),
+[Codex CLI](https://developers.openai.com/codex/cli "Codex CLI documentation"),
+and [Claude CLI](https://www.claudecli.org/ "Claude CLI home page") are also
+included.
 
 ## Licensing, contributing, roadmap, etc.
 
 R-AI-D uses the
-[Creative Commons CC0](https://creativecommons.org/public-domain/cc0/)
+[Creative Commons CC0](https://creativecommons.org/public-domain/cc0/ "CC0 license text")
 license, which is a bunch of words that say mostly "R-AI-D is public
 domain." R-AI-D is just some `bash` scripts that download some open
 source software and build it into a container. Why would I copyright
 that?
 
 Contributing? Forks,
-[bug reports and feature requests](https://github.com/AlgoCompSynth/R-AI-D/issues/new)
+[bug reports and feature requests](https://github.com/AlgoCompSynth/R-AI-D/issues/new "open an issue")
 are welcome. Pull requests, on the other hand, probably not. I don't
 have the time to review other peoples' code beyond fixing typos.
 
@@ -77,6 +81,8 @@ already, so I won't add them until I need them. And the R AI packages
 cover a lot of the bases already, such as interfacing with Ollama,
 retrieval augmented generation (RAG), and model context protocol (MCP).
 
-## [Building the Image and Container](container-creation/README-Building-the-Image-and-Container.md)
+## Building the Image and Container
+
+See [container-creation/README-Building-the-Image-and-Container.md](container-creation/README-Building-the-Image-and-Container.md)
 
 ## References

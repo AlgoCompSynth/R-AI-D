@@ -35,13 +35,15 @@ container.
 
 There are a number of environment variables that control the building of
 the image and container. They are set in the file
-`set_container_envars`. Most of them can be left as is, but the two you
+`set_container_envars`. Most of them can be left as is, but the three you
 will definitely need to attend to are
 
 -   `OLLAMA_MODELS_HOST`, which specifies where Ollama will store
-    downloaded models on your system, and
+    downloaded models on your system,
 -   `DBX_CONTAINER_HOME_PREFIX`, which specifies where Distrobox will
-    store the home directory for the container.
+    store the home directory for the container, and
+-   `DBX_CONTAINER_MANAGER`, which specifies whether Distrobox will use Podman
+    or Docker images and containers. Podman is the default.
 
 #### `OLLAMA_MODELS_HOST`
 
@@ -89,6 +91,18 @@ be `$DBX_CONTAINER_HOME_PREFIX/R-AI-CD`. This must be an absolute path
 and you can put it anywhere you have read and write permissions. The
 default is `$HOME/dbx-homes` which makes moving between the container
 and host homes easy.
+
+#### `DBX_CONTAINER_MANAGER`
+
+Distrobox can use either Podman or Docker containers. The default is Podman,
+as can be seen in `set_container_envars`:
+
+``` bash
+export DBX_CONTAINER_MANAGER="podman"
+```
+
+If you want to use Docker, you'll need to install it and change `podman` to
+`docker` in this environment variable definition.
 
 ### 2. Build image and container
 

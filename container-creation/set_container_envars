@@ -45,7 +45,8 @@ export DBX_CONTAINER_HOME_PREFIX="$HOME/dbx-homes"
 # Container manager
 
 ## Distrobox can use either Podman or Docker. I use Podman, but
-## if you want to use Docker, you can change this.
+## if you want to use Docker, install Docker on your host and then
+## change `podman` to `docker`.
 
 export DBX_CONTAINER_MANAGER="podman"
 
