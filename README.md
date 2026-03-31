@@ -13,13 +13,12 @@ R-AI-D features:
 - the R programming language (R Core Team 2022),
 - bspm: Bridge to System Package Manager (Ucar 2026),
 - [RStudio
-  Desktop](https://docs.posit.co/ide/user/ "RStudio IDE documentation"),
-- the [Quarto](https://quarto.org/ "Quarto home page") scientific and
-  technical publishing system,
+  Desktop](https://docs.posit.co/ide/user/ "RStudio documentation"),
+- the Quarto scientific and technical publishing system (Allaire et al.
+  2026),
 - R packages for package development (Wickham and Bryan 2023),
 - R packages for interfacing with AI tools (Verde Arregoitia 2026):
   - ellmer (Wickham et al. 2025),
-  - localLLM (Yang and Xu 2026),
   - mcptools (Couch et al. 2026),
   - ollamar (Lin and Safi 2025),
   - ragnar (Kalinowski and Falbel 2026),
@@ -86,6 +85,14 @@ See
 ## References
 
 <div id="refs" class="references csl-bib-body hanging-indent">
+
+<div id="ref-Allaire_Quarto_2026" class="csl-entry">
+
+Allaire, J. J., Charles Teague, Carlos Scheidegger, Yihui Xie,
+Christophe Dervieux, and Gordon Woodhull. 2026. *Quarto*. V. 1.9.
+Released March. <https://doi.org/10.5281/zenodo.5960048>.
+
+</div>
 
 <div id="ref-cheng2026s" class="csl-entry">
 
@@ -168,13 +175,6 @@ Schloerke. 2025. *Ellmer: Chat with Large Language Models*.
 Wickham, H., and J. Bryan. 2023. *R Packages: Organize, Test, Document,
 and Share Your Code*. O’Reilly Media.
 <https://books.google.com/books?id=kTHFEAAAQBAJ>.
-
-</div>
-
-<div id="ref-yang2026l" class="csl-entry">
-
-Yang, Eddie, and Yaosheng Xu. 2026. *localLLM: Running Local LLMs with
-’Llama.cpp’ Backend*. <https://github.com/EddieYang211/localLLM>.
 
 </div>
 

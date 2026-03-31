@@ -18,13 +18,11 @@ features:
   operating system,
 - the R programming language [@r-base],
 - bspm: Bridge to System Package Manager [@ucar2026],
-- [RStudio Desktop](https://docs.posit.co/ide/user/ "RStudio IDE documentation"),
-- the [Quarto](https://quarto.org/ "Quarto home page") scientific and technical
-  publishing system,
+- [RStudio Desktop](https://docs.posit.co/ide/user/ "RStudio documentation"),
+- the Quarto scientific and technical publishing system [@Allaire_Quarto_2026],
 - R packages for package development [@wickham2023r],
 - R packages for interfacing with AI tools [@verdearregoitia2026llmsr]:
     - ellmer [@wickham2026],
-    - localLLM [@yang2026l],
     - mcptools [@couch2026m],
     - ollamar [@lin2026o],
     - ragnar [@kalinowski2026r],
