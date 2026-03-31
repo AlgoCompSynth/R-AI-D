@@ -26,12 +26,12 @@ pushd /tmp > /dev/null
   echo "..CMAKE_BUILD_PARALLEL_LEVEL: $CMAKE_BUILD_PARALLEL_LEVEL"
   echo "..CMAKE_INSTALL_PARALLEL_LEVEL: $CMAKE_INSTALL_PARALLEL_LEVEL"
 
-  echo "..Building Faust compiler and libraries"
+  echo "..Building Faust compiler"
   cd $FAUST_DIR
-  /usr/bin/time make libsall
+  /usr/bin/time make
 
   echo "..Building sound2faust"
-  make sound2faust
+  /usr/bin/time make sound2faust
 
   echo "..Installing Faust"
   sudo make install
