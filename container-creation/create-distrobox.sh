@@ -100,5 +100,11 @@ echo "distrobox enter $DBX_CONTAINER_NAME" \
     >> $ENTRY_SCRIPT
 chmod +x $ENTRY_SCRIPT
 
+echo ""
+podman image list --all
+echo ""
+podman container list --all
+echo ""
+
 echo "* Finished Create Distrobox *"
 echo ""
