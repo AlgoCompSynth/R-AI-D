@@ -1,5 +1,6 @@
-# https://github.com/containers/toolbox/blob/main/images/ubuntu/24.04/Containerfile
-FROM quay.io/toolbx/ubuntu-toolbox:24.04
+# Source Dockerfile for image:
+# https://github.com/rocker-org/r2u/blob/master/resolute/Dockerfile
+FROM docker.io/rocker/r2u:26.04
 LABEL maintainer="M. Edward (Ed) Borasky <znmeb@algocompsynth.com>"
 
 # set aside a script / logfile depository
@@ -7,6 +8,11 @@ USER root
 ENV WORKDIR=/usr/local/src/workdir
 WORKDIR $WORKDIR
 RUN cat /etc/resolv.conf # check DNS settings
+
+# we're using this as a Distrobox base image so we need
+# to remove existing users
+RUN userdel --remove docker \
+  && userdel --remove ubuntu
 
 # Environment variables
 COPY set_container_envars ./
@@ -16,7 +22,7 @@ COPY installers/r-ai-d-base.sh ./
 RUN ./r-ai-d-base.sh \
   2>&1 | gzip -9c > $WORKDIR/r-ai-d-base.log.gz
 
-# RStudio Desktop
+# RStudio Desktop latest
 COPY installers/rstudio-desktop-latest.sh ./
 RUN /usr/bin/time ./rstudio-desktop-latest.sh \
   2>&1 | gzip -9c > $WORKDIR/rstudio-desktop-latest.log.gz
@@ -40,13 +46,3 @@ RUN /usr/bin/time ./ai-packages.R \
 COPY installers/audio-packages.R ./
 RUN /usr/bin/time ./audio-packages.R \
   2>&1 | gzip -9c > $WORKDIR/audio-packages.log.gz
-
-# Faust
-COPY installers/faust.sh ./
-RUN /usr/bin/time ./faust.sh \
-  2>&1 | gzip -9c > $WORKDIR/faust.log.gz
-
-# Ollama
-COPY installers/ollama.sh ./
-RUN /usr/bin/time ./ollama.sh \
-  2>&1 | gzip -9c > $WORKDIR/ollama.log.gz

@@ -6,16 +6,19 @@ Synthesis
 
 R-AI-D is a [Distrobox](https://distrobox.it/ "Distrobox documentation")
 pet container for artificially intelligent sound analysis and synthesis.
-R-AI-D features:
+R-AI-D is based on the [Rocker “Resolute Raccoon” r2u container
+image](https://github.com/rocker-org/r2u). R-AI-D features:
 
-- the [Ubuntu 24.04 LTS “Noble
-  Numbat”](https://help.ubuntu.com/ "Ubuntu help") operating system,
+- the [Ubuntu 26.04 LTS “Resolute
+  Raccoon”](https://help.ubuntu.com/ "Ubuntu help") operating system,
 - the R programming language (R Core Team 2022),
+- [r2u: CRAN as Ubuntu
+  Binaries](https://eddelbuettel.github.io/r2u/ "r2u: CRAN as Ubuntu Binaries")
 - bspm: Bridge to System Package Manager (Ucar 2026),
-- [RStudio
-  Desktop](https://docs.posit.co/ide/user/ "RStudio documentation"),
-- the Quarto scientific and technical publishing system (Allaire et al.
-  2026),
+- [RStudio Desktop daily
+  build](https://docs.posit.co/ide/user/ "RStudio documentation"),
+- the [Quarto](https://quarto.org/ "Quarto home page") scientific and
+  technical publishing system,
 - R packages for package development (Wickham and Bryan 2023),
 - R packages for interfacing with AI tools (Verde Arregoitia 2026):
   - ellmer (Wickham et al. 2025),
@@ -46,7 +49,7 @@ Like its Bluefix DX inspiration, the R-AI-D command line features
 generator. The [Cascaydia Cove nerd
 font](https://www.nerdfonts.com/ "nerd font aggregator") is included and
 other nerd fonts are available. The Ollama-launchable coding assistants
-[OpenCode](https://opencode.ai/ "opencode home page"), [Codex
+[OpenCode](https://opencode.ai/ "OpenCode home page"), [Codex
 CLI](https://developers.openai.com/codex/cli "Codex CLI documentation"),
 and [Claude CLI](https://www.claudecli.org/ "Claude CLI home page") are
 also included.
@@ -73,9 +76,10 @@ them. If you do, open an issue and I’ll put them in.
 
 Later in my exploration of AI I will probably need some AI engineering
 tools like JupyterLab, PyTorch, and CUDA, but the image is pretty big
-already, so I won’t add them until I need them. And the R AI packages
-cover a lot of the bases already, such as interfacing with Ollama,
-retrieval augmented generation (RAG), and model context protocol (MCP).
+already, so I won’t add them until I need them. And R AI packages cover
+a lot of the bases already, such as interfacing with Ollama and other
+local LLM tools, retrieval augmented generation (RAG), and model context
+protocol (MCP).
 
 ## Building the Image and Container
 
@@ -85,14 +89,6 @@ See
 ## References
 
 <div id="refs" class="references csl-bib-body hanging-indent">
-
-<div id="ref-Allaire_Quarto_2026" class="csl-entry">
-
-Allaire, J. J., Charles Teague, Carlos Scheidegger, Yihui Xie,
-Christophe Dervieux, and Gordon Woodhull. 2026. *Quarto*. V. 1.9.
-Released March. <https://doi.org/10.5281/zenodo.5960048>.
-
-</div>
 
 <div id="ref-cheng2026s" class="csl-entry">
 

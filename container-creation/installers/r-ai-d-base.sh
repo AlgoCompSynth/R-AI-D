@@ -4,36 +4,41 @@ set -e
 
 echo "** R AI Distrobox Base **"
 
-# https://cran4linux.github.io/bspm/#ubuntu
-echo "..Installing R and bspm"
-. /etc/os-release # to get UBUNTU_CODENAME
-URL="https://raw.githubusercontent.com/eddelbuettel/r2u/master/inst/scripts"
-curl -s "${URL}/add_cranapt_${UBUNTU_CODENAME}.sh" | sudo bash -s
-
-echo "..Installing r-base-dev"
+echo "..Installing base packages"
 export DEBIAN_FRONTEND=noninteractive
-sudo apt-get install -y --no-install-recommends \
+apt-get update -qq
+apt-get upgrade -qqy
+apt-get install -qqy --no-install-recommends \
   alsa-utils \
   apt-file \
   bibtool \
+  bubblewrap \
+  curl \
+  faust \
+  faustworks \
   file \
   flac \
   gdebi-core \
+  git \
   jq \
+  libfaust-static \
   libnspr4 \
   libnss3 \
   libsox-fmt-all \
   libsox3 \
   libsoxr0 \
   lsb-release \
+  lshw \
   mp3splt \
   pmidi \
   qpdf \
-  r-base-dev \
   sox \
+  sudo \
   time \
   tree \
-  vim-nox
+  vim-nox \
+  wget \
+  zstd
 
 echo "** Finished R AI Distrobox Base **"
 echo ""

@@ -2,12 +2,6 @@
 
 set -e
 
-echo "..Installing codex dependency 'bubblewrap'"
-export DEBIAN_FRONTEND=noninteractive
-sudo apt-get install -y --no-install-recommends \
-  bubblewrap \
-  >> $LOGFILE 2>&1
-
 echo "..Activating Linuxbrew"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
