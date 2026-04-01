@@ -41,6 +41,12 @@ pushd $HOME/Scripts
 
 popd
 
+if [[ "$(grep R-AI-D_aliases $HOME/.bashrc | wc -l)" == "0" ]]
+then
+  echo "..Appending R-AI-D_aliases to $HOME/.bashrc"
+  cat R-AI-D_aliases >> $HOME/.bashrc
+fi
+
 echo ""
 echo "..Restart your terminal, add CascaydiaCove Nerd Font to your terminal profile and restart shell"
 

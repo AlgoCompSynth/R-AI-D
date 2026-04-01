@@ -1,0 +1,10 @@
+# R-AI-D_aliases
+if ! [[ "$PATH" =~ "$HOME/.local/bin" ]]
+then
+  export PATH="$HOME/.local/bin:$PATH"
+fi
+
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+# R-AI-D_aliases
