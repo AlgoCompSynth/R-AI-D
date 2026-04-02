@@ -1,6 +1,6 @@
 # Source Dockerfile for image:
-# https://github.com/rocker-org/r2u/blob/master/resolute/Dockerfile
-FROM docker.io/rocker/r2u:26.04
+# https://github.com/rocker-org/r2u/blob/master/noble/Dockerfile
+FROM docker.io/rocker/r2u:24.04
 LABEL maintainer="M. Edward (Ed) Borasky <znmeb@algocompsynth.com>"
 
 # set aside a script / logfile depository

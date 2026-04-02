@@ -6,11 +6,11 @@ Synthesis
 
 R-AI-D is a [Distrobox](https://distrobox.it/ "Distrobox documentation")
 pet container for artificially intelligent sound analysis and synthesis.
-R-AI-D is based on the [Rocker “Resolute Raccoon” r2u container
+R-AI-D is based on the [Rocker “Noble Numbat” r2u container
 image](https://github.com/rocker-org/r2u). R-AI-D features:
 
-- the [Ubuntu 26.04 LTS “Resolute
-  Raccoon”](https://help.ubuntu.com/ "Ubuntu help") operating system,
+- the [Ubuntu 24.04 LTS “Noble
+  Numbat”](https://help.ubuntu.com/ "Ubuntu help") operating system,
 - the R programming language (R Core Team 2022),
 - [r2u: CRAN as Ubuntu
   Binaries](https://eddelbuettel.github.io/r2u/ "r2u: CRAN as Ubuntu Binaries")
