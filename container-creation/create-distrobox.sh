@@ -105,6 +105,8 @@ podman image list --all
 echo ""
 podman container list --all
 echo ""
+distrobox list
+echo ""
 
 echo "* Finished Create Distrobox *"
 echo ""
