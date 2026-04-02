@@ -58,7 +58,8 @@ then
 fi
 
 echo "Making sure $OLLAMA_MODELS_HOST exists"
-mkdir --parents $OLLAMA_MODELS_HOST
+sudo mkdir --parents $OLLAMA_MODELS_HOST
+sudo chown --recursive $USER:$USER $OLLAMA_MODELS_HOST
 
 echo "Creating $DBX_CONTAINER_NAME"
 if [[ "$COMPUTE_MODE" == "CPU" ]]
