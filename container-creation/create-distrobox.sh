@@ -90,14 +90,8 @@ popd > /dev/null
 
 echo ""
 echo "Creating entry script $ENTRY_SCRIPT"
-echo "echo 'Enabling & starting ollama.service'" \
+echo "distrobox enter $DBX_CONTAINER_NAME -- su - $USER" \
     > $ENTRY_SCRIPT
-echo \
-    "distrobox enter $DBX_CONTAINER_NAME -- sudo systemctl enable --now ollama.service" \
-    >> $ENTRY_SCRIPT
-echo "sleep 5" >> $ENTRY_SCRIPT
-echo "distrobox enter $DBX_CONTAINER_NAME" \
-    >> $ENTRY_SCRIPT
 chmod +x $ENTRY_SCRIPT
 
 echo ""
