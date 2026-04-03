@@ -12,7 +12,6 @@ apt-get install -qqy --no-install-recommends \
   alsa-utils \
   apt-file \
   bibtool \
-  bubblewrap \
   curl \
   faust \
   faustworks \

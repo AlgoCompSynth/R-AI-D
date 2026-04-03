@@ -36,8 +36,3 @@ RUN /usr/bin/time ./developer-packages.R \
 COPY installers/ai-packages.R ./
 RUN /usr/bin/time ./ai-packages.R \
   2>&1 | gzip -9c > $WORKDIR/ai-packages.log.gz
-
-# R audio packages
-COPY installers/audio-packages.R ./
-RUN /usr/bin/time ./audio-packages.R \
-  2>&1 | gzip -9c > $WORKDIR/audio-packages.log.gz

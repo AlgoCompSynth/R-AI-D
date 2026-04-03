@@ -12,12 +12,14 @@ container.
   the hosting built in, but Distrobox and Podman are available in most
   current Linux distributions. Scripts for installing hosting on the
   Raspberry Pi 5 are available in the directory `R-AI-D/hosting-setup`.
+  These scripts should work on any `x86_64` / `amd54` or `aarch64` /
+  `arm64` system running Debian 13 or Ubuntu 24.04 LTS.
 - If you have an NVIDIA GPU, you will need the drivers. The R-AI-D image
-  and container build script will detect the GPU and install the
-  required software.
+  / container build script will detect the GPU and install the required
+  software.
 - Sufficient disk space for container images. The current image requires
   about 8 gigabytes. You will also need to have space for all of the
-  models you will be saving to disk.
+  models you will be downloading to disk.
 
 ## Build Process
 
@@ -31,7 +33,7 @@ two you will need to attend to:
 - `DBX_CONTAINER_HOME_PREFIX`, which specifies where Distrobox stores
   container home directories, and
 - `DBX_CONTAINER_MANAGER`, which specifies whether Distrobox will use
-  Podman or Docker images and containers. Podman is the default.
+  Podman or Docker images and containers.
 
 #### `DBX_CONTAINER_HOME_PREFIX`
 

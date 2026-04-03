@@ -26,7 +26,6 @@ R-AI-D features:
   - ragnar (Kalinowski and Falbel 2026),
   - shinychat (Cheng et al. 2025),
   - vitals (Couch 2025),
-- R packages for sound analysis and synthesis (Sueur 2018),
 - the
   [Faust](https://github.com/grame-cncm/faust/blob/master-dev/documentation/faust-quick-reference.pdf "Faust Quick Reference (PDF)")
   functional programming language for sound synthesis and audio
@@ -136,13 +135,6 @@ print, January. <https://doi.org/10.21105/joss.07211>.
 R Core Team. 2022. *R: A Language and Environment for Statistical
 Computing*. R Foundation for Statistical Computing.
 <https://www.R-project.org/>.
-
-</div>
-
-<div id="ref-sueur2018sound" class="csl-entry">
-
-Sueur, J. 2018. *Sound Analysis and Synthesis with r*. Use r! Springer
-International Publishing.
 
 </div>
 
