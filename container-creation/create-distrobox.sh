@@ -57,22 +57,16 @@ then
 
 fi
 
-echo "Making sure $OLLAMA_MODELS_HOST exists"
-sudo mkdir --parents $OLLAMA_MODELS_HOST
-sudo chown --recursive $USER:$USER $OLLAMA_MODELS_HOST
-
 echo "Creating $DBX_CONTAINER_NAME"
 if [[ "$COMPUTE_MODE" == "CPU" ]]
 then
   echo "Creating CPU container"
   distrobox create \
-    --volume $OLLAMA_MODELS_HOST:$OLLAMA_MODELS_CONTAINER:rw \
     --init
 
 else
   echo "Creating NVIDIA GPU container"
   distrobox create \
-    --volume $OLLAMA_MODELS_HOST:$OLLAMA_MODELS_CONTAINER:rw \
     --init \
     --additional-flags "--security-opt=label=disable" \
     --additional-flags "--device=nvidia.com/gpu=all"
@@ -83,7 +77,6 @@ fi
 echo "Setting up container desktop and command line"
 pushd Scripts > /dev/null
   distrobox enter $DBX_CONTAINER_NAME -- su $USER -c "./ollama.sh"
-  distrobox enter $DBX_CONTAINER_NAME -- sudo chown --recursive ollama:ollama $OLLAMA_MODELS_CONTAINER
   distrobox enter $DBX_CONTAINER_NAME -- sudo usermod --append --groups ollama $USER
   distrobox enter $DBX_CONTAINER_NAME -- su $USER -c "./1_command_line_setup.sh"
 popd > /dev/null

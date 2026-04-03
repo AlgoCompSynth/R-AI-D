@@ -7,7 +7,8 @@ Synthesis
 R-AI-D is a [Distrobox](https://distrobox.it/ "Distrobox documentation")
 pet container for artificially intelligent sound analysis and synthesis.
 R-AI-D is based on the [Rocker “Noble Numbat” r2u container
-image](https://github.com/rocker-org/r2u). R-AI-D features:
+image](https://github.com/rocker-org/r2u "r2u GitHub repository").
+R-AI-D features:
 
 - the [Ubuntu 24.04 LTS “Noble
   Numbat”](https://help.ubuntu.com/ "Ubuntu help") operating system,
@@ -15,8 +16,6 @@ image](https://github.com/rocker-org/r2u). R-AI-D features:
 - [r2u: CRAN as Ubuntu
   Binaries](https://eddelbuettel.github.io/r2u/ "r2u: CRAN as Ubuntu Binaries")
 - bspm: Bridge to System Package Manager (Ucar 2026),
-- [RStudio Desktop daily
-  build](https://docs.posit.co/ide/user/ "RStudio documentation"),
 - the [Quarto](https://quarto.org/ "Quarto home page") scientific and
   technical publishing system,
 - R packages for package development (Wickham and Bryan 2023),
@@ -34,12 +33,14 @@ image](https://github.com/rocker-org/r2u). R-AI-D features:
   processing,
 - the [Ollama](https://docs.ollama.com/ "Ollama Documentation")
   framework for managing local models, and
-- a modern command line, including Ollama-supported coding assistants.
+- a modern command line, including the Ollama-launchable
+  [OpenCode](https://opencode.ai/ "OpenCode home page") open source AI
+  coding agent.
 
 R-AI-D was developed on [Bluefin
 DX](https://projectbluefin.io "Bluefin home page"), but should run on
 any Linux host system supporting Distrobox. I test on a Raspberry Pi 5,
-and the release includes scripts that should work on any recent Debian
+and the release hosting setup scripts should work on any recent Debian
 or Ubuntu host. On `x86_64` systems, an NVIDIA GPU will be detected and
 used automatically.
 
@@ -48,11 +49,7 @@ Like its Bluefix DX inspiration, the R-AI-D command line features
 [Starship](https://starship.rs/ "Starship home page") cross-shell prompt
 generator. The [Cascaydia Cove nerd
 font](https://www.nerdfonts.com/ "nerd font aggregator") is included and
-other nerd fonts are available. The Ollama-launchable coding assistants
-[OpenCode](https://opencode.ai/ "OpenCode home page"), [Codex
-CLI](https://developers.openai.com/codex/cli "Codex CLI documentation"),
-and [Claude CLI](https://www.claudecli.org/ "Claude CLI home page") are
-also included.
+other nerd fonts are available.
 
 ## Licensing, contributing, roadmap, etc.
 
@@ -85,6 +82,11 @@ protocol (MCP).
 
 See
 [container-creation/README-Building-the-Image-and-Container.md](container-creation/README-Building-the-Image-and-Container.md)
+
+## Raspberry Pi 5 Hosting
+
+See
+[hosting-setup/README-Setting-up-container-hosting.md](hosting-setup/README-Setting-up-container-hosting.md)
 
 ## References
 

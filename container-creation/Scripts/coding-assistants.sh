@@ -25,29 +25,3 @@ else
   echo "..opencode is installed"
 
 fi
-
-echo "..Testing for codex"
-if [[ "$(which codex | wc -l)" == "0" ]]
-then
-  echo "..Installing codex from Linuxbrew"
-  brew install codex >> $LOGFILE 2>&1
-
-  echo "..codex is installed"
-
-else
-  echo "..codex is installed"
-
-fi
-
-echo "..Testing for claude"
-if [[ "$(which claude | wc -l)" == "0" ]]
-then
-  echo "..Installing claude-code from Linuxbrew"
-  brew install --cask claude-code >> $LOGFILE 2>&1
-
-  echo "..claude is installed"
-
-else
-  echo "..claude is installed"
-
-fi

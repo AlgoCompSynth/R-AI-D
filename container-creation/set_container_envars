@@ -2,30 +2,6 @@ echo "Setting container environment variables"
 
 # User-maintained options
 
-## Ollama model persistence
-
-## Ollama models, especially with a middle-to-high-end GPU like
-## an NVIDIA GeForce RTX 3090, take up quite a bit of disk space
-## and take a fair amount of time to download. So R-AI-D has the
-## ability to store these models on the host filesystem and mount
-## them into the container at run time.
-
-## This is controlled by two environment variables.
-## `OLLAMA_MODELS_HOST` specifies the place on the host where you
-## want the models stored. Initially, this must be readable and
-## writeable by you, but the container will change the permissions
-## and you shouldn't touch them after that. On my system this is
-
-export OLLAMA_MODELS_HOST="/home/data/.ollama"
-
-## so you can simply create that if you don't want to change this file.
-## It must be an ***absolute*** path!
-
-## The container resident directory that this directory is mounted into
-## is `OLLAMA_MODELS_CONTAINER` and is set to `/usr/share/ollama/.ollama`
-## when Ollama is installed on the base image. You should not need to
-## change it.
-
 ## Container home directories
 
 ## Distrobox has the option to allocate a separate home directory for
@@ -41,8 +17,7 @@ export OLLAMA_MODELS_HOST="/home/data/.ollama"
 
 export DBX_CONTAINER_HOME_PREFIX="$HOME/dbx-homes"
 
-
-# Container manager
+## Container manager
 
 ## Distrobox can use either Podman or Docker. I use Podman, but
 ## if you want to use Docker, install Docker on your host and then
@@ -50,8 +25,9 @@ export DBX_CONTAINER_HOME_PREFIX="$HOME/dbx-homes"
 
 export DBX_CONTAINER_MANAGER="podman"
 
+# ** You should not need to change anything below here **
 
-# `COMPUTE_MODE`
+## `COMPUTE_MODE`
 
 ## R-AI-D can build two types of containers:
 ##
@@ -78,15 +54,10 @@ fi
 
 echo "COMPUTE_MODE: $COMPUTE_MODE"
 
-# ** You should not need to change anything below here **
-
-# Container absolute path to mount the host path into
-export OLLAMA_MODELS_CONTAINER="/usr/share/ollama/.ollama"
-
-# containerfile name
+## containerfile name
 export CONTAINERFILE="Containerfile.base"
 
-# Distrobox
+## Distrobox
 export DBX_CONTAINER_NAME="R-AI-D-$COMPUTE_MODE"
 export DBX_CONTAINER_IMAGE="localhost/r-ai-d-base:latest"
 export DBX_CONTAINER_DIRECTORY="$DBX_CONTAINER_HOME_PREFIX/$DBX_CONTAINER_NAME"
@@ -94,7 +65,3 @@ export DBX_NON_INTERACTIVE=true
 
 export LOCALBIN=$HOME/.local/bin; mkdir --parents $LOCALBIN
 export ENTRY_SCRIPT=$LOCALBIN/$DBX_CONTAINER_NAME
-
-# CMake
-export CMAKE_BUILD_PARALLEL_LEVEL="$(nproc)"
-export CMAKE_INSTALL_PARALLEL_LEVEL="$(nproc)"

@@ -4,7 +4,7 @@ echo "** RStudio Server Latest **"
 
 set -e
 
-source set_container_envars
+source set_script_envars
 
 # https://dailies.rstudio.com/json-api/
 if [[ "${ARCH}" == "x86_64" ]]
@@ -39,6 +39,12 @@ sudo gdebi -n rstudio-server-*.deb
 
 echo "..Enabling and starting RStudio Server"
 sudo systemctl enable --now rstudio-server.service
+
+echo "..Copying nerd fonts to $HOME/.config/rstudio/fonts"
+mkdir --parents $HOME/.config/rstudio/fonts
+cp \
+  /home/linuxbrew/.linuxbrew/Caskroom/font-caskaydia-cove-nerd-font/3.4.0/CaskaydiaCoveNerdFontMono-*.ttf \
+  $HOME/.config/rstudio/fonts/
 
 echo "..You need to set a password to log into RStudio Server!"
 sudo passwd $USER

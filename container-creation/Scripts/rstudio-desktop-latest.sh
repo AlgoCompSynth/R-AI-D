@@ -4,7 +4,7 @@ echo "** RStudio Desktop Latest **"
 
 set -e
 
-source set_container_envars
+source set_script_envars
 
 # https://dailies.rstudio.com/json-api/
 if [[ "${ARCH}" == "x86_64" ]]
@@ -39,6 +39,12 @@ sudo gdebi -n rstudio-*.deb
 
 echo "..Cleanup"
 rm --force *.json *.deb
+
+echo "..Copying nerd fonts to $HOME/.config/rstudio/fonts"
+mkdir --parents $HOME/.config/rstudio/fonts
+cp \
+  /home/linuxbrew/.linuxbrew/Caskroom/font-caskaydia-cove-nerd-font/3.4.0/CaskaydiaCoveNerdFontMono-*.ttf \
+  $HOME/.config/rstudio/fonts/
 
 echo "** Finished RStudio Desktop Latest **"
 echo ""
