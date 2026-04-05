@@ -13,14 +13,11 @@ apt-get install -qqy --no-install-recommends \
   apt-file \
   bibtool \
   curl \
-  faust \
-  faustworks \
   file \
   flac \
   gdebi-core \
   git \
   jq \
-  libfaust-static \
   libnspr4 \
   libnss3 \
   libsox-fmt-all \

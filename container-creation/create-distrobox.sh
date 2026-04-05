@@ -76,9 +76,10 @@ fi
 
 echo "Setting up container desktop and command line"
 pushd Scripts > /dev/null
+  distrobox enter $DBX_CONTAINER_NAME -- su $USER -c "./1_command_line_setup.sh"
   distrobox enter $DBX_CONTAINER_NAME -- su $USER -c "./ollama.sh"
   distrobox enter $DBX_CONTAINER_NAME -- sudo usermod --append --groups ollama $USER
-  distrobox enter $DBX_CONTAINER_NAME -- su $USER -c "./1_command_line_setup.sh"
+  distrobox enter $DBX_CONTAINER_NAME -- su $USER -c "./rstudio_server_latest.sh"
 popd > /dev/null
 
 echo ""

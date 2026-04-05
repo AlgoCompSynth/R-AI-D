@@ -22,11 +22,6 @@ COPY installers/r-ai-d-base.sh ./
 RUN ./r-ai-d-base.sh \
   2>&1 | gzip -9c > $WORKDIR/r-ai-d-base.log.gz
 
-# Quarto
-COPY installers/quarto.sh ./
-RUN /usr/bin/time ./quarto.sh \
-  2>&1 | gzip -9c > $WORKDIR/quarto.log.gz
-
 # R developer packages
 COPY installers/developer-packages.R ./
 RUN /usr/bin/time ./developer-packages.R \
@@ -36,3 +31,11 @@ RUN /usr/bin/time ./developer-packages.R \
 COPY installers/ai-packages.R ./
 RUN /usr/bin/time ./ai-packages.R \
   2>&1 | gzip -9c > $WORKDIR/ai-packages.log.gz
+
+# R audio packages
+COPY installers/audio-packages.R ./
+RUN /usr/bin/time ./audio-packages.R \
+  2>&1 | gzip -9c > $WORKDIR/audio-packages.log.gz
+
+# Script finish check!
+RUN gzip -dc *.gz | grep "Finished"

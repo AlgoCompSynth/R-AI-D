@@ -10,14 +10,6 @@ echo "Setting up desktop directories"
 mkdir --parents $LOCALBIN $LOGFILES $PROJECTS $SCRIPTS
 cp * $HOME/Scripts
 
-echo "Testing for container install"
-if [[ "$(set | grep CONTAINER_ID | wc -l)" != "0" ]]
-then
-  echo "..Running in a container - copying model scripts to $LOCALBIN"
-  cp *_models.sh $LOCALBIN/
-
-fi
-
 export LOGFILES=$HOME/Logfiles
 mkdir --parents $LOGFILES
 export LOGFILE=$LOGFILES/command_line_setup.log
@@ -31,19 +23,14 @@ pushd $HOME/Scripts
   for script in \
     "linuxbrew.sh" \
     "starship.sh" \
-    "coding-assistants.sh" \
-    "nerd-fonts.sh"
+    "coding_assistants.sh" \
+    "nerd_fonts.sh" \
+    "aliases.sh"
 
   do
     ./$script
 
   done
-
-  if [[ "$(grep R-AI-D_aliases $HOME/.bashrc | wc -l)" == "0" ]]
-  then
-    echo "..Appending R-AI-D_aliases to $HOME/.bashrc"
-    cat R-AI-D_aliases >> $HOME/.bashrc
-  fi
 
 popd
 
