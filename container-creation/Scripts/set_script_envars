@@ -42,3 +42,6 @@ fi
 
 ## Distrobox version
 export DISTROBOX_VERSION="1.8.2.4"
+
+## Ollama version - set to install pre-releases
+#export OLLAMA_VERSION="v0.20.2"
