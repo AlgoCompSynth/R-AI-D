@@ -20,6 +20,7 @@ sudo apt-get install -qqy \
   flatpak \
   plocate \
   time \
+  tmux \
   tree \
   uidmap \
   vim-nox \

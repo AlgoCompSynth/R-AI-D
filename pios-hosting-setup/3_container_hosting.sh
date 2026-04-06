@@ -22,6 +22,7 @@ fi
 
 echo "..Installing distrobox from Linuxbrew"
 brew install distrobox podman > $LOGFILE
+echo "..distrobox is installed"
 
 echo "** Finished Container Hosting **"
 echo ""
