@@ -17,7 +17,6 @@ sudo apt-get install -qqy \
   build-essential \
   curl \
   file \
-  flatpak \
   plocate \
   time \
   tmux \
@@ -32,11 +31,6 @@ sudo apt-file update \
   >> $LOGFILE 2>&1
 echo "..Updating locate database"
 sudo updatedb \
-  >> $LOGFILE 2>&1
-echo "..Adding FlatHub"
-flatpak remote-add --if-not-exists \
-  flathub \
-  https://dl.flathub.org/repo/flathub.flatpakrepo \
   >> $LOGFILE 2>&1
 
 echo "* Finished apt Packages *"
