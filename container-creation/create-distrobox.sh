@@ -84,7 +84,7 @@ popd > /dev/null
 
 echo ""
 echo "Creating entry script $ENTRY_SCRIPT"
-echo "distrobox enter $DBX_CONTAINER_NAME -- su - $USER" \
+echo "distrobox enter $DBX_CONTAINER_NAME -- sudo su $USER" \
     > $ENTRY_SCRIPT
 chmod +x $ENTRY_SCRIPT
 
