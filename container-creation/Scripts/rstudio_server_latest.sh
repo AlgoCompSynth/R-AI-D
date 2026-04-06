@@ -53,7 +53,7 @@ sudo systemctl enable --now rstudio-server.service
 echo "..Copying nerd fonts to $HOME/.config/rstudio/fonts"
 mkdir --parents $HOME/.config/rstudio/fonts
 cp \
-  /home/linuxbrew/.linuxbrew/Caskroom/font-caskaydia-cove-nerd-font/3.4.0/CaskaydiaCoveNerdFontMono-*.ttf \
+  $HOME/.fonts/CaskaydiaCoveNerdFontMono-*.ttf \
   $HOME/.config/rstudio/fonts/
 
 echo "..You need to set a password to log into RStudio Server!"

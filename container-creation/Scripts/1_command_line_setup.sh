@@ -21,11 +21,10 @@ cp $HOME/Scripts/Renviron $HOME/.Renviron
 
 pushd $HOME/Scripts
   for script in \
-    "linuxbrew.sh" \
+    "aliases.sh" \
     "starship.sh" \
     "coding_assistants.sh" \
-    "nerd_fonts.sh" \
-    "aliases.sh"
+    "nerd_fonts.sh"
 
   do
     ./$script

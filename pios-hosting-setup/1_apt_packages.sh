@@ -16,8 +16,10 @@ sudo apt-get install -qqy \
   apt-file \
   build-essential \
   curl \
+  distrobox \
   file \
   plocate \
+  podman \
   time \
   tmux \
   tree \
