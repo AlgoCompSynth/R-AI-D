@@ -50,15 +50,6 @@ popd > /dev/null
 echo "..Enabling and starting RStudio Server"
 sudo systemctl enable --now rstudio-server.service
 
-echo "..Copying nerd fonts to $HOME/.config/rstudio/fonts"
-mkdir --parents $HOME/.config/rstudio/fonts
-cp \
-  $HOME/.fonts/CaskaydiaCoveNerdFontMono-*.ttf \
-  $HOME/.config/rstudio/fonts/
-
-echo "..You need to set a password to log into RStudio Server!"
-sudo passwd $USER
-
 echo "..Cleanup"
 rm --force *.json *.deb
 

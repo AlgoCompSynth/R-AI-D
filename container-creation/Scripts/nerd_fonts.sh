@@ -11,4 +11,12 @@ pushd /tmp > /dev/null
   unzip -qqo CascadiaCode.zip
   echo "..Copying nerd font files to $HOME/.fonts"
   cp CaskaydiaCoveNerdFontMono-*.ttf $HOME/.fonts/
+
+  if [[ -f "/etc/rstudio/fonts/README.md" ]]
+  then
+    echo "..Copying nerd font files to /etc/rstudio/fonts/"
+    sudo cp CaskaydiaCoveNerdFontMono-*.ttf /etc/rstudio/fonts/
+
+  fi
+
 popd > /dev/null

@@ -4,45 +4,6 @@ echo "* Create Distrobox *"
 
 source set_container_envars
 
-# Why do we change the domain nameservers? The code for
-# installing the bridge to system package manager (bspm)
-# accesses a Ubuntu keyserver, and the DNS my ISP provides
-# does not appear to handle that correctly. Using CloudFlare
-# or Google nameservers works, so here they are.
-echo "Building $DBX_CONTAINER_IMAGE"
-if [[ "$COMPUTE_MODE" == "CPU" ]]
-then
-  echo "Building CPU image"
-  podman image build \
-    --dns 1.1.1.1 \
-    --dns 1.0.0.1 \
-    --dns 8.8.8.8 \
-    --file $CONTAINERFILE \
-    --tag $DBX_CONTAINER_IMAGE \
-    --squash-all \
-    .
-
-else
-
-  echo "Building NVIDIA GPU image"
-  podman image build \
-    --security-opt=label=disable \
-    --device=nvidia.com/gpu=all \
-    --dns 1.1.1.1 \
-    --dns 1.0.0.1 \
-    --dns 8.8.8.8 \
-    --file $CONTAINERFILE \
-    --tag $DBX_CONTAINER_IMAGE \
-    --squash-all \
-    .
-
-fi
-
-echo ""
-podman system prune --force
-echo ""
-podman image list
-
 if [[ "$(podman container list --all | grep $DBX_CONTAINER_NAME | wc -l)" != "0" ]]
 then
  echo "Force-removing container $DBX_CONTAINER_NAME"
@@ -74,12 +35,14 @@ else
 
 fi
 
-echo "Setting up container desktop and command line"
 pushd Scripts > /dev/null
-  distrobox enter $DBX_CONTAINER_NAME -- su $USER -c "./1_command_line_setup.sh"
+  echo "Setting up container services"
+  distrobox enter $DBX_CONTAINER_NAME -- su $USER -c "./rstudio_server_latest.sh"
   distrobox enter $DBX_CONTAINER_NAME -- su $USER -c "./ollama.sh"
   distrobox enter $DBX_CONTAINER_NAME -- sudo usermod --append --groups ollama $USER
-  distrobox enter $DBX_CONTAINER_NAME -- su $USER -c "./rstudio_server_latest.sh"
+
+  echo "Setting up container desktop and command line"
+  distrobox enter $DBX_CONTAINER_NAME -- su $USER -c "./1_command_line_setup.sh"
 popd > /dev/null
 
 echo ""
