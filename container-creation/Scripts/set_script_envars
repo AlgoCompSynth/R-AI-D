@@ -39,6 +39,3 @@ then
   export PATH="$HOME/.local/bin:$PATH"
 
 fi
-
-## Distrobox version
-export DISTROBOX_VERSION="1.8.2.4"
