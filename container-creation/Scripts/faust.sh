@@ -25,13 +25,9 @@ sudo apt-get install -qqy --no-install-recommends \
   doxygen-doc \
   graphviz \
   libmicrohttpd-dev \
-  libpolly-$LLVM_VERSION-dev \
   libsndfile1-dev \
-  llvm-$LLVM_VERSION \
-  llvm-$LLVM_VERSION-dev \
     >> $LOGFILE 2>&1
 
-export PATH=/usr/lib/llvm-$LLVM_VERSION/bin:$PATH
 pushd $PROJECTS > /dev/null
   rm --force --recursive $FAUST_TARBALL $FAUST_DIR
   echo "..Downloading $FAUST_URL"
@@ -42,9 +38,9 @@ pushd $PROJECTS > /dev/null
   echo "..CMAKE_BUILD_PARALLEL_LEVEL: $CMAKE_BUILD_PARALLEL_LEVEL"
   echo "..CMAKE_INSTALL_PARALLEL_LEVEL: $CMAKE_INSTALL_PARALLEL_LEVEL"
 
-  echo "..Building Faust compiler and libraries"
+  echo "..Building Faust compiler"
   cd $FAUST_DIR
-  /usr/bin/time make libsall \
+  /usr/bin/time make compiler \
     >> $LOGFILE 2>&1
 
   echo "..Building sound2faust"
