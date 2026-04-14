@@ -22,6 +22,11 @@ COPY installers/r-ai-d-base.sh ./
 RUN ./r-ai-d-base.sh \
   2>&1 | gzip -9c > $WORKDIR/r-ai-d-base.log.gz
 
+# Quarto CLI
+COPY installers/quarto-cli.sh ./
+RUN /usr/bin/time ./quarto-cli.sh \
+  2>&1 | gzip -9c > $WORKDIR/quarto-cli.log.gz
+
 # R developer packages
 COPY installers/developer-packages.R ./
 RUN /usr/bin/time ./developer-packages.R \

@@ -10,6 +10,7 @@ already_installed <- rownames(installed.packages())
 required_packages <- c(
   "data.table",
   "devtools",
+  "quarto",
   "Rdpack",
   "remotes",
   "reticulate",
