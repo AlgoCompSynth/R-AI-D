@@ -2,6 +2,10 @@
 
 set -e
 
+echo "..Setting starship configuration file"
+mkdir --parents $HOME/.config
+cp starship.toml $HOME/.config/starship.toml
+
 echo "..Testing for starship"
 if [[ "$(which starship | wc -l)" != "0" ]]
 then
@@ -20,10 +24,6 @@ pushd /tmp > /dev/null
   chmod +x install.sh
   ./install.sh --yes > /dev/null 2>&1
 popd > /dev/null
-
-echo "..Setting starship configuration file"
-mkdir --parents $HOME/.config
-cp starship.toml $HOME/.config/starship.toml
 
 if [[ "$(grep starship $HOME/.bashrc | wc -l)" == 0 ]]
 then
