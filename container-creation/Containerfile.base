@@ -42,5 +42,10 @@ COPY installers/audio-packages.R ./
 RUN /usr/bin/time ./audio-packages.R \
   2>&1 | gzip -9c > $WORKDIR/audio-packages.log.gz
 
+# GitHub R packages
+COPY installers/github-r-packages.R ./
+RUN /usr/bin/time ./github-r-packages.R \
+  2>&1 | gzip -9c > $WORKDIR/github-r-packages.log.gz
+
 # Script finish check!
 RUN gzip -dc *.gz | grep "Finished"
