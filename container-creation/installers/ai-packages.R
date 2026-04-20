@@ -9,6 +9,7 @@ options(warn=2)
 already_installed <- rownames(installed.packages())
 required_packages <- c(
   "ellmer",
+  "LLMAgentR",
   "mcptools",
   "ollamar",
   "ragnar",

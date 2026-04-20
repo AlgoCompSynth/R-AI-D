@@ -52,6 +52,8 @@ echo "distrobox enter $DBX_CONTAINER_NAME -- sudo su $USER" \
 chmod +x $ENTRY_SCRIPT
 
 echo ""
+podman system prune --force
+echo ""
 podman image list --all
 echo ""
 podman container list --all
