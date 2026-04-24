@@ -28,7 +28,7 @@ echo ""
 
 popd > /dev/null
 
-pushd ../container-creation/Scripts/ > /dev/null
+pushd ../container-creation/command-line-installers/ > /dev/null
   ./1_command_line_setup.sh
 
 popd > /dev/null

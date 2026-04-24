@@ -35,14 +35,13 @@ else
 
 fi
 
-pushd Scripts > /dev/null
-  echo "Setting up container services"
-  distrobox enter $DBX_CONTAINER_NAME -- su $USER -c "./rstudio_server_latest.sh"
-  distrobox enter $DBX_CONTAINER_NAME -- su $USER -c "./ollama.sh"
-  distrobox enter $DBX_CONTAINER_NAME -- sudo usermod --append --groups ollama $USER
-
+pushd command-line-installers > /dev/null
   echo "Setting up container desktop and command line"
   distrobox enter $DBX_CONTAINER_NAME -- su $USER -c "./1_command_line_setup.sh"
+
+  echo "Adding $USER to the 'ollama' group"
+  distrobox enter $DBX_CONTAINER_NAME -- sudo usermod --append --groups ollama $USER
+
 popd > /dev/null
 
 echo ""

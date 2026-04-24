@@ -63,5 +63,17 @@ export DBX_CONTAINER_IMAGE="localhost/r-ai-d-base:latest"
 export DBX_CONTAINER_DIRECTORY="$DBX_CONTAINER_HOME_PREFIX/$DBX_CONTAINER_NAME"
 export DBX_NON_INTERACTIVE=true
 
+## Desktop folders
 export LOCALBIN=$HOME/.local/bin; mkdir --parents $LOCALBIN
+export LOGFILES=$HOME/Logfiles; mkdir --parents $LOGFILES
+export PROJECTS=$HOME/Projects; mkdir --parents $PROJECTS
+
+if [[ ! "$PATH" =~ "$HOME/.local/bin" ]]
+then
+  echo "Prepending $LOCALBIN to \$PATH"
+  export PATH="$HOME/.local/bin:$PATH"
+
+fi
+
+## Container entry script
 export ENTRY_SCRIPT=$LOCALBIN/$DBX_CONTAINER_NAME
