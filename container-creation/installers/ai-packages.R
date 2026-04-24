@@ -14,6 +14,7 @@ required_packages <- c(
   "ollamar",
   "ragnar",
   "shinychat",
+  "torch",
   "vitals"
 )
 to_install <- setdiff(required_packages, already_installed)
