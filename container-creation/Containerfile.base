@@ -18,32 +18,32 @@ RUN userdel --remove docker \
 COPY set_container_envars ./
 
 # R-AI-D base
-COPY installers/r-ai-d-base.sh ./
+COPY image-installers/r-ai-d-base.sh ./
 RUN ./r-ai-d-base.sh \
   2>&1 | gzip -9c > $WORKDIR/r-ai-d-base.log.gz
 
 # Quarto CLI
-COPY installers/quarto-cli.sh ./
+COPY image-installers/quarto-cli.sh ./
 RUN /usr/bin/time ./quarto-cli.sh \
   2>&1 | gzip -9c > $WORKDIR/quarto-cli.log.gz
 
 # R developer packages
-COPY installers/developer-packages.R ./
+COPY image-installers/developer-packages.R ./
 RUN /usr/bin/time ./developer-packages.R \
   2>&1 | gzip -9c > $WORKDIR/developer-packages.log.gz
 
 # R AI packages
-COPY installers/ai-packages.R ./
+COPY image-installers/ai-packages.R ./
 RUN /usr/bin/time ./ai-packages.R \
   2>&1 | gzip -9c > $WORKDIR/ai-packages.log.gz
 
 # R audio packages
-COPY installers/audio-packages.R ./
+COPY image-installers/audio-packages.R ./
 RUN /usr/bin/time ./audio-packages.R \
   2>&1 | gzip -9c > $WORKDIR/audio-packages.log.gz
 
 # GitHub R packages
-COPY installers/github-r-packages.R ./
+COPY image-installers/github-r-packages.R ./
 RUN /usr/bin/time ./github-r-packages.R \
   2>&1 | gzip -9c > $WORKDIR/github-r-packages.log.gz
 
