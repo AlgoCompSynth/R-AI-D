@@ -10,11 +10,14 @@ already_installed <- rownames(installed.packages())
 required_packages <- c(
   "ellmer",
   "LLMAgentR",
+  "luz",
   "mcptools",
   "ollamar",
   "ragnar",
   "shinychat",
   "torch",
+  "torchaudio",
+  "torchvision",
   "vitals"
 )
 to_install <- setdiff(required_packages, already_installed)
