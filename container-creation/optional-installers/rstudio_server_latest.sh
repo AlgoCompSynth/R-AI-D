@@ -4,8 +4,7 @@ echo "** RStudio Server Latest **"
 
 set -e
 
-source set_script_envars
-mkdir --parents $LOGFILES
+source set_container_envars
 export LOGFILE=$LOGFILES/rstudio_server_latest.log
 rm --force $LOGFILE
 
@@ -52,6 +51,9 @@ sudo systemctl enable --now rstudio-server.service
 
 echo "..Cleanup"
 rm --force *.json *.deb
+
+echo "..You need to set a password to log into RStudio Server!"
+sudo passwd $USER
 
 echo "** Finished RStudio Server Latest **"
 echo ""

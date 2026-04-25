@@ -3,26 +3,22 @@
 # tools I use for R package development / documentation / AI
 # see https://r-pkgs.org/
 
-print("** R AI Packages **")
+print("** R Torch Packages **")
 # detonate on first uninstallable
 options(warn=2)
 already_installed <- rownames(installed.packages())
 required_packages <- c(
-  "ellmer",
-  "LLMAgentR",
   "luz",
-  "mcptools",
-  "ollamar",
-  "ragnar",
-  "shinychat",
   "torch",
   "torchaudio",
-  "torchvision",
-  "vitals"
+  "torchvision"
 )
 to_install <- setdiff(required_packages, already_installed)
 cat("\nInstalling:\n")
 print(to_install)
 install.packages(to_install, quiet = TRUE, repos = "https://cloud.r-project.org/")
 warnings()
-print("** Finished R AI Packages **")
+
+torch::install_torch()
+
+print("** Finished R Torch Packages **")

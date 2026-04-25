@@ -1,3 +1,0 @@
-# This is required for devtools::check() to validate file timestamps
-# Set it to your own time zone
-TZ="America/Los_Angeles"

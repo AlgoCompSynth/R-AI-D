@@ -50,6 +50,9 @@ echo "distrobox enter $DBX_CONTAINER_NAME -- sudo su $USER" \
     > $ENTRY_SCRIPT
 chmod +x $ENTRY_SCRIPT
 
+echo "Copying optional installers to container home"
+cp --recursive --dereference optional-installers $DBX_CONTAINER_DIRECTORY
+
 echo ""
 podman system prune --force
 echo ""
