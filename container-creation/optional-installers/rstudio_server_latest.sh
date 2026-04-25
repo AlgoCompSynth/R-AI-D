@@ -46,6 +46,9 @@ pushd /tmp > /dev/null
 
 popd > /dev/null
 
+echo "..Copying nerd fonts to /etc/rstudio/fonts/"
+sudo cp $HOME/.fonts/*.ttf /etc/rstudio/fonts/
+
 echo "..Enabling and starting RStudio Server"
 sudo systemctl enable --now rstudio-server.service
 
