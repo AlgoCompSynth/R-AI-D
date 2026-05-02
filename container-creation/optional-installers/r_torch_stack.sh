@@ -8,6 +8,12 @@ source set_container_envars
 export LOGFILE=$LOGFILES/r_torch_stack_log
 rm --force $LOGFILE
 
+if [[ "$ARCH" == "aarch64" ]]
+then
+  echo "ARCH: $ARCH is not supported - exiting"
+  exit -255
+fi
+
 # https://cran.r-project.org/web/packages/torch/vignettes/installation.html
 if [[ "$COMPUTE_MODE" == "CUDA" ]]
 then
