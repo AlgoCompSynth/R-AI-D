@@ -9,21 +9,34 @@ source set_container_envars
 export LOGFILE=$LOGFILES/command_line_setup.log
 rm --force $LOGFILE
 
-echo "Setting R dotfiles"
-cp Rprofile $HOME/.Rprofile
-cp Renviron $HOME/.Renviron
-
 for script in \
   "aliases.sh" \
   "starship.sh" \
-  "ollama.sh" \
-  "coding_assistants.sh" \
   "nerd_fonts.sh"
 
 do
   ./$script
 
 done
+
+echo "..Testing for container install"
+if [[ "$(set | grep CONTAINER_ID | wc -l)" != "0" ]]
+then
+  echo "..Running in container"
+  for script in \
+    "ollama.sh" \
+    "coding_assistants.sh"
+
+  do
+    ./$script
+
+  done
+
+  echo "Setting R dotfiles"
+  cp Rprofile $HOME/.Rprofile
+  cp Renviron $HOME/.Renviron
+
+fi
 
 echo ""
 echo "..Restart your terminal, add CascaydiaCove Nerd Font to your terminal profile and restart shell"
