@@ -22,6 +22,10 @@ then
 
   fi
 
+else
+  echo "SELinux Enforcing is NOT in effect."
+  echo "No action is needed!"
+
 fi
 
 echo "* Finished Configure SELinux *"
