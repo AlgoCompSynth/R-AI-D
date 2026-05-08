@@ -54,6 +54,19 @@ fi
 
 echo "COMPUTE_MODE: $COMPUTE_MODE"
 
+# See https://podman-desktop.io/docs/podman/gpu, Linux tab, section 4
+testval=$(getenforce 2>&1)
+if [[ "$testval" == "Enforcing" ]]
+then
+  export SELINUX_ENFORCING=true
+
+else
+  export SELINUX_ENFORCING=false
+
+fi
+
+echo "SELINUX_ENFORCING: $SELINUX_ENFORCING"
+
 ## containerfile name
 export CONTAINERFILE="Containerfile.base"
 
