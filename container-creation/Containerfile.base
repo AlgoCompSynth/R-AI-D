@@ -37,15 +37,5 @@ COPY image-installers/ai-packages.R ./
 RUN /usr/bin/time ./ai-packages.R \
   2>&1 | gzip -9c > $WORKDIR/ai-packages.log.gz
 
-# R audio packages
-COPY image-installers/audio-packages.R ./
-RUN /usr/bin/time ./audio-packages.R \
-  2>&1 | gzip -9c > $WORKDIR/audio-packages.log.gz
-
-# GitHub R packages
-COPY image-installers/github-r-packages.R ./
-RUN /usr/bin/time ./github-r-packages.R \
-  2>&1 | gzip -9c > $WORKDIR/github-r-packages.log.gz
-
 # Script finish check!
 RUN gzip -dc *.gz | grep "Finished"
