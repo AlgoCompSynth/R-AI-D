@@ -19,21 +19,9 @@ then
 fi
 
 echo "Creating $DBX_CONTAINER_NAME"
-if [[ "$COMPUTE_MODE" == "CPU" ]]
-then
-  echo "Creating CPU container"
-  distrobox create \
-    --init
-
-else
-  echo "Creating NVIDIA GPU container"
-  distrobox create \
-    --init \
-    --additional-flags "--security-opt=label=disable" \
-    --additional-flags "--device=nvidia.com/gpu=all"
-  # see https://distrobox.it/useful_tips/#using-nvidia-container-toolkit
-
-fi
+distrobox create \
+  --init \
+  $ADDITIONAL_FLAGS
 
 pushd command-line-installers > /dev/null
   echo "Setting up container desktop and command line"

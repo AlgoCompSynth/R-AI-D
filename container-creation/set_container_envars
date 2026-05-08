@@ -46,16 +46,19 @@ if [[ \
   ]]
 then
   export COMPUTE_MODE="CUDA"
+  export ADDITIONAL_FLAGS="--additional-flags '--device=nvidia.com/gpu=all'"
+  # see https://distrobox.it/useful_tips/#using-nvidia-container-toolkit
 
 else
   export COMPUTE_MODE="CPU"
+  export ADDITIONAL_FLAGS=""
 
 fi
 
 echo "COMPUTE_MODE: $COMPUTE_MODE"
 
 # See https://podman-desktop.io/docs/podman/gpu, Linux tab, section 4
-testval=$(getenforce 2>&1)
+testval=$(getenforce 2>&1 || true)
 if [[ "$testval" == "Enforcing" ]]
 then
   export SELINUX_ENFORCING=true
