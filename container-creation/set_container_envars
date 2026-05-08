@@ -42,7 +42,7 @@ echo "ARCH: $ARCH"
 
 if [[ \
   "$ARCH" != "x86_64" \
-  || "$(which nvidia-smi | wc -l)" == "0" \
+  || "$(lspci | grep "VGA compatible controller: NVIDIA" | wc -l)" == "0" \
   ]]
 then
   export COMPUTE_MODE="CPU"
