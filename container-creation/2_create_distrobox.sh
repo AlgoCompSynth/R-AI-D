@@ -27,15 +27,16 @@ pushd command-line-installers > /dev/null
   echo "Setting up container desktop and command line"
   distrobox enter $DBX_CONTAINER_NAME -- su $USER -c "./1_command_line_setup.sh"
 
-  echo "Adding $USER to the 'ollama' group"
-  distrobox enter $DBX_CONTAINER_NAME -- sudo usermod --append --groups ollama $USER
-
 popd > /dev/null
 
 echo ""
 echo "Creating entry script $ENTRY_SCRIPT"
-echo "distrobox enter $DBX_CONTAINER_NAME -- sudo su $USER" \
+echo "distrobox enter $DBX_CONTAINER_NAME -- sudo systemctl enable --now rstudio-server.service" \
     > $ENTRY_SCRIPT
+echo "distrobox enter $DBX_CONTAINER_NAME -- sudo systemctl enable --now ollama.service" \
+    >> $ENTRY_SCRIPT
+echo "distrobox enter $DBX_CONTAINER_NAME -- sudo su $USER" \
+    >> $ENTRY_SCRIPT
 chmod +x $ENTRY_SCRIPT
 
 echo "Copying optional installers to container home"

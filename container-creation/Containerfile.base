@@ -1,6 +1,6 @@
 # Source Dockerfile for image:
-# https://github.com/rocker-org/r2u/blob/master/noble/Dockerfile
-FROM docker.io/rocker/r2u:24.04
+# https://github.com/jmgirard/rstudio2u/blob/main/noble.Dockerfile
+FROM docker.io/jmgirard/rstudio2u:noble
 LABEL maintainer="M. Edward (Ed) Borasky <znmeb@algocompsynth.com>"
 
 # set aside a script / logfile depository
@@ -12,7 +12,8 @@ RUN cat /etc/resolv.conf # check DNS settings
 # we're using this as a Distrobox base image so we need
 # to remove existing users
 RUN userdel --remove docker \
-  && userdel --remove ubuntu
+  && userdel --remove ubuntu \
+  && userdel --remove rstudio
 
 # Environment variables
 COPY set_container_envars ./

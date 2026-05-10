@@ -24,6 +24,7 @@ if [[ "$(set | grep CONTAINER_ID | wc -l)" != "0" ]]
 then
   echo "..Running in container"
   for script in \
+    "rstudio_server_setup.sh" \
     "ollama.sh" \
     "coding_assistants.sh"
 
