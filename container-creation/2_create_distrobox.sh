@@ -4,6 +4,8 @@ echo "* Create Distrobox *"
 
 source set_container_envars
 
+./host-utilities/configure_selinux.sh
+
 if [[ "$(podman container list --all | grep $DBX_CONTAINER_NAME | wc -l)" != "0" ]]
 then
  echo "Force-removing container $DBX_CONTAINER_NAME"
