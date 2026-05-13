@@ -38,7 +38,7 @@ RUN /usr/bin/time ./audio-packages.R \
 RUN gzip -dc *.gz | grep "Finished"
 
 # Create an administrator account
-ENV ADMIN_USER="admin"
+ENV ADMIN_USER="r-ai-d"
 ENV ADMIN_HOME=/home/$ADMIN_USER
 ENV ADMIN_PROJECTS=$ADMIN_HOME/Projects
 ENV ADMIN_LOGFILES=$ADMIN_HOME/Logfiles
@@ -52,6 +52,7 @@ RUN useradd \
   --user-group \
   $ADMIN_USER \
   && echo "$ADMIN_USER:$ADMIN_PASSWORD" | chpasswd \
+  && chage --maxdays 7 --warndays 1 $ADMIN_USER \
   && echo "%sudo   ALL=(ALL:ALL) NOPASSWD: ALL" | tee --append /etc/sudoers.d/10-sudo-nopasswd \
   && chmod go-rwx /etc/sudoers.d/10-sudo-nopasswd \
   && mkdir --parents $ADMIN_PROJECTS $ADMIN_LOGFILES $ADMIN_SCRIPTS
