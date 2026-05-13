@@ -4,11 +4,7 @@ set -e
 
 echo "** R AI Distrobox Base **"
 
-echo "..Setting up BSPM"
-# https://cran4linux.github.io/bspm/#ubuntu
-. /etc/os-release # to get UBUNTU_CODENAME
-URL="https://raw.githubusercontent.com/eddelbuettel/r2u/master/inst/scripts"
-curl -s "${URL}/add_cranapt_${UBUNTU_CODENAME}.sh" | sudo bash -s
+./bspm.sh
 
 echo "..Installing base packages"
 export DEBIAN_FRONTEND=noninteractive
@@ -27,12 +23,14 @@ apt-get install -qqy --no-install-recommends \
   libasound2-dev \
   libnspr4 \
   libnss3 \
+  libpam-systemd \
   libsox-dev \
   libsox-fmt-all \
   libsoxr-dev \
   lsb-release \
   lshw \
   mp3splt \
+  nvtop \
   pmidi \
   python3-apt \
   python3-dbus \
@@ -41,17 +39,14 @@ apt-get install -qqy --no-install-recommends \
   r-base-dev \
   sox \
   sudo \
+  systemd \
   time \
   tree \
   vim-nox \
   wget \
   zstd
 
-echo "..Installing and configuing BSPM"
-Rscript -e 'install.packages("bspm", repos="https://cran.r-project.org")'
-echo "bspm::enable()" | sudo tee -a /etc/R/Rprofile.site
+./rstudio-server.sh
 
 echo "** Finished R AI Distrobox Base **"
 echo ""
-
-

@@ -1,7 +1,6 @@
-# Source Dockerfile for image:
-# https://github.com/ublue-os/toolboxes/blob/main/toolboxes/ubuntu-toolbox/Containerfile.ubuntu
-FROM ghcr.io/ublue-os/ubuntu-toolbox
+FROM quay.io/toolbx/ubuntu-toolbox:24.04
 LABEL maintainer="M. Edward (Ed) Borasky <znmeb@algocompsynth.com>"
+ARG ADMIN_PASSWORD
 
 # set aside a script / logfile depository
 USER root
@@ -11,33 +10,61 @@ CMD /sbin/init
 
 RUN cat /etc/resolv.conf # check DNS settings
 
-# Environment variables
+# Environment variables and install scripts
 COPY set_container_envars ./
+COPY image-installers/* ./
 
 # R-AI-D base
-COPY image-installers/r-ai-d-base.sh ./
 RUN ./r-ai-d-base.sh \
   2>&1 | gzip -9c > $WORKDIR/r-ai-d-base.log.gz
 
 # Quarto CLI
-COPY image-installers/quarto-cli.sh ./
 RUN /usr/bin/time ./quarto-cli.sh \
   2>&1 | gzip -9c > $WORKDIR/quarto-cli.log.gz
 
 # R developer packages
-COPY image-installers/developer-packages.R ./
 RUN /usr/bin/time ./developer-packages.R \
   2>&1 | gzip -9c > $WORKDIR/developer-packages.log.gz
 
 # R AI packages
-COPY image-installers/ai-packages.R ./
 RUN /usr/bin/time ./ai-packages.R \
   2>&1 | gzip -9c > $WORKDIR/ai-packages.log.gz
 
 # R AI packages
-COPY image-installers/audio-packages.R ./
 RUN /usr/bin/time ./audio-packages.R \
   2>&1 | gzip -9c > $WORKDIR/audio-packages.log.gz
 
 # Script finish check!
 RUN gzip -dc *.gz | grep "Finished"
+
+# Create an administrator account
+ENV ADMIN_USER="admin"
+ENV ADMIN_HOME=/home/$ADMIN_USER
+ENV ADMIN_PROJECTS=$ADMIN_HOME/Projects
+ENV ADMIN_LOGFILES=$ADMIN_HOME/Logfiles
+ENV ADMIN_SCRIPTS=$ADMIN_HOME/command-line-installers
+
+RUN useradd \
+  --comment "Administrator" \
+  --groups sudo,adm,systemd-journal \
+  --create-home \
+  --shell /usr/bin/bash \
+  --user-group \
+  $ADMIN_USER \
+  && echo "$ADMIN_USER:$ADMIN_PASSWORD" | chpasswd \
+  && echo "%sudo   ALL=(ALL:ALL) NOPASSWD: ALL" | tee --append /etc/sudoers.d/10-sudo-nopasswd \
+  && chmod go-rwx /etc/sudoers.d/10-sudo-nopasswd \
+  && mkdir --parents $ADMIN_PROJECTS $ADMIN_LOGFILES $ADMIN_SCRIPTS
+
+# Set up command line
+COPY command-line-installers/* $ADMIN_SCRIPTS/
+RUN chown --recursive $ADMIN_USER:$ADMIN_USER $ADMIN_HOME
+WORKDIR $ADMIN_SCRIPTS
+USER $ADMIN_USER
+RUN CONTAINER_ID=true ./1_command_line_setup.sh \
+  2>&1 | gzip -9c > $ADMIN_LOGFILES/1_command_line_setup.log.gz
+
+# Go back to root for systemd!
+USER root
+WORKDIR $WORKDIR
+CMD /sbin/init
