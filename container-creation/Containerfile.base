@@ -1,19 +1,15 @@
 # Source Dockerfile for image:
-# https://github.com/jmgirard/rstudio2u/blob/main/noble.Dockerfile
-FROM docker.io/jmgirard/rstudio2u:noble
+# https://github.com/ublue-os/toolboxes/blob/main/toolboxes/ubuntu-toolbox/Containerfile.ubuntu
+FROM ghcr.io/ublue-os/ubuntu-toolbox
 LABEL maintainer="M. Edward (Ed) Borasky <znmeb@algocompsynth.com>"
 
 # set aside a script / logfile depository
 USER root
 ENV WORKDIR=/usr/local/src/r-ai-d
 WORKDIR $WORKDIR
-RUN cat /etc/resolv.conf # check DNS settings
+CMD /sbin/init
 
-# we're using this as a Distrobox base image so we need
-# to remove existing users
-RUN userdel --remove docker \
-  && userdel --remove ubuntu \
-  && userdel --remove rstudio
+RUN cat /etc/resolv.conf # check DNS settings
 
 # Environment variables
 COPY set_container_envars ./
@@ -37,6 +33,11 @@ RUN /usr/bin/time ./developer-packages.R \
 COPY image-installers/ai-packages.R ./
 RUN /usr/bin/time ./ai-packages.R \
   2>&1 | gzip -9c > $WORKDIR/ai-packages.log.gz
+
+# R AI packages
+COPY image-installers/audio-packages.R ./
+RUN /usr/bin/time ./audio-packages.R \
+  2>&1 | gzip -9c > $WORKDIR/audio-packages.log.gz
 
 # Script finish check!
 RUN gzip -dc *.gz | grep "Finished"

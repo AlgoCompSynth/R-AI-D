@@ -21,8 +21,6 @@ podman image build \
   .
 
 echo ""
-podman system prune --force
-echo ""
 podman image list
 
 echo "* Finished Build Image *"
