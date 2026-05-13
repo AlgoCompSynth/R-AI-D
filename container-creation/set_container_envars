@@ -17,13 +17,12 @@ echo "Setting container environment variables"
 export ARCH="$(uname -m)"
 echo "ARCH: $ARCH"
 
-if [[ \
-  "$ARCH" == "x86_64" \
-  && "$(nvidia-ctk cdi list 2>&1 || true | grep gpu | wc -l)" != "0" \
-  ]]
+if [[ "$ARCH" == "x86_64" \
+  && "$(nvidia-ctk cdi list 2>&1 || true | grep gpu | wc -l)" != "0" ]]
+
 then
   export COMPUTE_MODE="CUDA"
-  export NVIDIA_FLAGS="--device=nvidia.com/gpu=all --security-opt=label=disable"
+  export NVIDIA_FLAGS="--device=nvidia.com/gpu=all"
   # see https://distrobox.it/useful_tips/#using-nvidia-container-toolkit
 
 else
@@ -33,6 +32,35 @@ else
 fi
 
 echo "COMPUTE_MODE: $COMPUTE_MODE"
+echo "NVIDIA_FLAGS: $NVIDIA_FLAGS"
+
+## SELinux logic
+## See https://podman-desktop.io/docs/podman/gpu, Linux tab, section 4
+##
+
+if [[ "$(which getenforce | wc -l)" == "0" ]]
+
+then
+  export SELINUX_STATUS="No_getenforce"
+  export SECURITY_FLAGS=""
+
+else
+  export SELINUX_STATUS=$(getenforce)
+
+  if [[ "$SELINUX_STATUS" == "Disabled" ]]
+
+  then
+    export SECURITY_FLAGS=""
+
+  else
+    export SECURITY_FLAGS="--security-opt=label=disable"
+
+  fi
+
+fi
+
+echo "SELINUX_STATUS: $SELINUX_STATUS"
+echo "SECURITY_FLAGS: $SECURITY_FLAGS"
 
 ## containerfile name
 export CONTAINERFILE="Containerfile.base"
@@ -47,6 +75,7 @@ export LOGFILES=$HOME/Logfiles; mkdir --parents $LOGFILES
 export PROJECTS=$HOME/Projects; mkdir --parents $PROJECTS
 
 if [[ ! "$PATH" =~ "$HOME/.local/bin" ]]
+
 then
   echo "Prepending $LOCALBIN to \$PATH"
   export PATH="$HOME/.local/bin:$PATH"

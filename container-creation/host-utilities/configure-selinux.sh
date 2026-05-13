@@ -5,20 +5,11 @@ set -e
 echo ""
 echo "Configuring SELinux if needed"
 
+source set_container_envars
+
 # See https://podman-desktop.io/docs/podman/gpu, Linux tab, section 4
-testval=$(getenforce 2>&1 || true)
-if [[ "$testval" == "Enforcing" ]]
-then
-  export SELINUX_ENFORCING=true
+if [[ "$SELINUX_STATUS" != "Enforcing" ]]
 
-else
-  export SELINUX_ENFORCING=false
-
-fi
-
-echo "SELINUX_ENFORCING: $SELINUX_ENFORCING"
-
-if [[ $SELINUX_ENFORCING != "true" ]]
 then
   echo "SELinux Enforcing is NOT in effect."
   echo "No action is needed!"
@@ -31,6 +22,7 @@ fi
 echo "SELinux Enforcing has been detected."
 
 if [[ "$(getsebool container_use_devices)" =~ "container_use_devices --> on" ]]
+
 then 
   echo "container_use_devices --> on"
   echo "No action is needed!"
@@ -46,6 +38,7 @@ read -r -p "? " response
 echo "Response was '$response'."
 
 if [[ "$response" == "YES" ]]
+
 then
   echo "sudo setsebool -P container_use_devices true"
   sudo setsebool -P container_use_devices true
