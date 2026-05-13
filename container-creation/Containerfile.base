@@ -64,6 +64,10 @@ USER $ADMIN_USER
 RUN CONTAINER_ID=true ./1_command_line_setup.sh \
   2>&1 | gzip -9c > $ADMIN_LOGFILES/1_command_line_setup.log.gz
 
+# Script finish check!
+WORKDIR $ADMIN_LOGFILES
+RUN gzip -dc *.gz | grep "Finished"
+
 # Go back to root for systemd!
 USER root
 WORKDIR $WORKDIR

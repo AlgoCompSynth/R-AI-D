@@ -23,7 +23,7 @@ if [[ \
   ]]
 then
   export COMPUTE_MODE="CUDA"
-  export NVIDIA_FLAGS="--device=nvidia.com/gpu=all"
+  export NVIDIA_FLAGS="--device=nvidia.com/gpu=all --security-opt=label=disable"
   # see https://distrobox.it/useful_tips/#using-nvidia-container-toolkit
 
 else

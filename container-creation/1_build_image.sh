@@ -25,11 +25,11 @@ podman image build \
   --dns 8.8.8.8 \
   --file $CONTAINERFILE \
   --tag $CONTAINER_IMAGE \
-  --squash-all \
   .
+  #--squash-all \
 
 echo ""
-podman system prune --force
+#podman system prune --force
 podman image list
 
 echo "* Finished Build Image *"
