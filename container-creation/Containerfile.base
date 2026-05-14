@@ -1,4 +1,5 @@
-FROM quay.io/toolbx/ubuntu-toolbox:24.04
+# base image containerfile: https://github.com/ublue-os/toolboxes/tree/main/toolboxes/ubuntu-toolbox
+FROM ghcr.io/ublue-os/ubuntu-toolbox:latest
 LABEL maintainer="M. Edward (Ed) Borasky <znmeb@algocompsynth.com>"
 ARG ADMIN_PASSWORD
 
@@ -13,6 +14,10 @@ RUN cat /etc/resolv.conf # check DNS settings
 # Environment variables and install scripts
 COPY set_container_envars ./
 COPY image-installers/* ./
+
+# restore man pages
+RUN ./restore-man-pages.sh \
+  2>&1 | gzip -9c > $WORKDIR/restore-man-pages.log.gz
 
 # R-AI-D base
 RUN ./r-ai-d-base.sh \
@@ -30,7 +35,7 @@ RUN /usr/bin/time ./developer-packages.R \
 RUN /usr/bin/time ./ai-packages.R \
   2>&1 | gzip -9c > $WORKDIR/ai-packages.log.gz
 
-# R AI packages
+# R audio packages
 RUN /usr/bin/time ./audio-packages.R \
   2>&1 | gzip -9c > $WORKDIR/audio-packages.log.gz
 
