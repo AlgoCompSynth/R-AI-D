@@ -42,6 +42,7 @@ podman create \
   --dns 8.8.8.8 \
   --name $CONTAINER_NAME --replace \
   --publish $RSTUDIO_SERVER_PORT:$RSTUDIO_SERVER_PORT \
+  --publish $OLLAMA_SERVER_PORT:$OLLAMA_SERVER_PORT \
   $NVIDIA_FLAGS \
   $SECURITY_FLAGS \
   $CONTAINER_IMAGE \
