@@ -2,13 +2,6 @@
 
 echo "* Create Container *"
 
-if [[ "${#1}" < "12" ]]
-then
-  echo "The first argument must at leat 12 characters for the 'r-ai-d' password."
-  exit -255
-
-fi
-
 source set_container_envars
 
 # Why do we change the domain nameservers? The code for
@@ -19,10 +12,10 @@ source set_container_envars
 echo "Building $CONTAINER_IMAGE"
 echo "Building CPU image"
 podman image build \
-  --build-arg ADMIN_PASSWORD=$1 \
   --dns 1.1.1.1 \
   --dns 1.0.0.1 \
   --dns 8.8.8.8 \
+  --dns 8.8.4.4 \
   --file $CONTAINERFILE \
   --tag $CONTAINER_IMAGE \
   --squash-all \
@@ -35,11 +28,14 @@ podman image list
 
 ./host-utilities/configure-selinux.sh
 
-podman create \
+podman run \
+  --interactive \
+  --tty \
   --cap-add=CAP_SYS_ADMIN \
   --dns 1.1.1.1 \
   --dns 1.0.0.1 \
   --dns 8.8.8.8 \
+  --dns 8.8.4.4 \
   --name $CONTAINER_NAME --replace \
   --publish $RSTUDIO_SERVER_PORT:$RSTUDIO_SERVER_PORT \
   --publish $OLLAMA_SERVER_PORT:$OLLAMA_SERVER_PORT \

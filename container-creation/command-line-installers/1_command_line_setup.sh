@@ -23,17 +23,7 @@ echo "..Testing for container install"
 if [[ "$(set | grep CONTAINER_ID | wc -l)" != "0" ]]
 then
   echo "..Running in container"
-  for script in \
-    "rstudio_server_setup.sh" \
-    "ollama.sh" \
-    "coding_assistants.sh"
-
-  do
-    ./$script
-
-  done
-
-  echo "Setting R dotfiles"
+  echo "..Setting R dotfiles"
   cp Rprofile $HOME/.Rprofile
   cp Renviron $HOME/.Renviron
 

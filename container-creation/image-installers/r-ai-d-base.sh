@@ -8,6 +8,8 @@ echo "** R AI Distrobox Base **"
 
 echo "..Installing base packages"
 export DEBIAN_FRONTEND=noninteractive
+apt-get update -qq
+apt-get upgrade -qqy
 apt-get install -qqy --no-install-recommends \
   alsa-utils \
   apt-file \
