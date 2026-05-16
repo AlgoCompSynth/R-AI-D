@@ -36,9 +36,6 @@ RUN /usr/bin/time ./audio-packages.R \
 RUN /usr/bin/time ./ollama.sh \
   2>&1 | gzip -9c > $WORKDIR/ollama.log.gz
 
-# Script finish check!
-RUN gzip -dc *.gz | grep "Finished"
-
 # Create an administrator account:
 # Username and initial password are defined here;
 # the user must change the password on first run
@@ -69,11 +66,17 @@ USER $ADMIN_USER
 RUN CONTAINER_ID=true ./1_command_line_setup.sh \
   2>&1 | gzip -9c > $ADMIN_LOGFILES/1_command_line_setup.log.gz
 
-# Script finish check!
-WORKDIR $ADMIN_LOGFILES
-RUN gzip -dc *.gz | grep "Finished"
-
-# Go back to root for systemd!
+# Go back to root
 USER root
 WORKDIR $WORKDIR
+
+# Update databases
+RUN /usr/bin/time ./update-databases.sh \
+  2>&1 | gzip -9c > $WORKDIR/update-databases.log.gz
+
+# Script finish check!
+RUN gzip -dc $WORKDIR/*.gz | grep "Finished" \
+  && gzip -dc $ADMIN_LOGFILES/*.gz | grep "Finished"
+
+# systemd container
 CMD /sbin/init

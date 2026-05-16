@@ -20,14 +20,18 @@ apt-get install -qqy --no-install-recommends \
   apt-file \
   bash-completion \
   bibtool \
+  byobu \
   curl \
+  faust \
   file \
   flac \
   gdebi-core \
   git \
   jq \
+  language-pack-en \
   libasound2-dev \
   libbpf-dev \
+  libfaust-static \
   libnspr4 \
   libnss3 \
   libpam-systemd \
@@ -38,6 +42,7 @@ apt-get install -qqy --no-install-recommends \
   lshw \
   man-db \
   mp3splt \
+  neovim \
   net-tools \
   nvtop \
   plocate \
@@ -53,9 +58,16 @@ apt-get install -qqy --no-install-recommends \
   systemd \
   time \
   tree \
-  vim-nox \
   wget \
   zstd
+
+# We only install the English language pack and set the locale to en_US.UTF-8.
+# If you need others, see 
+#
+# https://wiki.ubuntu.com/UbuntuDevelopment/Internationalisation/InternationalizationPrimer/Locales
+#
+locale-gen
+update-locale LANG=en_US.UTF-8
 
 ./rstudio-server.sh
 ./bspm.sh
