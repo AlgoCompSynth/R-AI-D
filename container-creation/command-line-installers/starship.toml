@@ -55,6 +55,7 @@ symbol = " "
 
 [hostname]
 ssh_symbol = " "
+ssh_only = false
 
 [java]
 symbol = " "
@@ -160,6 +161,9 @@ symbol = " "
 
 [swift]
 symbol = " "
+
+[username]
+show_always = true
 
 [zig]
 symbol = " "
