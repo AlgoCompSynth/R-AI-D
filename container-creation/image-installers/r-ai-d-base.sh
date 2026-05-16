@@ -4,15 +4,21 @@ set -e
 
 echo "** R AI Distrobox Base **"
 
-./bspm.sh
+echo "..Removing 'ubuntu' user"
+userdel --remove ubuntu
 
-echo "..Installing base packages"
+echo "..Restoring documentation"
 export DEBIAN_FRONTEND=noninteractive
 apt-get update -qq
 apt-get upgrade -qqy
+apt-get install -qqy unminimize
+echo "y" | unminimize
+
+echo "..Installing base packages"
 apt-get install -qqy --no-install-recommends \
   alsa-utils \
   apt-file \
+  bash-completion \
   bibtool \
   curl \
   file \
@@ -21,6 +27,7 @@ apt-get install -qqy --no-install-recommends \
   git \
   jq \
   libasound2-dev \
+  libbpf-dev \
   libnspr4 \
   libnss3 \
   libpam-systemd \
@@ -29,14 +36,18 @@ apt-get install -qqy --no-install-recommends \
   libsoxr-dev \
   lsb-release \
   lshw \
+  man-db \
   mp3splt \
+  net-tools \
   nvtop \
+  plocate \
   pmidi \
   python3-apt \
   python3-dbus \
   python3-gi \
   qpdf \
   r-base-dev \
+  ssh \
   sox \
   sudo \
   systemd \
@@ -47,8 +58,11 @@ apt-get install -qqy --no-install-recommends \
   zstd
 
 ./rstudio-server.sh
+./bspm.sh
 
-apt-get clean
+echo "..Configuring Secure Shell service"
+echo "Port 2222" | tee --append /etc/ssh/sshd_config
+systemctl enable ssh.service
 
 echo "** Finished R AI Distrobox Base **"
 echo ""

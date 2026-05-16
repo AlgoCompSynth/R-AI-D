@@ -1,11 +1,10 @@
-FROM quay.io/toolbx/ubuntu-toolbox:24.04
+FROM docker.io/library/ubuntu:resolute
 LABEL maintainer="M. Edward (Ed) Borasky <znmeb@algocompsynth.com>"
 
 # set aside a script / logfile depository
 USER root
 ENV WORKDIR=/usr/local/src/r-ai-d
 WORKDIR $WORKDIR
-CMD /sbin/init
 
 RUN cat /etc/resolv.conf # check DNS settings
 
