@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-echo "* Replace and Run Container *"
+echo "* Run Container *"
 
 source set_container_envars
 
@@ -14,7 +14,7 @@ podman container run \
   --dns 8.8.8.8 \
   --dns 8.8.4.4 \
   --hostname $CONTAINER_NAME \
-  --name $CONTAINER_NAME --replace \
+  --name $CONTAINER_NAME \
   --publish $RSTUDIO_SERVER_PORT:$RSTUDIO_SERVER_PORT \
   --publish $OLLAMA_SERVER_PORT:$OLLAMA_SERVER_PORT \
   --publish $SSH_SERVER_PORT:$SSH_SERVER_PORT \
@@ -23,5 +23,5 @@ podman container run \
   $CONTAINER_IMAGE \
   /sbin/init
 
-echo "* Finished Replace and Run Container *"
+echo "* Finished Run Container *"
 echo ""
