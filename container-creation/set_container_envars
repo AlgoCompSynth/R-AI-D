@@ -3,12 +3,6 @@ echo "Setting container environment variables:"
 
 # User-maintained options
 
-# https://posit.co/download/rstudio-server
-export RSTUDIO_SERVER_VERSION="2026.04.0-526"
-export RSTUDIO_SERVER_PACKAGE="rstudio-server-$RSTUDIO_SERVER_VERSION-amd64.deb"
-export RSTUDIO_SERVER_URL="https://download2.rstudio.org/server/jammy/amd64/$RSTUDIO_SERVER_PACKAGE"
-echo "RSTUDIO_SERVER_VERSION: $RSTUDIO_SERVER_VERSION"
-
 # comment out for latest stable version of Ollama
 # https://github.com/ollama/ollama/tags
 export OLLAMA_VERSION=0.30.0-rc20
@@ -20,6 +14,11 @@ echo "OLLAMA_VERSION: $OLLAMA_VERSION"
 # echo "FORCE_CPU: $FORCE_CPU"
 
 # ** You should not need to change anything below here **
+# https://posit.co/download/rstudio-server
+export RSTUDIO_SERVER_VERSION="2026.04.0-526"
+export RSTUDIO_SERVER_PACKAGE="rstudio-server-$RSTUDIO_SERVER_VERSION-amd64.deb"
+export RSTUDIO_SERVER_URL="https://download2.rstudio.org/server/jammy/amd64/$RSTUDIO_SERVER_PACKAGE"
+echo "RSTUDIO_SERVER_VERSION: $RSTUDIO_SERVER_VERSION"
 
 ## `COMPUTE_MODE`
 

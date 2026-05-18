@@ -6,19 +6,20 @@ container.
 
 ## Prerequisites
 
-- Distrobox and either Podman or Docker installed on your system. R-AI-D
-  was developed on [Bluefin
+- Podman 4.9.3 or later installed on your system. R-AI-D was developed
+  on [Bluefin
   DX](https://projectbluefin.io "Bluefin Project Home Page"), which has
-  the hosting built in, but Distrobox and Podman are available in most
-  current Linux distributions. Scripts for installing hosting on the
-  Raspberry Pi 5 are available in the directory `R-AI-D/hosting-setup`.
-  These scripts should work on any `x86_64` / `amd54` or `aarch64` /
-  `arm64` system running Debian 13 or Ubuntu 24.04 LTS.
-- If you have an NVIDIA GPU, you will need the drivers. The R-AI-D image
-  / container build script will detect the GPU and install the required
-  software.
+  the hosting built in, but Podman is available in most current Linux
+  distributions. The oldest host I test on is Ubuntu 24.04 LTS “Noble
+  Numbat”, which has Podman 4.9.3.
+- If your host has an NVIDIA GPU, you will need the drivers and the
+  NVIDIA Container Toolkit installed. The R-AI-D image / container build
+  script will detect the GPU and install the required software. The GPU
+  must be GTX 16xx or later. I do not have any AMD GPUs or CPUs to test
+  on, so there is no code to support them other than what Ollama
+  provides.
 - Sufficient disk space for container images. The current image requires
-  about 8 gigabytes. You will also need to have space for all of the
+  about 7.2 gigabytes. You will also need to have space for all of the
   models you will be downloading to disk.
 
 ## Build Process
@@ -27,96 +28,42 @@ container.
 
 There are a number of environment variables that control the building of
 the image and container. They are set in the file
-`set_container_envars`. Most of them can be left as is, but there are
-two you will need to attend to:
+`set_container_envars`. Most of them can be left as is, but there is one
+you will need to attend to:
 
-- `DBX_CONTAINER_HOME_PREFIX`, which specifies where Distrobox stores
-  container home directories, and
-- `DBX_CONTAINER_MANAGER`, which specifies whether Distrobox will use
-  Podman or Docker images and containers.
+- `FORCE_CPU`: This is commented out in `set_container_envars`. If you
+  uncomment the setting, it will set `FORCE_CPU="FORCE_CPU"`, and the
+  container will be built using the CPU only, even if you have a GPU.
+  This is useful if your CPU has more RAM than your GPU and you want to
+  use a model larger than what your GPU VRAM can hold.
 
-#### `DBX_CONTAINER_HOME_PREFIX`
-
-To avoid conflicts between host and container configuration files
-(“dotfiles”) in the user’s home directory, Distrobox can allocate a
-separate home directory for each container it creates. This is
-especially useful when the host and container run different Linux
-distros, as is the case in my development environment (Bluefin DX or
-Raspberry Pi 5 host, Ubuntu 24.04 LTS container).
-
-The environment variable that controls this is called
-`DBX_CONTAINER_HOME_PREFIX`; the R-AI-D container’s home directory will
-be `$DBX_CONTAINER_HOME_PREFIX/R-AI-CD-CPU` or
-`$DBX_CONTAINER_HOME_PREFIX/R-AI-CD-CUDA`. `DBX_CONTAINER_HOME_PREFIX`
-must be an absolute path; you can put it anywhere you have read and
-write permissions.
-
-The default is `$HOME/dbx-homes` -
+### 2. Build image
 
 ``` bash
-export DBX_CONTAINER_HOME_PREFIX="$HOME/dbx-homes"
+./1_build_image.sh
 ```
 
-which makes moving between the container and host home directories easy.
-If the directory does not exist, Distrobox will create it.
+This script builds the base container image that includes:
 
-#### `DBX_CONTAINER_MANAGER`
+- Ubuntu 26.04.LTS “Resolute Raccoon”,
+- R package development environment - RStudio Server, the Bridge to
+  System Package Manager, Quarto, and AI interface R packages,
+- the Faust functional audio stream compiler,
+- R library packages for audio analysis and synthesis,
+- OLLAMA AI tools, and
+- the `r-ai-d` administrator account with initial password `r-ai-d`.
 
-Distrobox can use either Podman or Docker containers. The default is
-Podman, as can be seen in `set_container_envars`:
+The image is named `localhost/r-ai-d-base:latest`  
+
+### 3. Create and run the container
 
 ``` bash
-export DBX_CONTAINER_MANAGER="podman"
+./2_replace_and_run_container.sh
 ```
 
-If you want to use Docker, you’ll need to install it and change `podman`
-to `docker` in this environment variable definition.
-
-### 2. Build image and container
-
-``` bash
-./create-distrobox.sh
-```
-
-This script first builds the base container image that includes:
-
-- Ubuntu 24.04.LTS,
-- R development environment, including AI interface packages,
-- R packages for audio analysis and synthesis,
-- Quarto,
-- Faust, and
-- OLLAMA AI tools
-
-Once the image is built, the script creates the Distrobox container
-`R-AI-D-${COMPUTE_MODE}`, where `COMPUTE_MODE` is either `CPU` or
-`CUDA`. `COMPUTE_MODE` is automatically set to `CUDA` if the host is
-`x86_64` and an NVIDIA GPU is detected; otherwise it is set to `CPU`.
-
-The container has all of the software on the base image, plus a
-dedicated container `$HOME` directory with sub-directories
-`$HOME/Logfiles`, `$HOME/Projects`, `$HOME/Scripts`, plus
-`$HOME/.local/bin` for storing user-specific executables.
-
-The command line in the container features
-
-- Homebrew,
-- the Starship cross-shell prompt,
-- the Ollama-launchable coding assistant `opencode`, and
-- the Cascaydia Cove nerd font.
-
-After creating the container, the script creates a startup script in the
-***host*** `$HOME/.local/bin` with the name of the container, either
-`R-AI-D-CPU` or `R-AI-D-CUDA`.
-
-### 3. Running the container
-
-Once the container is built, simply enter
-
-``` bash
-R-AI-D-CUDA
-```
-
-or
+This creates a container named `R-AI-D-CUDA` or `R-AI-D-CPU`, depending
+on which compute mode was specified when the image was built. Any
+existing container with that name will be deleted.
 
 ``` bash
 R-AI-D-CPU
