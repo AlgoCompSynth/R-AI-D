@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-echo "* Recreate Container *"
+echo "* Replace and Run Container *"
 
 source set_container_envars
 
@@ -23,5 +23,5 @@ podman container run \
   $CONTAINER_IMAGE \
   /sbin/init
 
-echo "* Finished Recreate Container *"
+echo "* Finished Replace and Run Container *"
 echo ""
