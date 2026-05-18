@@ -11,7 +11,7 @@ echo "RSTUDIO_SERVER_VERSION: $RSTUDIO_SERVER_VERSION"
 
 # comment out for latest stable version of Ollama
 # https://github.com/ollama/ollama/tags
-export OLLAMA_VERSION=0.30.0-rc17
+export OLLAMA_VERSION=0.30.0-rc20
 echo "OLLAMA_VERSION: $OLLAMA_VERSION"
 
 # uncomment to force a CPU container even on a machine with an NVIDIA GPU
