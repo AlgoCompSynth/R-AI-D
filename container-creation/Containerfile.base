@@ -14,27 +14,27 @@ COPY image-installers/* ./
 
 # R-AI-D base
 RUN ./r-ai-d-base.sh \
-  2>&1 | gzip -9c > $WORKDIR/r-ai-d-base.log.gz
+  | gzip -9c > $WORKDIR/r-ai-d-base.log.gz
 
 # Quarto CLI
 RUN /usr/bin/time ./quarto-cli.sh \
-  2>&1 | gzip -9c > $WORKDIR/quarto-cli.log.gz
+  | gzip -9c > $WORKDIR/quarto-cli.log.gz
 
 # R developer packages
 RUN /usr/bin/time ./developer-packages.R \
-  2>&1 | gzip -9c > $WORKDIR/developer-packages.log.gz
+  | gzip -9c > $WORKDIR/developer-packages.log.gz
 
 # R AI packages
 RUN /usr/bin/time ./ai-packages.R \
-  2>&1 | gzip -9c > $WORKDIR/ai-packages.log.gz
+  | gzip -9c > $WORKDIR/ai-packages.log.gz
 
 # R audio packages
 RUN /usr/bin/time ./audio-packages.R \
-  2>&1 | gzip -9c > $WORKDIR/audio-packages.log.gz
+  | gzip -9c > $WORKDIR/audio-packages.log.gz
 
 # Ollama
 RUN /usr/bin/time ./ollama.sh \
-  2>&1 | gzip -9c > $WORKDIR/ollama.log.gz
+  | gzip -9c > $WORKDIR/ollama.log.gz
 
 # Create an administrator account:
 # Username and initial password are defined here;
@@ -64,7 +64,7 @@ RUN chown --recursive $ADMIN_USER:$ADMIN_USER $ADMIN_HOME
 WORKDIR $ADMIN_SCRIPTS
 USER $ADMIN_USER
 RUN CONTAINER_ID=true ./1_command_line_setup.sh \
-  2>&1 | gzip -9c > $ADMIN_LOGFILES/1_command_line_setup.log.gz
+  | gzip -9c > $ADMIN_LOGFILES/1_command_line_setup.log.gz
 
 # Go back to root
 USER root
@@ -72,7 +72,7 @@ WORKDIR $WORKDIR
 
 # Update databases
 RUN /usr/bin/time ./update-databases.sh \
-  2>&1 | gzip -9c > $WORKDIR/update-databases.log.gz
+  | gzip -9c > $WORKDIR/update-databases.log.gz
 
 # Script finish check!
 RUN gzip -dc $WORKDIR/*.gz | grep "Finished" \

@@ -6,18 +6,18 @@ source set_container_envars
 
 echo "** R AI Distrobox Base **"
 
-echo "..Removing 'ubuntu' user"
+echo "..Removing 'ubuntu' user" 1>&2
 userdel --remove ubuntu
 
-echo "..Restoring documentation"
+echo "..Restoring documentation" 1>&2
 export DEBIAN_FRONTEND=noninteractive
 apt-get update -qq
 apt-get upgrade -qqy
-apt-get install -qqy unminimize
-echo "y" | unminimize
+apt-get install -qqy time unminimize
+echo "y" | /usr/bin/time unminimize
 
-echo "..Installing base packages"
-apt-get install -qqy --no-install-recommends \
+echo "..Installing base packages" 1>&2
+/usr/bin/time apt-get install -qqy --no-install-recommends \
   alsa-utils \
   apt-file \
   bash-completion \
@@ -58,7 +58,6 @@ apt-get install -qqy --no-install-recommends \
   sox \
   sudo \
   systemd \
-  time \
   tree \
   wget \
   zstd
@@ -79,10 +78,13 @@ then
 
 fi
 
-./rstudio-server.sh
-./bspm.sh
+echo "..Installing RStudio Server" 1>&2
+/usr/bin/time ./rstudio-server.sh
 
-echo "..Configuring Secure Shell service"
+echo "..Installing BSPM" 1>&2
+/usr/bin/time ./bspm.sh
+
+echo "..Configuring Secure Shell service" 1>&2
 echo "Port 2222" | tee --append /etc/ssh/sshd_config
 systemctl enable ssh.service
 
