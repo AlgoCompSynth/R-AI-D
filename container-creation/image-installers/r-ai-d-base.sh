@@ -7,7 +7,7 @@ source set_container_envars
 echo "** R AI Distrobox Base **"
 
 echo "..Removing 'ubuntu' user" 1>&2
-userdel --remove ubuntu
+userdel --remove ubuntu 2> /dev/null
 
 echo "..Restoring documentation" 1>&2
 export DEBIAN_FRONTEND=noninteractive
