@@ -3,11 +3,6 @@ echo "Setting container environment variables:"
 
 # User-maintained options
 
-# comment out for latest stable version of Ollama
-# https://github.com/ollama/ollama/tags
-export OLLAMA_VERSION=0.30.0-rc20
-echo "OLLAMA_VERSION: $OLLAMA_VERSION"
-
 # uncomment to force a CPU container even on a machine with an NVIDIA GPU
 #
 # export FORCE_CPU="FORCE_CPU"
@@ -85,7 +80,7 @@ export CONTAINERFILE="Containerfile.base"
 
 ## Distrobox
 export CONTAINER_NAME="R-AI-D-$COMPUTE_MODE"
-export CONTAINER_IMAGE="localhost/r-ai-d-base:latest"
+export CONTAINER_IMAGE="localhost/r-ai-d-${COMPUTE_MODE,,}:latest"
 
 ## Desktop folders
 export LOCALBIN=$HOME/.local/bin; mkdir --parents $LOCALBIN
