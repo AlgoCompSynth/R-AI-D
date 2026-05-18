@@ -14,5 +14,13 @@ echo "..Ollama is installed"
 echo "..Enabling ollama.service"
 systemctl enable ollama.service
 
+echo ""
+echo "..Ollama libraries"
+ls --recursive /usr/local/lib/ollama
+echo ""
+
+ollama --version
+echo ""
+
 echo "** Finished Ollama **"
 echo ""

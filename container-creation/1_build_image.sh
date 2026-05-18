@@ -12,6 +12,8 @@ source set_container_envars
 echo "Building $CONTAINER_IMAGE"
 echo "Building CPU image"
 podman image build \
+  $NVIDIA_FLAGS \
+  $SECURITY_FLAGS \
   --dns 1.1.1.1 \
   --dns 1.0.0.1 \
   --dns 8.8.8.8 \

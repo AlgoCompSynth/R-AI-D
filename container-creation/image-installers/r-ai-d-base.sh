@@ -2,6 +2,8 @@
 
 set -e
 
+source set_container_envars
+
 echo "** R AI Distrobox Base **"
 
 echo "..Removing 'ubuntu' user"
@@ -66,8 +68,16 @@ apt-get install -qqy --no-install-recommends \
 #
 # https://wiki.ubuntu.com/UbuntuDevelopment/Internationalisation/InternationalizationPrimer/Locales
 #
-locale-gen
+echo "..'update-locale LANG=en_US.UTF-8'"
 update-locale LANG=en_US.UTF-8
+
+if [[ "$COMPUTE_MODE" == "CUDA" ]]
+then
+  echo ""
+  nvidia-smi
+  echo ""
+
+fi
 
 ./rstudio-server.sh
 ./bspm.sh
