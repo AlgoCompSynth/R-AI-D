@@ -1,5 +1,5 @@
 echo ""
-echo "Setting container environment variables"
+echo "Setting container environment variables:"
 
 # User-maintained options
 
