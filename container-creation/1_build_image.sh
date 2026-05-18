@@ -4,6 +4,23 @@ echo "* Build Image *"
 
 source set_container_envars
 
+if [[ "${#1}" > "0" ]]
+then
+  echo "First argument is non-empty - entering debug mode"
+  export SQUASH=""
+  export PRUNE=""
+
+else
+  echo "Normal mode - for debug mode, use a non-empty first argument"
+  export SQUASH="--squash-all "
+  export PRUNE="podman system prune --force"
+
+fi
+echo ""
+echo "SQUASH: $SQUASH"
+echo "PRUNE: $PRUNE"
+echo ""
+
 # Why do we change the domain nameservers? The code for
 # installing the bridge to system package manager (bspm)
 # accesses a Ubuntu keyserver, and the DNS my ISP provides
@@ -20,12 +37,11 @@ podman image build \
   --dns 8.8.4.4 \
   --file $CONTAINERFILE \
   --tag $CONTAINER_IMAGE \
-  --squash-all \
+  $SQUASH \
   .
 
 echo ""
-echo "Image built - pruning"
-podman system prune --force
+$PRUNE
 podman image list
 
 echo "* Finished Build Image *"
