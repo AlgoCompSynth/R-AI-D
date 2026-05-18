@@ -14,6 +14,11 @@ echo "RSTUDIO_SERVER_VERSION: $RSTUDIO_SERVER_VERSION"
 export OLLAMA_VERSION=0.30.0-rc17
 echo "OLLAMA_VERSION: $OLLAMA_VERSION"
 
+# uncomment to force a CPU container even on a machine with an NVIDIA GPU
+#
+# export FORCE_CPU="FORCE_CPU"
+# echo "FORCE_CPU: $FORCE_CPU"
+
 # ** You should not need to change anything below here **
 
 ## `COMPUTE_MODE`
@@ -23,13 +28,15 @@ echo "OLLAMA_VERSION: $OLLAMA_VERSION"
 ## 1. COMPUTE_MODE=CPU - only the CPU will be used, and
 ## 2. COMPUTE_MODE=CUDA - the CPU and an NVIDIA GPU will be used.
 
-## If the scripts detect the existence of a GPU via the NVIDIA container toolkit
-## *and* the architecture is `x86_64`, `COMPUTE_MODE` will be set to
+## If the "FORCE_CPU" environment variable is unset or does not equal "FORCE_CPU"
+## AND the NVIDIA container toolkit detects one or more GPUs
+## ADN the architecture is `x86_64`, `COMPUTE_MODE` will be set to
 ## `CUDA`; otherwise it will be set to `CPU`.
 export ARCH="$(uname -m)"
 echo "ARCH: $ARCH"
 
-if [[ "$ARCH" == "x86_64" \
+if [[ "$FORCE_CPU" != "FORCE_CPU" \
+  && "$ARCH" == "x86_64" \
   && "$(nvidia-ctk cdi list 2>&1 || true | grep gpu | wc -l)" != "0" ]]
 
 then
@@ -94,10 +101,7 @@ then
 
 fi
 
-## Container entry script
-export ENTRY_SCRIPT=$LOCALBIN/CONTAINER_NAME
-
-## RStudio Server
+## Port numbers
 export RSTUDIO_SERVER_PORT="8787"
 export OLLAMA_SERVER_PORT="11434"
 export SSH_SERVER_PORT="2222"
