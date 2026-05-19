@@ -1,0 +1,1 @@
+../container-creation/image-installers/ollama.sh
