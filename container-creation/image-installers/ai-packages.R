@@ -7,11 +7,16 @@ print("** R AI Packages **")
 # detonate on first uninstallable
 options(warn=2)
 already_installed <- rownames(installed.packages())
+# https://opensource.posit.co/about/ai/
+# https://luisdva.github.io/llmsr-book/
 required_packages <- c(
+  "btw",
+  "chatlas",
   "ellmer",
   "LLMAgentR",
   "mcptools",
   "ollamar",
+  "querychat",
   "ragnar",
   "shinychat",
   "vitals"
