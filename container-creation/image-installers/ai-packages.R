@@ -11,7 +11,6 @@ already_installed <- rownames(installed.packages())
 # https://luisdva.github.io/llmsr-book/
 required_packages <- c(
   "btw",
-  "chatlas",
   "ellmer",
   "LLMAgentR",
   "mcptools",
