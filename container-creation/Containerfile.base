@@ -17,23 +17,23 @@ RUN ./r-ai-d-base.sh \
   | gzip -9c > $WORKDIR/r-ai-d-base.log.gz
 
 # Quarto CLI
-RUN /usr/bin/time ./quarto-cli.sh \
+RUN ./quarto-cli.sh \
   | gzip -9c > $WORKDIR/quarto-cli.log.gz
 
 # R developer packages
-RUN /usr/bin/time ./developer-packages.R \
+RUN ./developer-packages.R \
   | gzip -9c > $WORKDIR/developer-packages.log.gz
 
 # R AI packages
-RUN /usr/bin/time ./ai-packages.R \
+RUN ./ai-packages.R \
   | gzip -9c > $WORKDIR/ai-packages.log.gz
 
 # R audio packages
-RUN /usr/bin/time ./audio-packages.R \
+RUN ./audio-packages.R \
   | gzip -9c > $WORKDIR/audio-packages.log.gz
 
 # Ollama
-RUN /usr/bin/time ./ollama.sh \
+RUN ./ollama.sh \
   | gzip -9c > $WORKDIR/ollama.log.gz
 
 # Create an administrator account:
@@ -71,7 +71,7 @@ USER root
 WORKDIR $WORKDIR
 
 # Update databases
-RUN /usr/bin/time ./update-databases.sh \
+RUN ./update-databases.sh \
   | gzip -9c > $WORKDIR/update-databases.log.gz
 
 # Script finish check!
