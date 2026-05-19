@@ -8,7 +8,6 @@
 #  publisher={Springer}
 #}
 
-print("** R Audio Packages **")
 # detonate on first uninstallable
 options(warn=2)
 already_installed <- rownames(installed.packages())
@@ -33,4 +32,4 @@ cat("\nInstalling:\n")
 print(to_install)
 install.packages(to_install, quiet = TRUE, repos = "https://cloud.r-project.org/")
 warnings()
-cat("** Finished R Audio Packages **")
+cat("\n** Finished R Audio Packages **\n")
