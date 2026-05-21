@@ -27,10 +27,10 @@ echo ""
 # does not appear to handle that correctly. Using CloudFlare
 # or Google nameservers works, so here they are.
 echo "Building $CONTAINER_IMAGE"
-echo "Building CPU image"
 podman image build \
   $NVIDIA_FLAGS \
   $SECURITY_FLAGS \
+  --env ADMIN_USER=$(id --user --name) \
   --dns 1.1.1.1 \
   --dns 1.0.0.1 \
   --dns 8.8.8.8 \
