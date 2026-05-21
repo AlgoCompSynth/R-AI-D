@@ -3,11 +3,6 @@ echo "Setting container environment variables:"
 
 # User-maintained options
 
-# uncomment to force a CPU container even on a machine with an NVIDIA GPU
-#
-# export FORCE_CPU="FORCE_CPU"
-# echo "FORCE_CPU: $FORCE_CPU"
-
 # ** You should not need to change anything below here **
 # https://posit.co/download/rstudio-server
 export RSTUDIO_SERVER_VERSION="2026.04.0-526"
@@ -22,15 +17,13 @@ echo "RSTUDIO_SERVER_VERSION: $RSTUDIO_SERVER_VERSION"
 ## 1. COMPUTE_MODE=CPU - only the CPU will be used, and
 ## 2. COMPUTE_MODE=CUDA - the CPU and an NVIDIA GPU will be used.
 
-## If the "FORCE_CPU" environment variable is unset or does not equal "FORCE_CPU"
-## AND the NVIDIA container toolkit detects one or more GPUs
-## ADN the architecture is `x86_64`, `COMPUTE_MODE` will be set to
+## If the NVIDIA container toolkit detects one or more GPUs
+## AND the architecture is `x86_64`, `COMPUTE_MODE` will be set to
 ## `CUDA`; otherwise it will be set to `CPU`.
 export ARCH="$(uname -m)"
 echo "ARCH: $ARCH"
 
-if [[ "$FORCE_CPU" != "FORCE_CPU" \
-  && "$ARCH" == "x86_64" \
+if [[ "$ARCH" == "x86_64" \
   && "$(nvidia-ctk cdi list 2>&1 || true | grep gpu | wc -l)" != "0" ]]
 
 then
