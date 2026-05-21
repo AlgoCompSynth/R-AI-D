@@ -63,6 +63,7 @@ RUN useradd \
 # Set up command line
 COPY command-line-installers/* $ADMIN_SCRIPTS/
 RUN chown --recursive $ADMIN_USER:$ADMIN_USER $ADMIN_HOME
+RUN chown --recursive $ADMIN_USER:$ADMIN_USER $CONTAINER_SHARE
 WORKDIR $ADMIN_SCRIPTS
 USER $ADMIN_USER
 RUN CONTAINER_ID=true ./1_command_line_setup.sh \
