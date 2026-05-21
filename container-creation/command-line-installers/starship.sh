@@ -6,14 +6,6 @@ echo "..Setting starship configuration file"
 mkdir --parents $HOME/.config
 cp starship.toml $HOME/.config/starship.toml
 
-echo "..Testing for starship"
-if [[ "$(which starship | wc -l)" != "0" ]]
-then
-  echo "..Starship is installed"
-  exit
-
-fi
-
 echo "..Installing starship with official installer"
 # https://starship.rs/guide/#%F0%9F%9A%80-installation
 pushd /tmp > /dev/null
