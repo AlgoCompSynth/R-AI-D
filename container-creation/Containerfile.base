@@ -52,9 +52,13 @@ RUN useradd \
   --shell /usr/bin/bash \
   --user-group \
   $ADMIN_USER \
-  && echo "$ADMIN_USER:$ADMIN_USER" | chpasswd \
-  && chage --lastday 0 $ADMIN_USER \
-  && mkdir --parents $ADMIN_PROJECTS $ADMIN_LOGFILES $ADMIN_SCRIPTS
+&& echo "$ADMIN_USER:$ADMIN_USER" | chpasswd \
+&& chage --lastday 0 $ADMIN_USER \
+&& mkdir --parents \
+  $ADMIN_PROJECTS \
+  $ADMIN_LOGFILES \
+  $ADMIN_SCRIPTS \
+  $CONTAINER_SHARE
 
 # Set up command line
 COPY command-line-installers/* $ADMIN_SCRIPTS/

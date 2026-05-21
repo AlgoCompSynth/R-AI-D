@@ -10,6 +10,7 @@ podman image build \
   $SECURITY_FLAGS \
   $DNS_FLAGS \
   --env ADMIN_USER=$(id --user --name) \
+  --env CONTAINER_SHARE=$CONTAINER_SHARE \
   --file $CONTAINERFILE \
   --tag $CONTAINER_IMAGE \
   --squash-all \
