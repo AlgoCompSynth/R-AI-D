@@ -2,8 +2,9 @@ project:
   type: book
 
 book:
-  title: "docs-source"
-  author: "Norah Jones"
+  title: "R-AI-D (R AI Distribution)"
+  subtitle: "Rtificially intelligent audio for your homelab"
+  author: "M. Edward (Ed) Borasky"
   date: "5/21/2026"
   chapters:
     - index.qmd
