@@ -26,6 +26,7 @@ apt-get install -qqy --no-install-recommends \
   bash-completion \
   bibtool \
   byobu \
+  chuck \
   curl \
   faust \
   file \
