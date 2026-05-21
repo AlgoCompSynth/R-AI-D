@@ -9,10 +9,6 @@ source set_container_envars
 podman container run \
   --interactive \
   --tty \
-  --dns 1.1.1.1 \
-  --dns 1.0.0.1 \
-  --dns 8.8.8.8 \
-  --dns 8.8.4.4 \
   --hostname $CONTAINER_NAME \
   --name $CONTAINER_NAME \
   --publish $RSTUDIO_SERVER_PORT:$RSTUDIO_SERVER_PORT \
@@ -20,6 +16,7 @@ podman container run \
   --publish $SSH_SERVER_PORT:$SSH_SERVER_PORT \
   $NVIDIA_FLAGS \
   $SECURITY_FLAGS \
+  $DNS_FLAGS \
   $CONTAINER_IMAGE \
   /sbin/init
 
