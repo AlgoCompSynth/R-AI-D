@@ -24,6 +24,9 @@ export RSTUDIO_SERVER_PACKAGE="rstudio-server-$RSTUDIO_SERVER_VERSION-amd64.deb"
 export RSTUDIO_SERVER_URL="https://download2.rstudio.org/server/jammy/amd64/$RSTUDIO_SERVER_PACKAGE"
 echo "RSTUDIO_SERVER_VERSION: $RSTUDIO_SERVER_VERSION"
 
+# pre-release Ollama - comment out for released version
+export OLLAMA_VERSION="0.30.0-rc22"
+
 ## `COMPUTE_MODE`
 
 ## R-AI-D can build two types of containers:

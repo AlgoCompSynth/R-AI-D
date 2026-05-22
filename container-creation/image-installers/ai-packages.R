@@ -11,9 +11,7 @@ already_installed <- rownames(installed.packages())
 required_packages <- c(
   "btw",
   "ellmer",
-  "LLMAgentR",
   "mcptools",
-  "ollamar",
   "querychat",
   "ragnar",
   "shinychat",
