@@ -25,7 +25,7 @@ export RSTUDIO_SERVER_URL="https://download2.rstudio.org/server/jammy/amd64/$RST
 echo "RSTUDIO_SERVER_VERSION: $RSTUDIO_SERVER_VERSION"
 
 # pre-release Ollama - comment out for released version
-export OLLAMA_VERSION="0.30.0-rc22"
+export OLLAMA_VERSION="0.30.0-rc23"
 
 ## `COMPUTE_MODE`
 
