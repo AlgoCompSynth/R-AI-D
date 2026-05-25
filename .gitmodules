@@ -1,3 +1,9 @@
 [submodule "r-ai-d-book"]
 	path = r-ai-d-book
 	url = git@github.com:AlgoCompSynth/r-ai-d-book.git
+[submodule "consonaR"]
+	path = consonaR
+	url = git@github.com:AlgoCompSynth/consonaR.git
+[submodule "eikosany"]
+	path = eikosany
+	url = git@github.com:AlgoCompSynth/eikosany.git
