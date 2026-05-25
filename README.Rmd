@@ -1,5 +1,5 @@
 ---
-title: "R-AI-D (R AI Distrobox) - Rtificially Intelligent Sound Analysis and Synthesis"
+title: "R-AI-D - Rtificial Audio Intelligencw Distribution"
 output: github_document
 bibliography: "REFERENCES.bib"
 ---

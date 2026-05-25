@@ -1,5 +1,4 @@
-R-AI-D (R AI Distrobox) - Rtificially Intelligent Sound Analysis and
-Synthesis
+R-AI-D - Rtificial Audio Intelligencw Distribution
 ================
 
 ## Introduction
@@ -18,10 +17,11 @@ R-AI-D features:
 - bspm: Bridge to System Package Manager (Ucar 2026),
 - the [Quarto](https://quarto.org/ "Quarto home page") scientific and
   technical publishing system,
-- R packages for package development (Wickham and Bryan 2023),
-- R packages for interfacing with AI tools (Verde Arregoitia 2026):
-  - ellmer (Wickham et al. 2025),
-  - mcptools (Couch et al. 2026),
+- R packages for package development (H. Wickham and Bryan 2023),
+- R packages for interfacing with AI tools (Verde Arregoitia, Luis D.
+  2026):
+  - ellmer (Hadley Wickham et al. 2025),
+  - mcptools (Couch, Chang, and Gao 2026),
   - ollamar (Lin and Safi 2025),
   - ragnar (Kalinowski and Falbel 2026),
   - shinychat (Cheng et al. 2025),
@@ -89,7 +89,8 @@ See
 
 ## References
 
-<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="refs" class="references csl-bib-body hanging-indent"
+entry-spacing="0">
 
 <div id="ref-cheng2026s" class="csl-entry">
 
@@ -125,15 +126,15 @@ Retrieval-Augmented Generation (RAG) Workflows*.
 <div id="ref-lin2026o" class="csl-entry">
 
 Lin, Hause, and Tawab Safi. 2025. “Ollamar: An r Package for Running
-Large Language Models.” *Journal of Open Source Software*, ahead of
-print, January. <https://doi.org/10.21105/joss.07211>.
+Large Language Models.” *Journal of Open Source Software*, January.
+<https://doi.org/10.21105/joss.07211>.
 
 </div>
 
 <div id="ref-r-base" class="csl-entry">
 
 R Core Team. 2022. *R: A Language and Environment for Statistical
-Computing*. R Foundation for Statistical Computing.
+Computing*. Vienna, Austria: R Foundation for Statistical Computing.
 <https://www.R-project.org/>.
 
 </div>
@@ -148,7 +149,7 @@ Ucar, Iñaki. 2026. *Bspm: Bridge to System Package Manager*.
 <div id="ref-verdearregoitia2026llmsr" class="csl-entry">
 
 Verde Arregoitia, Luis D. 2026. *Large Language Model Tools for r*.
-<https://doi.org/10.5281/zenodo.19260391>.
+Verde Arregoitia, Luis D. <https://doi.org/10.5281/zenodo.19260391>.
 
 </div>
 
