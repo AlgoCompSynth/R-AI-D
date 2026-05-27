@@ -22,8 +22,8 @@ done
 echo "..Testing for container install"
 if [[ "$(set | grep CONTAINER_ID | wc -l)" != "0" ]]
 then
-  echo "..Running in container"
-  echo "..Setting R dotfiles"
+  echo "..Running in container" 1>&2
+  echo "..Setting R dotfiles" 1>&2
   cp Rprofile $HOME/.Rprofile
   cp Renviron $HOME/.Renviron
 

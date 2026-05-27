@@ -25,19 +25,14 @@ apt-get install -qqy --no-install-recommends \
   apt-file \
   bash-completion \
   bibtool \
-  byobu \
-  chuck \
   curl \
-  faust \
   file \
   flac \
   gdebi-core \
   git \
   jq \
   language-pack-en \
-  libasound2-dev \
   libbpf-dev \
-  libfaust-static \
   libnspr4 \
   libnss3 \
   libpam-systemd \
@@ -50,7 +45,6 @@ apt-get install -qqy --no-install-recommends \
   mp3splt \
   neovim \
   net-tools \
-  nvtop \
   plocate \
   pmidi \
   python3-apt \
@@ -62,6 +56,7 @@ apt-get install -qqy --no-install-recommends \
   sox \
   sudo \
   systemd \
+  tmux \
   tree \
   wget \
   zstd
