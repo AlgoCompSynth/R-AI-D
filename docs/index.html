@@ -86,7 +86,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Acknowledgements</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -114,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Preface</span></a>
+ <span class="menu-text">Acknowledgements</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -125,8 +125,8 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+  <a href="./quick-start.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Quick Start</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -145,7 +145,19 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a></li>
+  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link active" data-scroll-target="#acknowledgements">Acknowledgements</a>
+  <ul class="collapse">
+  <li><a href="#project-bluefin" id="toc-project-bluefin" class="nav-link" data-scroll-target="#project-bluefin">Project Bluefin</a></li>
+  <li><a href="#ubuntu-26.04-lts-resolute-raccoon" id="toc-ubuntu-26.04-lts-resolute-raccoon" class="nav-link" data-scroll-target="#ubuntu-26.04-lts-resolute-raccoon">Ubuntu 26.04 LTS “Resolute Raccoon”</a></li>
+  <li><a href="#the-r-ecosystem" id="toc-the-r-ecosystem" class="nav-link" data-scroll-target="#the-r-ecosystem">The R ecosystem</a>
+  <ul class="collapse">
+  <li><a href="#r" id="toc-r" class="nav-link" data-scroll-target="#r">R</a></li>
+  <li><a href="#rstudio-server-open-source-edition" id="toc-rstudio-server-open-source-edition" class="nav-link" data-scroll-target="#rstudio-server-open-source-edition">RStudio Server, open source edition</a></li>
+  <li><a href="#rocker-r2u-rstudio2u-and-bspm" id="toc-rocker-r2u-rstudio2u-and-bspm" class="nav-link" data-scroll-target="#rocker-r2u-rstudio2u-and-bspm">Rocker, r2u, rstudio2u and BSPM</a></li>
+  </ul></li>
+  <li><a href="#posit-skills" id="toc-posit-skills" class="nav-link" data-scroll-target="#posit-skills">Posit skills</a></li>
+  <li><a href="#ollama" id="toc-ollama" class="nav-link" data-scroll-target="#ollama">Ollama</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -184,13 +196,44 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
+<section id="acknowledgements" class="level1 unnumbered">
+<h1 class="unnumbered">Acknowledgements</h1>
+<section id="project-bluefin" class="level2">
+<h2 class="anchored" data-anchor-id="project-bluefin">Project Bluefin</h2>
+<p>R-AI-D would not exist without the development environment provided by <a href="#0" title="Project Bluefin home page">Project Bluefin</a>. An atomic GNOME operating system plus dinosaurs plus cloud-native tools plus the <a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/index.html" title="NVIDIA Container Toolkit documentation">NVIDIA Container Toolkit</a> plus dinosaurs plus <a href="https://flathub.org/en" title="Flathub - the App Store for Linux">Flathub</a> plus <a href="https://brew.sh/" title="Homebrew package manager">Homebrew</a>. And dinosaurs. <em>Deinonychus</em>, <em>Achillobator</em>, <em>Dakotaraptor</em> - take your pick.</p>
+</section>
+<section id="ubuntu-26.04-lts-resolute-raccoon" class="level2">
+<h2 class="anchored" data-anchor-id="ubuntu-26.04-lts-resolute-raccoon">Ubuntu 26.04 LTS “Resolute Raccoon”</h2>
+<p>Why Ubuntu LTS? Two reasons:</p>
+<ol type="1">
+<li>It’s popular - the Ubuntu team made a conscious effort from the beginning to make a Linux distribution for everyone.</li>
+<li>As a result of that popularity, nearly all of the third-party software that runs on Linux is tested on Ubuntu LTS, and some projects with limited resources can only afford to test on Ubuntu LTS.</li>
+</ol>
+</section>
+<section id="the-r-ecosystem" class="level2">
+<h2 class="anchored" data-anchor-id="the-r-ecosystem">The R ecosystem</h2>
+<section id="r" class="level3">
+<h3 class="anchored" data-anchor-id="r">R</h3>
+<p>I’ve been programming in <a href="https://www.r-project.org/" title="The R Project for Statistical Computing">R</a> since 2000. As a scientific applications programmer, it’s closer to how I think than any other mainstream language. It’s the perfect blend of imperative, functional and object-oriented programming paradigms.</p>
+</section>
+<section id="rstudio-server-open-source-edition" class="level3">
+<h3 class="anchored" data-anchor-id="rstudio-server-open-source-edition">RStudio Server, open source edition</h3>
+</section>
+<section id="rocker-r2u-rstudio2u-and-bspm" class="level3">
+<h3 class="anchored" data-anchor-id="rocker-r2u-rstudio2u-and-bspm">Rocker, r2u, rstudio2u and BSPM</h3>
+</section>
+</section>
+<section id="posit-skills" class="level2">
+<h2 class="anchored" data-anchor-id="posit-skills">Posit skills</h2>
+</section>
+<section id="ollama" class="level2">
+<h2 class="anchored" data-anchor-id="ollama">Ollama</h2>
 <hr>
 <p>This is a Quarto book.</p>
 <p>To learn more about Quarto books visit <a href="https://quarto.org/docs/books" class="uri">https://quarto.org/docs/books</a>.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

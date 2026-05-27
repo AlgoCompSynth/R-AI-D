@@ -23,7 +23,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -33,7 +52,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./summary.html" rel="next">
+<link href="./quick-start.html" rel="next">
 <link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -113,7 +132,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface</span></a>
+ <span class="menu-text">Acknowledgements</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -124,8 +143,8 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+  <a href="./quick-start.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Quick Start</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -139,8 +158,15 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#what-is-this" id="toc-what-is-this" class="nav-link active" data-scroll-target="#what-is-this"><span class="header-section-number">1.1</span> What is this?</a></li>
+  <li><a href="#licensing-contributing-roadmap-etc." id="toc-licensing-contributing-roadmap-etc." class="nav-link" data-scroll-target="#licensing-contributing-roadmap-etc."><span class="header-section-number">1.2</span> Licensing, contributing, roadmap, etc.</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -164,8 +190,72 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="what-is-this" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="what-is-this"><span class="header-section-number">1.1</span> What is this?</h2>
+<p>Rtificial Audio Intelligencw Distribution (R-AI-D) is a collection of software that creates a Podman <span class="citation" data-cites="walsh">(<a href="references.html#ref-walsh" role="doc-biblioref"><strong>walsh?</strong></a>)</span> container for audio processing in R. The resulting container features:</p>
+<ul>
+<li>the <a href="https://help.ubuntu.com/" title="Ubuntu help">Ubuntu 26.04 LTS “Resolute Raccoon”</a> operating system,</li>
+<li>the R programming language <span class="citation" data-cites="r-base">(<a href="references.html#ref-r-base" role="doc-biblioref">R Core Team 2022</a>)</span>,</li>
+<li><a href="https://eddelbuettel.github.io/r2u/" title="r2u: CRAN as Ubuntu Binaries">r2u: CRAN as Ubuntu Binaries</a></li>
+<li>bspm: Bridge to System Package Manager <span class="citation" data-cites="ucar2026">(<a href="references.html#ref-ucar2026" role="doc-biblioref">Ucar 2026</a>)</span>,</li>
+<li><a href="">RStudio Server</a> open source edition,</li>
+<li>the <a href="https://quarto.org/" title="Quarto home page">Quarto</a> scientific and technical publishing system,</li>
+<li>R packages for package development <span class="citation" data-cites="wickham2023r">(<a href="references.html#ref-wickham2023r" role="doc-biblioref">Wickham and Bryan 2023</a>)</span>,</li>
+<li>R packages for interfacing with AI tools <span class="citation" data-cites="verdearregoitia2026llmsr">(<a href="references.html#ref-verdearregoitia2026llmsr" role="doc-biblioref">Verde Arregoitia, Luis D. 2026</a>)</span>:
+<ul>
+<li>ellmer <span class="citation" data-cites="wickham2026">(<a href="references.html#ref-wickham2026" role="doc-biblioref">Wickham et al. 2025</a>)</span>,</li>
+<li>mcptools <span class="citation" data-cites="couch2026m">(<a href="references.html#ref-couch2026m" role="doc-biblioref">Couch et al. 2026</a>)</span>,</li>
+<li>ollamar <span class="citation" data-cites="lin2026o">(<a href="references.html#ref-lin2026o" role="doc-biblioref">Lin and Safi 2025</a>)</span>,</li>
+<li>ragnar <span class="citation" data-cites="kalinowski2026r">(<a href="references.html#ref-kalinowski2026r" role="doc-biblioref">Kalinowski and Falbel 2026</a>)</span>,</li>
+<li>shinychat <span class="citation" data-cites="cheng2026s">(<a href="references.html#ref-cheng2026s" role="doc-biblioref">Cheng et al. 2025</a>)</span>,</li>
+<li>vitals <span class="citation" data-cites="couch2026v">(<a href="references.html#ref-couch2026v" role="doc-biblioref">Couch 2025</a>)</span>,</li>
+</ul></li>
+<li>R packages for audio analysis and synthesis <span class="citation" data-cites="sueur">(<a href="references.html#ref-sueur" role="doc-biblioref"><strong>sueur?</strong></a>)</span>, and</li>
+<li>the <a href="https://docs.ollama.com/" title="Ollama Documentation">Ollama</a> framework for managing local models.</li>
+</ul>
+<p>R-AI-D was developed on <a href="https://projectbluefin.io" title="Bluefin home page">Bluefin DX</a>, but should run on any <code>x86_64</code> Linux host system supporting Podman. If an NVIDIA GPU is present, the R-AI-D build process will detect it and Ollama will use it.</p>
+<p>Like its Bluefix DX inspiration, the R-AI-D command line features the <a href="https://starship.rs/" title="Starship home page">Starship</a> cross-shell prompt generator. The <a href="https://www.nerdfonts.com/" title="nerd font aggregator">Cascaydia Cove nerd font</a> is included.</p>
+</section>
+<section id="licensing-contributing-roadmap-etc." class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="licensing-contributing-roadmap-etc."><span class="header-section-number">1.2</span> Licensing, contributing, roadmap, etc.</h2>
+<p>R-AI-D uses the <a href="https://creativecommons.org/public-domain/cc0/" title="CC0 license text">Creative Commons CC0</a> license, which is a bunch of words that say mostly “R-AI-D is public domain.” R-AI-D is mostly <code>bash</code> scripts that download some open source software and build it into a container. Why would I copyright that?</p>
+<p>Contributing? Forks, <a href="https://github.com/AlgoCompSynth/R-AI-D/issues/new" title="open an issue">bug reports and feature requests</a> are welcome. Pull requests, on the other hand, probably not. I don’t have the time to review other peoples’ code beyond fixing typos.</p>
+<p>The roadmap is mostly determined by what I need and when. I am building an R package for assisting composers of xentonal music into R-AI-D, and that may well add requirements to what’s in the container now.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-cheng2026s" class="csl-entry" role="listitem">
+Cheng, Joe, Carson Sievert, Garrick Aden-Buie, and Barret Schloerke. 2025. <em>Shinychat: Chat UI Component for ’Shiny’</em>. <a href="https://posit-dev.github.io/shinychat/r/">https://posit-dev.github.io/shinychat/r/</a>.
+</div>
+<div id="ref-couch2026v" class="csl-entry" role="listitem">
+Couch, Simon. 2025. <em>Vitals: Large Language Model Evaluation</em>. <a href="https://github.com/tidyverse/vitals">https://github.com/tidyverse/vitals</a>.
+</div>
+<div id="ref-couch2026m" class="csl-entry" role="listitem">
+Couch, Simon, Winston Chang, and Charlie Gao. 2026. <em>Mcptools: Model Context Protocol Servers and Clients</em>. <a href="https://github.com/posit-dev/mcptools">https://github.com/posit-dev/mcptools</a>.
+</div>
+<div id="ref-kalinowski2026r" class="csl-entry" role="listitem">
+Kalinowski, Tomasz, and Daniel Falbel. 2026. <em>Ragnar: Retrieval-Augmented Generation (RAG) Workflows</em>. <a href="https://ragnar.tidyverse.org/">https://ragnar.tidyverse.org/</a>.
+</div>
+<div id="ref-lin2026o" class="csl-entry" role="listitem">
+Lin, Hause, and Tawab Safi. 2025. <span>“Ollamar: An r Package for Running Large Language Models.”</span> <em>Journal of Open Source Software</em>, ahead of print, January. <a href="https://doi.org/10.21105/joss.07211">https://doi.org/10.21105/joss.07211</a>.
+</div>
+<div id="ref-r-base" class="csl-entry" role="listitem">
+R Core Team. 2022. <em>R: A Language and Environment for Statistical Computing</em>. R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
+</div>
+<div id="ref-ucar2026" class="csl-entry" role="listitem">
+Ucar, Iñaki. 2026. <em>Bspm: Bridge to System Package Manager</em>. <a href="https://cran4linux.github.io/bspm/">https://cran4linux.github.io/bspm/</a>.
+</div>
+<div id="ref-verdearregoitia2026llmsr" class="csl-entry" role="listitem">
+Verde Arregoitia, Luis D. 2026. <em>Large Language Model Tools for r</em>. <span>Verde Arregoitia, Luis D.</span> <a href="https://doi.org/10.5281/zenodo.19260391">https://doi.org/10.5281/zenodo.19260391</a>.
+</div>
+<div id="ref-wickham2026" class="csl-entry" role="listitem">
+Wickham, Hadley, Joe Cheng, Aaron Jacobs, Garrick Aden-Buie, and Barret Schloerke. 2025. <em>Ellmer: Chat with Large Language Models</em>. <a href="https://ellmer.tidyverse.org">https://ellmer.tidyverse.org</a>.
+</div>
+<div id="ref-wickham2023r" class="csl-entry" role="listitem">
+Wickham, H., and J. Bryan. 2023. <em>R Packages: Organize, Test, Document, and Share Your Code</em>. O’Reilly Media. <a href="https://books.google.com/books?id=kTHFEAAAQBAJ">https://books.google.com/books?id=kTHFEAAAQBAJ</a>.
+</div>
+</div>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -570,13 +660,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Preface">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+      <a href="./index.html" class="pagination-link" aria-label="Acknowledgements">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Acknowledgements</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./summary.html" class="pagination-link" aria-label="Summary">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Summary</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./quick-start.html" class="pagination-link" aria-label="Quick Start">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Quick Start</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
