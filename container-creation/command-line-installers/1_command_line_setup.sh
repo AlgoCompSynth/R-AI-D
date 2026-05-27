@@ -26,6 +26,8 @@ then
   echo "..Setting R dotfiles" 1>&2
   cp Rprofile $HOME/.Rprofile
   cp Renviron $HOME/.Renviron
+  echo "..Installing TinyTeX"
+  Rscript -e "tinytex::install_tinytex()"
 
 fi
 
