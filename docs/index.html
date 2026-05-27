@@ -9,7 +9,7 @@
 <meta name="author" content="M. Edward (Ed) Borasky">
 <meta name="dcterms.date" content="2026-05-21">
 
-<title>R-AI-D (R AI Distribution)</title>
+<title>R-AI-D (Rtificial Audio Intelligence Distribution)</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -101,7 +101,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">R-AI-D (R AI Distribution)</a> 
+      <a href="./">R-AI-D (Rtificial Audio Intelligence Distribution)</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -154,8 +154,8 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#r" id="toc-r" class="nav-link" data-scroll-target="#r">R</a></li>
   <li><a href="#rstudio-server-open-source-edition" id="toc-rstudio-server-open-source-edition" class="nav-link" data-scroll-target="#rstudio-server-open-source-edition">RStudio Server, open source edition</a></li>
   <li><a href="#rocker-r2u-rstudio2u-and-bspm" id="toc-rocker-r2u-rstudio2u-and-bspm" class="nav-link" data-scroll-target="#rocker-r2u-rstudio2u-and-bspm">Rocker, r2u, rstudio2u and BSPM</a></li>
-  </ul></li>
   <li><a href="#posit-skills" id="toc-posit-skills" class="nav-link" data-scroll-target="#posit-skills">Posit skills</a></li>
+  </ul></li>
   <li><a href="#ollama" id="toc-ollama" class="nav-link" data-scroll-target="#ollama">Ollama</a></li>
   </ul></li>
   </ul>
@@ -166,8 +166,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">R-AI-D (R AI Distribution)</h1>
-<p class="subtitle lead">Rtificially intelligent audio for your homelab</p>
+<h1 class="title">R-AI-D (Rtificial Audio Intelligence Distribution)</h1>
+<p class="subtitle lead">Rtificially intelligent audio for Linux</p>
 </div>
 
 
@@ -200,7 +200,7 @@ ul.task-list li input[type="checkbox"] {
 <h1 class="unnumbered">Acknowledgements</h1>
 <section id="project-bluefin" class="level2">
 <h2 class="anchored" data-anchor-id="project-bluefin">Project Bluefin</h2>
-<p>R-AI-D would not exist without the development environment provided by <a href="#0" title="Project Bluefin home page">Project Bluefin</a>. An atomic GNOME operating system plus dinosaurs plus cloud-native tools plus the <a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/index.html" title="NVIDIA Container Toolkit documentation">NVIDIA Container Toolkit</a> plus dinosaurs plus <a href="https://flathub.org/en" title="Flathub - the App Store for Linux">Flathub</a> plus <a href="https://brew.sh/" title="Homebrew package manager">Homebrew</a>. And dinosaurs. <em>Deinonychus</em>, <em>Achillobator</em>, <em>Dakotaraptor</em> - take your pick.</p>
+<p>R-AI-D would not exist without the development environment provided by <a href="#0" title="Project Bluefin home page">Project Bluefin</a>. An atomic GNOME operating system plus dinosaurs plus cloud-native tools plus the <a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/index.html" title="NVIDIA Container Toolkit documentation">NVIDIA Container Toolkit</a> plus dinosaurs plus <a href="https://flathub.org/en" title="Flathub - the App Store for Linux">Flathub</a> plus <a href="https://brew.sh/" title="Homebrew package manager">Homebrew</a>. And dinosaurs. <a href="https://docs.projectbluefin.io/downloads-testing/" title="Bluefin download page"><em>Deinonychus</em>, <em>Achillobator</em>, <em>Dakotaraptor</em> - take your pick</a>.</p>
 </section>
 <section id="ubuntu-26.04-lts-resolute-raccoon" class="level2">
 <h2 class="anchored" data-anchor-id="ubuntu-26.04-lts-resolute-raccoon">Ubuntu 26.04 LTS “Resolute Raccoon”</h2>
@@ -218,16 +218,21 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="rstudio-server-open-source-edition" class="level3">
 <h3 class="anchored" data-anchor-id="rstudio-server-open-source-edition">RStudio Server, open source edition</h3>
+<p>i’m not a big fan of IDEs in general; I usually work best at the command line where I can automate as much as possible. But for R literate programming / package development, I’ve been using RStudio since it was in beta. The <a href="https://posit.co/download/rstudio-server" title="RStudio Server download page">open source edition of RStudio Server</a> is in the R-AI-D container by default.</p>
 </section>
 <section id="rocker-r2u-rstudio2u-and-bspm" class="level3">
 <h3 class="anchored" data-anchor-id="rocker-r2u-rstudio2u-and-bspm">Rocker, r2u, rstudio2u and BSPM</h3>
+<p>Previous versions of R-AI-D used <a href="https://eddelbuettel.github.io/r2u/" title="r2u: CRAN as Ubuntu Binaries"><code>r2u</code></a> from the <a href="https://rocker-project.org/images/" title="The Rocker Project">Rocker</a> project and <a href="https://github.com/jmgirard/rstudio2u" title="rstudio2u GitHub repositoru"><code>rstudio2u</code></a> from <a href="https://github.com/jmgirard" title="Professor Jeffrey Girard on GitHub">Professor Jeffrey Girard</a> as base images. I very recently switched to building the image from the base Docker Hub Ubuntu image, using <a href="https://cran4linux.github.io/bspm/" title="bspm: Bridge to System Package Manager"><code>bspm</code></a> by <a href="https://github.com/Enchufa2" title="Professor Iñaki Ucar on GitHub">Professor Iñaki Ucar</a>.</p>
+<p>The primary reason I switched to direct builds from the components is that I want to make it easy to “port” R-AI-D from a container to a conventional Linux desktop. <code>bspm</code> supports Fedora, openSUSE and Arch Linux in addition to Ubuntu.</p>
 </section>
+<section id="posit-skills" class="level3">
+<h3 class="anchored" data-anchor-id="posit-skills">Posit skills</h3>
+<p><a href="https://github.com/posit-dev/skills" title="Posit skills GitHub repository">Posit skills</a> are the core open-source component of Posit’s recently-announced <a href="https://posit-dev.github.io/assistant/" title="Posit Assistant home page">Posit Assistant</a>. Posit Assistant works with the version of RStudio Server in the R-AI-D container - I’ve tested it. But I can’t re-distribute it.</p>
 </section>
-<section id="posit-skills" class="level2">
-<h2 class="anchored" data-anchor-id="posit-skills">Posit skills</h2>
 </section>
 <section id="ollama" class="level2">
 <h2 class="anchored" data-anchor-id="ollama">Ollama</h2>
+<p>There are a number of open source runtimes for local large language model operations, but <a href="https://ollama.com/" title="Ollama home page">Ollama</a> is the simplest and seems to be the most popular.</p>
 <hr>
 <p>This is a Quarto book.</p>
 <p>To learn more about Quarto books visit <a href="https://quarto.org/docs/books" class="uri">https://quarto.org/docs/books</a>.</p>
