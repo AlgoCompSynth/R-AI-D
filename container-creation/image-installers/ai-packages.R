@@ -12,8 +12,10 @@ required_packages <- c(
   "btw",
   "ellmer",
   "mcptools",
+  "ollamar".
   "querychat",
   "ragnar",
+  "rollama",
   "shinychat",
   "vitals"
 )
