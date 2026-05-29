@@ -6,9 +6,6 @@ source set_container_envars
 
 ./host-utilities/configure-selinux.sh
 
-echo "..Making sure $HOST_SHARE exists"
-mkdir --parents $HOST_SHARE
-
 echo "..Running container in ten seconds"
 sleep 10
 podman container run \
