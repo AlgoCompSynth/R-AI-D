@@ -1,8 +1,0 @@
-[submodule "r-ai-d-book"]
-	path = r-ai-d-book
-	url = https://github.com/AlgoCompSynth/r-ai-d-book.git
-	branch = main
-[submodule "skills"]
-	path = skills
-	url = https://github.com/posit-dev/skills.git
-	branch = main
