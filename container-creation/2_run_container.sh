@@ -20,7 +20,6 @@ podman container run \
   --publish $OLLAMA_SERVER_PORT:$OLLAMA_SERVER_PORT \
   --publish $SSH_SERVER_PORT:$SSH_SERVER_PORT \
   --userns=keep-id \
-  --volume $HOST_SHARE:$CONTAINER_SHARE \
   $NVIDIA_FLAGS \
   $SECURITY_FLAGS \
   $DNS_FLAGS \
