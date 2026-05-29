@@ -29,6 +29,7 @@ apt-get install -qqy --no-install-recommends \
   file \
   flac \
   gdebi-core \
+  gh \
   git \
   jq \
   language-pack-en \
