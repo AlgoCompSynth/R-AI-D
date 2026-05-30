@@ -6,9 +6,6 @@ echo "** Coding agents **"
 
 source set_container_envars
 
-echo "..Installing npm"
-sudo apt-get install -qqy nodejs npm
-
 echo "..Installing Goose"
 curl -fsSL \
   https://github.com/aaif-goose/goose/releases/download/stable/download_cli.sh \
