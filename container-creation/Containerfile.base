@@ -16,10 +16,6 @@ COPY image-installers/* ./
 RUN ./r-ai-d-base.sh \
   | gzip -9c > $WORKDIR/r-ai-d-base.log.gz
 
-# Quarto CLI
-RUN ./quarto-cli.sh \
-  | gzip -9c > $WORKDIR/quarto-cli.log.gz
-
 # R developer packages
 RUN ./developer-packages.R \
   | gzip -9c > $WORKDIR/developer-packages.log.gz
