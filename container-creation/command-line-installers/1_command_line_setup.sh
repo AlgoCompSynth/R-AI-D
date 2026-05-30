@@ -23,11 +23,11 @@ echo "..Testing for container install"
 if [[ "$(set | grep CONTAINER_ID | wc -l)" != "0" ]]
 then
   echo "..Running in container" 1>&2
+  echo "..Installing TinyTeX" 1>&2
+  Rscript -e "tinytex::install_tinytex()" 2> /dev/null
   echo "..Setting R dotfiles" 1>&2
   cp Rprofile $HOME/.Rprofile
   cp Renviron $HOME/.Renviron
-  echo "..Installing TinyTeX"
-  Rscript -e "tinytex::install_tinytex()"
 
 fi
 
