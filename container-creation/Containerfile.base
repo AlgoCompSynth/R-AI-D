@@ -24,10 +24,6 @@ RUN ./developer-packages.R \
 RUN ./ai-packages.R \
   | gzip -9c > $WORKDIR/ai-packages.log.gz
 
-# R audio packages
-RUN ./audio-packages.R \
-  | gzip -9c > $WORKDIR/audio-packages.log.gz
-
 # Ollama
 RUN ./ollama.sh \
   | gzip -9c > $WORKDIR/ollama.log.gz

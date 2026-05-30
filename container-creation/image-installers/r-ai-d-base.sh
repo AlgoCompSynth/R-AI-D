@@ -21,13 +21,11 @@ echo "y" | unminimize
 
 echo "..Installing base packages" 1>&2
 apt-get install -qqy --no-install-recommends \
-  alsa-utils \
   apt-file \
   bash-completion \
   bibtool \
   curl \
   file \
-  flac \
   gdebi-core \
   gh \
   git \
@@ -37,24 +35,18 @@ apt-get install -qqy --no-install-recommends \
   libnspr4 \
   libnss3 \
   libpam-systemd \
-  libsox-dev \
-  libsox-fmt-all \
-  libsoxr-dev \
   lsb-release \
   lshw \
   man-db \
-  mp3splt \
   neovim \
   net-tools \
   plocate \
-  pmidi \
   python3-apt \
   python3-dbus \
   python3-gi \
   qpdf \
   r-base-dev \
   ssh \
-  sox \
   sudo \
   systemd \
   tmux \
