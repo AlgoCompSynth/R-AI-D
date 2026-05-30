@@ -40,7 +40,6 @@ apt-get install -qqy --no-install-recommends \
   man-db \
   neovim \
   net-tools \
-  npm \
   plocate \
   python3-apt \
   python3-dbus \
