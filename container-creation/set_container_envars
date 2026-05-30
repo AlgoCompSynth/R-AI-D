@@ -1,28 +1,15 @@
 echo ""
 echo "Setting container environment variables:"
 
-# User-maintained options
-#
-# Shared directory - R-AI-D creates a shared directory for
-# sharing host and container files. Both must be absolute
-# paths. The host path needs to be somewhere you can write,
-# but the container path can be anywhere; `podman` will
-# create it.
-#
-# Host directory name:
-export HOST_SHARE=/home/$USER/SHARED_WITH_CONTAINER
-echo "HOST_SHARE: $HOST_SHARE"
-
-# Container directory name:
-export CONTAINER_SHARE=/home/$USER/SHARED_WITH_HOST
-echo "CONTAINER_SHARE: $CONTAINER_SHARE"
-
 # ** You should not need to change anything below here **
 # https://posit.co/download/rstudio-server
 export RSTUDIO_SERVER_VERSION="2026.04.0-526"
 export RSTUDIO_SERVER_PACKAGE="rstudio-server-$RSTUDIO_SERVER_VERSION-amd64.deb"
 export RSTUDIO_SERVER_URL="https://download2.rstudio.org/server/jammy/amd64/$RSTUDIO_SERVER_PACKAGE"
 echo "RSTUDIO_SERVER_VERSION: $RSTUDIO_SERVER_VERSION"
+
+# pre-release Ollama - comment out for released version
+export OLLAMA_VERSION="0.30.0-rc31"
 
 ## `COMPUTE_MODE`
 
@@ -97,9 +84,9 @@ export CONTAINER_NAME="R-AI-D-$COMPUTE_MODE"
 export CONTAINER_IMAGE="localhost/r-ai-d-${COMPUTE_MODE,,}:latest"
 
 ## Desktop folders
-export LOCALBIN=$HOME/.local/bin; mkdir --parents $LOCALBIN
-export LOGFILES=$HOME/Logfiles; mkdir --parents $LOGFILES
-export PROJECTS=$HOME/Projects; mkdir --parents $PROJECTS
+export LOCALBIN=$HOME/.local/bin
+export LOGFILES=$HOME/Logfiles
+export PROJECTS=$HOME/Projects
 
 if [[ ! "$PATH" =~ "$HOME/.local/bin" ]]
 
