@@ -21,6 +21,7 @@ RUN ./developer-packages.R \
   | gzip -9c > $WORKDIR/developer-packages.log.gz
 
 # Ollama
+ENV OLLAMA_VERSION=0.30.0-rc31
 RUN ./ollama.sh \
   | gzip -9c > $WORKDIR/ollama.log.gz
 
