@@ -70,11 +70,17 @@ then
 
 fi
 
-echo "..Installing RStudio Server" 1>&2
-./rstudio-server.sh
-
 echo "..Installing BSPM" 1>&2
 ./bspm.sh
+
+echo "..Updating packages" 1>&2
+Rscript -e "update.packages(ask=FALSE)"
+
+echo "..Installing devtools" 1>&2
+Rscript -e "install.packages('devtools')"
+
+echo "..Installing RStudio Server" 1>&2
+./rstudio-server.sh
 
 echo "..Configuring Secure Shell service" 1>&2
 echo "Port 2222" | tee --append /etc/ssh/sshd_config
