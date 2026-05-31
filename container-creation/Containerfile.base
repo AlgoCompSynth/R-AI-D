@@ -20,10 +20,6 @@ RUN ./r-ai-d-base.sh \
 RUN ./developer-packages.R \
   | gzip -9c > $WORKDIR/developer-packages.log.gz
 
-# R AI packages
-RUN ./ai-packages.R \
-  | gzip -9c > $WORKDIR/ai-packages.log.gz
-
 # Ollama
 RUN ./ollama.sh \
   | gzip -9c > $WORKDIR/ollama.log.gz
