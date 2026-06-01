@@ -28,6 +28,9 @@ apt-get install -qqy --no-install-recommends \
   curl \
   dialog \
   file \
+  fluid-soundfont-gm \
+  fluid-soundfont-gs \
+  fluidsynth \
   gdebi-core \
   gh \
   git \
@@ -83,7 +86,10 @@ echo "..Installing devtools" 1>&2
 Rscript -e "install.packages('devtools')" 2> /dev/null
 
 echo "..Installing ROpenSci audio / video tools" 1>&2
-Rscript -e "install.packages('av')" 2> /dev/null
+Rscript -e "install.packages(c('av', 'fluidsynth'))" 2> /dev/null
+
+# https://schristiancollins.com/generaluser
+Rscript -e "fluidsynth::soundfont_download()" 2> /dev/null
 
 echo "..Installing RStudio Server" 1>&2
 ./rstudio-server.sh
