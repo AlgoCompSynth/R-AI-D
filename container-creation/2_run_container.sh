@@ -6,8 +6,6 @@ source set_container_envars
 
 ./host-utilities/configure-selinux.sh
 
-echo "..Running container in ten seconds"
-sleep 10
 podman container run \
   --interactive \
   --tty \
