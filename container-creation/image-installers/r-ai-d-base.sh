@@ -21,10 +21,12 @@ echo "y" | unminimize
 
 echo "..Installing base packages" 1>&2
 apt-get install -qqy --no-install-recommends \
+  alsa-utils \
   apt-file \
   bash-completion \
   bibtool \
   curl \
+  dialog \
   file \
   gdebi-core \
   gh \

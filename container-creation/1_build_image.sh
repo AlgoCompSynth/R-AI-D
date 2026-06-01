@@ -6,6 +6,7 @@ source set_container_envars
 
 echo "Building $CONTAINER_IMAGE"
 podman image build \
+  $AUDIO_FLAGS \
   $NVIDIA_FLAGS \
   $SECURITY_FLAGS \
   $DNS_FLAGS \
