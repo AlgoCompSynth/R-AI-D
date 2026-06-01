@@ -1,3 +1,6 @@
+scan_timeout = 2000 # milliseconds
+command_timeout = 2000 # milliseconds
+
 [aws]
 symbol = "  "
 
