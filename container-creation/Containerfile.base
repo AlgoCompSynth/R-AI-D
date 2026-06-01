@@ -17,7 +17,7 @@ RUN ./r-ai-d-base.sh \
   | gzip -9c > $WORKDIR/r-ai-d-base.log.gz
 
 # Ollama
-ENV OLLAMA_VERSION=0.30.0-rc31
+ENV OLLAMA_VERSION=0.30.0-rc32
 RUN ./ollama.sh \
   | gzip -9c > $WORKDIR/ollama.log.gz
 
