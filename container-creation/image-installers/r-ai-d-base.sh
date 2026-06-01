@@ -80,6 +80,9 @@ Rscript -e "update.packages(ask=FALSE)" 2> /dev/null
 echo "..Installing devtools" 1>&2
 Rscript -e "install.packages('devtools')" 2> /dev/null
 
+echo "..Installing ROpenSci audio / video tools" 1>&2
+Rscript -e "install.packages('av')" 2> /dev/null
+
 echo "..Installing RStudio Server" 1>&2
 ./rstudio-server.sh
 
