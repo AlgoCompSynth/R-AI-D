@@ -28,7 +28,7 @@ if [[ "$ARCH" == "x86_64" \
 then
   export COMPUTE_MODE="CUDA"
   export NVIDIA_PODMAN_FLAGS="--device=nvidia.com/gpu=all"
-  export NVIDIA_DISTROBOX_FLAGS="--additional-flags \"$NVIDIA_PODMAN_FLAGS\""
+  export NVIDIA_DISTROBOX_FLAGS="--additional-flags $NVIDIA_PODMAN_FLAGS"
   # see https://distrobox.it/useful_tips/#using-nvidia-container-toolkit
 
 else
