@@ -17,52 +17,13 @@ RUN ./r-ai-d-base.sh \
   | gzip -9c > $WORKDIR/r-ai-d-base.log.gz
 
 # Ollama
-ENV OLLAMA_VERSION=0.30.0-rc32
+ENV OLLAMA_VERSION=0.30.0
 RUN ./ollama.sh \
   | gzip -9c > $WORKDIR/ollama.log.gz
-
-# Create an administrator account:
-# Username is passed in from the build script as a parameter.
-# The user must change the password on first run
-# of the container!
-ENV ADMIN_HOME=/home/$ADMIN_USER
-ENV ADMIN_PROJECTS=$ADMIN_HOME/Projects
-ENV ADMIN_LOGFILES=$ADMIN_HOME/Logfiles
-ENV ADMIN_SCRIPTS=$ADMIN_HOME/command-line-installers
-
-RUN useradd \
-  --comment "Administrator" \
-  --groups adm,dialout,cdrom,floppy,sudo,audio,dip,video,plugdev,ollama \
-  --create-home \
-  --shell /usr/bin/bash \
-  --user-group \
-  $ADMIN_USER \
-&& echo "$ADMIN_USER:$ADMIN_USER" | chpasswd \
-&& chage --lastday 0 $ADMIN_USER \
-&& mkdir --parents \
-  $ADMIN_PROJECTS \
-  $ADMIN_LOGFILES \
-  $ADMIN_SCRIPTS
-
-# Set up command line
-COPY command-line-installers/* $ADMIN_SCRIPTS/
-RUN chown --recursive $ADMIN_USER:$ADMIN_USER $ADMIN_HOME
-WORKDIR $ADMIN_SCRIPTS
-USER $ADMIN_USER
-RUN CONTAINER_ID=true ./1_command_line_setup.sh \
-  | gzip -9c > $ADMIN_LOGFILES/1_command_line_setup.log.gz
-
-# Go back to root
-USER root
-WORKDIR $WORKDIR
 
 # Update databases
 RUN ./update-databases.sh \
   | gzip -9c > $WORKDIR/update-databases.log.gz
 
 # Script finish check!
-RUN gzip -dc $WORKDIR/*.gz | grep "Finished" \
-  && gzip -dc $ADMIN_LOGFILES/*.gz | grep "Finished"
-
-# systemd container
-CMD /sbin/init
+RUN gzip -dc $WORKDIR/*.gz | grep "Finished"

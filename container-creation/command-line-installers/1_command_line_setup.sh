@@ -5,6 +5,9 @@ set -e
 echo "** Command Line Setup **"
 
 source set_container_envars
+mkdir --parents $LOCALBIN
+mkdir --parents $LOGFILES
+mkdir --parents $PROJECTS
 
 export LOGFILE=$LOGFILES/command_line_setup.log
 rm --force $LOGFILE
@@ -26,8 +29,11 @@ then
   echo "..Setting R dotfiles" 1>&2
   cp Rprofile $HOME/.Rprofile
   cp Renviron $HOME/.Renviron
+  echo "..Enabling / starting Ollama service"
+  sudo systemctl enable --now ollama.service
   ./skills.sh
   ./goose.sh
+  ./pi-coding-agent.sh
 
 fi
 

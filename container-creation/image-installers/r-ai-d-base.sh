@@ -49,13 +49,22 @@ apt-get install -qqy --no-install-recommends \
   python3-gi \
   qpdf \
   r-base-dev \
-  ssh \
   sudo \
   systemd \
   tmux \
   tree \
   wget \
   zstd
+
+# RStudio Desktop needs this
+if [[ "$COMPUTE_MODE" == "CUDA" ]]
+
+then
+  echo "..Installing nvidia-vaapi-driver 1>&2"
+  apt-get install -qqy --no-install-recommends \
+    nvidia-vaapi-driver
+
+fi
 
 # We only install the English language pack and set the locale to en_US.UTF-8.
 # If you need others, see 
@@ -64,14 +73,6 @@ apt-get install -qqy --no-install-recommends \
 #
 echo "..'update-locale LANG=en_US.UTF-8'"
 update-locale LANG=en_US.UTF-8
-
-if [[ "$COMPUTE_MODE" == "CUDA" ]]
-then
-  echo ""
-  nvidia-smi
-  echo ""
-
-fi
 
 echo "..Installing BSPM" 1>&2
 ./bspm.sh
@@ -88,12 +89,8 @@ Rscript -e "install.packages(c('av', 'fluidsynth'))" 2> /dev/null
 # https://schristiancollins.com/generaluser
 Rscript -e "fluidsynth::soundfont_download()" 2> /dev/null
 
-echo "..Installing RStudio Server" 1>&2
-./rstudio-server.sh
-
-echo "..Configuring Secure Shell service" 1>&2
-echo "Port 2222" | tee --append /etc/ssh/sshd_config
-systemctl enable ssh.service
+echo "..Installing RStudio Desktop" 1>&2
+./rstudio-desktop.sh
 
 echo "** Finished R AI Distrobox Base **"
 echo ""
