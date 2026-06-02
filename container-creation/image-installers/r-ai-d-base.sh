@@ -28,9 +28,6 @@ apt-get install -qqy --no-install-recommends \
   curl \
   dialog \
   file \
-  fluid-soundfont-gm \
-  fluid-soundfont-gs \
-  fluidsynth \
   gdebi-core \
   gh \
   git \
