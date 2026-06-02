@@ -33,7 +33,6 @@ then
   sudo systemctl enable --now ollama.service
   ./skills.sh
   ./goose.sh
-  ./pi-coding-agent.sh
 
 fi
 
