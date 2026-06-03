@@ -2,8 +2,6 @@
 
 set -e
 
-echo "** Ollama **"
-
 source set_container_envars
 
 # https://docs.ollama.com/linux#install
@@ -12,12 +10,7 @@ curl -fsSL https://ollama.com/install.sh | sh
 
 echo "..Ollama is installed"
 echo "..Enabling ollama.service"
-systemctl enable ollama.service
-
-echo ""
-echo "..Ollama libraries"
-ls --recursive /usr/local/lib/ollama
-echo ""
+sudo systemctl enable --now ollama.service
 
 ollama --version
 echo ""

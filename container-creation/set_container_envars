@@ -6,6 +6,8 @@ echo "Setting container environment variables:"
 export RSTUDIO_VERSION="2026.05.0-218"
 echo "RSTUDIO_VERSION: $RSTUDIO_VERSION"
 
+export RSTUDIO_SERVER_PACKAGE="rstudio-server-$RSTUDIO_VERSION-amd64.deb"
+export RSTUDIO_SERVER_URL="https://download2.rstudio.org/server/jammy/amd64/$RSTUDIO_SERVER_PACKAGE"
 export RSTUDIO_DESKTOP_PACKAGE="rstudio-$RSTUDIO_VERSION-amd64.deb"
 export RSTUDIO_DESKTOP_URL="https://download1.rstudio.org/electron/jammy/amd64/$RSTUDIO_DESKTOP_PACKAGE"
 

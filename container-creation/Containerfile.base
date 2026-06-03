@@ -16,10 +16,6 @@ COPY image-installers/* ./
 RUN ./r-ai-d-base.sh \
   | gzip -9c > $WORKDIR/r-ai-d-base.log.gz
 
-# Ollama
-RUN ./ollama.sh \
-  | gzip -9c > $WORKDIR/ollama.log.gz
-
 # Update databases
 RUN ./update-databases.sh \
   | gzip -9c > $WORKDIR/update-databases.log.gz

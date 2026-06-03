@@ -29,8 +29,8 @@ then
   echo "..Setting R dotfiles" 1>&2
   cp Rprofile $HOME/.Rprofile
   cp Renviron $HOME/.Renviron
-  echo "..Enabling / starting Ollama service"
-  sudo systemctl enable --now ollama.service
+  ./rstudio.sh
+  ./ollama.sh
   ./skills.sh
   ./goose.sh
 

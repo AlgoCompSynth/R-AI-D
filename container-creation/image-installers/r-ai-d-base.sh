@@ -88,8 +88,5 @@ Rscript -e "install.packages(c('av', 'fluidsynth'))" 2> /dev/null
 # https://schristiancollins.com/generaluser
 Rscript -e "fluidsynth::soundfont_download()" 2> /dev/null
 
-echo "..Installing RStudio Desktop" 1>&2
-./rstudio-desktop.sh
-
 echo "** Finished R AI Distrobox Base **"
 echo ""
