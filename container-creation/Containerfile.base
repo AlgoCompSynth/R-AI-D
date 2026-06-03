@@ -1,4 +1,4 @@
-FROM docker.io/library/ubuntu:resolute
+FROM ghcr.io/ublue-os/ubuntu-toolbox
 LABEL maintainer="M. Edward (Ed) Borasky <znmeb@algocompsynth.com>"
 
 # set aside a script / logfile depository
