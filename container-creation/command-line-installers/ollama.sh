@@ -16,7 +16,7 @@ ollama --version
 echo ""
 
 echo "..Pulling $BASE_MODEL - this will take some time"
-ollama pull $BASE_MODEL
+/usr/bin/time ollama pull $BASE_MODEL
 
 echo "** Finished Ollama **"
 echo ""
