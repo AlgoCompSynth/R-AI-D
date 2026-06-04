@@ -31,7 +31,6 @@ then
   cp Renviron $HOME/.Renviron
   ./ollama.sh
   ./skills.sh
-  ./goose.sh
 
 fi
 
