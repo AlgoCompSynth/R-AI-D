@@ -2,8 +2,9 @@
 
 set -e
 
-echo "..Cloning Posit skills to $HOME/Projects/skills" 1>&2
-pushd $HOME/Projects
+echo "..Cloning Posit skills to $HOME/.agents/skills" 1>&2
+mkdir --parents $HOME/.agents
+pushd $HOME/.agents
   rm --force --recursive skills
   git clone --quiet https://github.com/posit-dev/skills
 popd
