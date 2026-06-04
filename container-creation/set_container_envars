@@ -103,3 +103,9 @@ export PROJECTS=$HOME/Projects
 ## Ollama port
 export OLLAMA_PORT=11434
 echo ""
+
+## Node.js
+## https://nodejs.org/en/download
+export NODEJS_VERSION=24.16.0
+export NODEJS_TARBALL=node-v${NODEJS_VERSION}-linux-x64.tar.xz
+export NODEJS_URL=https://nodejs.org/dist/v${NODEJS_VERSION}/${NODEJS_TARBALL}
