@@ -17,11 +17,11 @@ pushd /tmp > /dev/null
   cp CaskaydiaCoveNerdFontMono-Regular.ttf $HOME/.local/share/fonts/
 
   if [[ -f "/etc/rstudio/fonts/README.md" ]]
+
   then
     echo "..Copying nerd font files to $HOME/.config/rstudio/fonts/" 1>&2
     mkdir --parents $HOME/.config/rstudio/fonts
     cp CaskaydiaCoveNerdFontMono-Regular.ttf $HOME/.config/rstudio/fonts/
-
 
   fi
 

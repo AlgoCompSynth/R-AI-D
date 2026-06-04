@@ -2,14 +2,6 @@ echo ""
 echo "Setting container environment variables:"
 
 # ** You should not need to change anything below here **
-# https://posit.co/download/rstudio-server
-export RSTUDIO_VERSION="2026.05.0-218"
-echo "RSTUDIO_VERSION: $RSTUDIO_VERSION"
-
-export RSTUDIO_SERVER_PACKAGE="rstudio-server-$RSTUDIO_VERSION-amd64.deb"
-export RSTUDIO_SERVER_URL="https://download2.rstudio.org/server/jammy/amd64/$RSTUDIO_SERVER_PACKAGE"
-export RSTUDIO_DESKTOP_PACKAGE="rstudio-$RSTUDIO_VERSION-amd64.deb"
-export RSTUDIO_DESKTOP_URL="https://download1.rstudio.org/electron/jammy/amd64/$RSTUDIO_DESKTOP_PACKAGE"
 
 ## `COMPUTE_MODE`
 
@@ -71,13 +63,6 @@ fi
 echo "SELINUX_STATUS: $SELINUX_STATUS"
 echo "SECURITY_FLAGS: $SECURITY_FLAGS"
 
-# Why do we change the domain nameservers? The code for
-# installing the Bridge to System Package Manager (BSPM)
-# accesses an Ubuntu keyserver, and the DNS my ISP provides
-# does not appear to handle that correctly. Using CloudFlare
-# or Google nameservers works, so here they are.
-export DNS_FLAGS="--dns 1.1.1.1 --dns 1.0.0.1 --dns 8.8.8.8 --dns 8.8.4.4"
-
 ## containerfile name
 export CONTAINERFILE="Containerfile.base"
 
@@ -90,16 +75,5 @@ export CONTAINER_IMAGE="localhost/r-ai-d-${COMPUTE_MODE,,}:latest"
 export LOCALBIN=$HOME/.local/bin
 export LOGFILES=$HOME/Logfiles
 export PROJECTS=$HOME/Projects
-
-if [[ ! "$PATH" =~ "$HOME/.local/bin" ]]
-
-then
-  echo "Prepending $LOCALBIN to \$PATH"
-  export PATH="$HOME/.local/bin:$PATH"
-
-fi
-
-## Port numbers
-export OLLAMA_SERVER_PORT="11434"
 
 echo ""

@@ -1,12 +1,10 @@
-FROM ghcr.io/ublue-os/ubuntu-toolbox
+FROM docker.io/jmgirard/rstudio2u:resolute
 LABEL maintainer="M. Edward (Ed) Borasky <znmeb@algocompsynth.com>"
 
 # set aside a script / logfile depository
 USER root
 ENV WORKDIR=/usr/local/src/r-ai-d
 WORKDIR $WORKDIR
-
-RUN cat /etc/resolv.conf # check DNS settings
 
 # Environment variables and install scripts
 COPY set_container_envars ./

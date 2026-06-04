@@ -9,7 +9,6 @@ podman image build \
   $AUDIO_FLAGS \
   $NVIDIA_PODMAN_FLAGS \
   $SECURITY_FLAGS \
-  $DNS_FLAGS \
   --env ADMIN_USER=$(id --user --name) \
   --file $CONTAINERFILE \
   --tag $CONTAINER_IMAGE \

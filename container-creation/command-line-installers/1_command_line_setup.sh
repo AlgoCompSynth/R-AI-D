@@ -29,7 +29,6 @@ then
   echo "..Setting R dotfiles" 1>&2
   cp Rprofile $HOME/.Rprofile
   cp Renviron $HOME/.Renviron
-  ./rstudio.sh
   ./ollama.sh
   ./skills.sh
   ./goose.sh

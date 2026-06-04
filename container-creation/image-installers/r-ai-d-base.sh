@@ -12,7 +12,19 @@ then
   userdel --remove ubuntu 2> /dev/null
 fi
 
-echo "..Restoring documentation" 1>&2
+if [[ "$(grep docker /etc/passwd)" =~ "1001" ]]
+then
+  echo "..Removing 'docker' user" 1>&2
+  userdel --remove docker 2> /dev/null
+fi
+
+if [[ "$(grep rstudio /etc/passwd)" =~ "1002" ]]
+then
+  echo "..Removing 'rstudio' user" 1>&2
+  userdel --remove rstudio 2> /dev/null
+fi
+
+echo "..Restoring man pages" 1>&2
 export DEBIAN_FRONTEND=noninteractive
 apt-get update -qq
 apt-get upgrade -qqy
@@ -26,16 +38,10 @@ apt-get install -qqy --no-install-recommends \
   bash-completion \
   bibtool \
   curl \
-  dialog \
   file \
-  gdebi-core \
   gh \
   git \
-  jq \
   language-pack-en \
-  libbpf-dev \
-  libnspr4 \
-  libnss3 \
   libpam-systemd \
   lsb-release \
   lshw \
@@ -43,9 +49,6 @@ apt-get install -qqy --no-install-recommends \
   neovim \
   net-tools \
   plocate \
-  python3-apt \
-  python3-dbus \
-  python3-gi \
   qpdf \
   r-base-dev \
   sudo \
@@ -55,16 +58,6 @@ apt-get install -qqy --no-install-recommends \
   wget \
   zstd
 
-# RStudio Desktop needs this
-if [[ "$COMPUTE_MODE" == "CUDA" ]]
-
-then
-  echo "..Installing nvidia-vaapi-driver 1>&2"
-  apt-get install -qqy --no-install-recommends \
-    nvidia-vaapi-driver
-
-fi
-
 # We only install the English language pack and set the locale to en_US.UTF-8.
 # If you need others, see 
 #
@@ -72,9 +65,6 @@ fi
 #
 echo "..'update-locale LANG=en_US.UTF-8'"
 update-locale LANG=en_US.UTF-8
-
-echo "..Installing BSPM" 1>&2
-./bspm.sh
 
 echo "..Updating packages" 1>&2
 Rscript -e "update.packages(ask=FALSE)" 2> /dev/null
