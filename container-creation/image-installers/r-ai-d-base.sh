@@ -48,6 +48,7 @@ apt-get install -qqy --no-install-recommends \
   man-db \
   neovim \
   net-tools \
+  npm \
   plocate \
   qpdf \
   r-base-dev \
@@ -71,12 +72,6 @@ Rscript -e "update.packages(ask=FALSE)" 2> /dev/null
 
 echo "..Installing devtools" 1>&2
 Rscript -e "install.packages('devtools')" 2> /dev/null
-
-echo "..Installing ROpenSci audio / video tools" 1>&2
-Rscript -e "install.packages(c('av', 'fluidsynth'))" 2> /dev/null
-
-# https://schristiancollins.com/generaluser
-Rscript -e "fluidsynth::soundfont_download()" 2> /dev/null
 
 echo "** Finished R AI Distrobox Base **"
 echo ""
