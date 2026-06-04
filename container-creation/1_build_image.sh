@@ -9,7 +9,7 @@ podman image build \
   $AUDIO_FLAGS \
   $NVIDIA_PODMAN_FLAGS \
   $SECURITY_FLAGS \
-  --env ADMIN_USER=$(id --user --name) \
+  --env OLLAMA_PORT=$OLLAMA_PORT \
   --file $CONTAINERFILE \
   --tag $CONTAINER_IMAGE \
   --squash-all \

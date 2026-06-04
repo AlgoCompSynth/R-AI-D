@@ -18,5 +18,8 @@ RUN ./r-ai-d-base.sh \
 RUN ./update-databases.sh \
   | gzip -9c > $WORKDIR/update-databases.log.gz
 
+# Expose Ollama port
+EXPOSE $OLLAMA_PORT
+
 # Script finish check!
 RUN gzip -dc $WORKDIR/*.gz | grep "Finished"

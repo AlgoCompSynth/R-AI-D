@@ -100,4 +100,6 @@ export LOCALBIN=$HOME/.local/bin
 export LOGFILES=$HOME/Logfiles
 export PROJECTS=$HOME/Projects
 
+## Ollama port
+export OLLAMA_PORT=11434
 echo ""
