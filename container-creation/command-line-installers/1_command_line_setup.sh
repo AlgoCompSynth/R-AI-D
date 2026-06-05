@@ -34,6 +34,7 @@ then
   ./skills.sh
   ./opencode.sh
   ./pi-coding-agent.sh
+  ./goose.sh
 
 fi
 

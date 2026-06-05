@@ -2,9 +2,7 @@
 # R-AI-D_aliases
 if ! [[ "$PATH" =~ "$HOME/.local/bin" ]]
 then
-  echo "..Prepending $HOME/.local/bin to PATH"
   export PATH="$HOME/.local/bin:$PATH"
-  echo "PATH: $PATH"
 
 fi
 
