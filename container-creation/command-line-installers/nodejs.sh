@@ -1,9 +1,8 @@
-#! /usr/bin/env bash
+#! /usr/bin/env -S bash -l
 
 set -e
 
 source set_container_envars
-source $HOME/.bashrc
 
 echo "..Installing Node.js"
 curl -fsSL $NODEJS_URL \

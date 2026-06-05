@@ -1,11 +1,11 @@
-#! /usr/bin/env bash
+#! /usr/bin/env -S bash -l
 
 set -e
 
-echo "..Cloning Posit skills to $HOME/.agents/skills" 1>&2
-mkdir --parents $HOME/.agents
-pushd $HOME/.agents
+echo "..Cloning Posit skills to $HOME/Projects"
+mkdir --parents $HOME/Projects
+pushd $HOME/Projects
   rm --force --recursive skills
   git clone --quiet https://github.com/posit-dev/skills
 popd
-echo "..Clone completed" 1>&2
+echo "..Clone completed"

@@ -1,4 +1,4 @@
-#! /usr/bin/env bash
+#! /usr/bin/env -S bash -l
 
 set -e
 
@@ -29,8 +29,11 @@ then
   echo "..Setting R dotfiles" 1>&2
   cp Rprofile $HOME/.Rprofile
   cp Renviron $HOME/.Renviron
+  ./nodejs.sh
   ./ollama.sh
   ./skills.sh
+  ./opencode.sh
+  ./pi-coding-agent.sh
 
 fi
 
