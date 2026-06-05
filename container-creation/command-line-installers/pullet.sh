@@ -18,6 +18,8 @@ for model in \
   qwen3.6:27b
 
 do
+  echo ""
+  echo "Pulling $model"
   /usr/bin/time ollama pull $model
 
 done

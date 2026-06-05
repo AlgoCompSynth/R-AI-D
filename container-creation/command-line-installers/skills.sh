@@ -2,6 +2,8 @@
 
 set -e
 
+source set_container_envars
+
 echo "..Cloning Posit skills to $HOME/Projects"
 mkdir --parents $HOME/Projects
 pushd $HOME/Projects

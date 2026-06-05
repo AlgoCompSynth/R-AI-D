@@ -2,6 +2,8 @@
 
 set -e
 
+source set_container_envars
+
 mkdir --parents $HOME/.fonts
 pushd /tmp > /dev/null
   rm --force --recursive nerd_fonts; mkdir nerd_fonts; cd nerd_fonts
