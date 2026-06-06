@@ -48,6 +48,7 @@ apt-get install -qqy --no-install-recommends \
   man-db \
   neovim \
   net-tools \
+  pipewire-alsa \
   plocate \
   qpdf \
   r-base-dev \
