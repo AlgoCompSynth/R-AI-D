@@ -41,6 +41,7 @@ apt-get install -qqy --no-install-recommends \
   file \
   gh \
   git \
+  htop \
   language-pack-en \
   libpam-systemd \
   lsb-release \
