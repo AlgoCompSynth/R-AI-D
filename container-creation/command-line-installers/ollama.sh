@@ -15,8 +15,9 @@ sudo systemctl enable --now ollama.service
 ollama --version
 echo ""
 
-echo "..Pulling $BASE_MODEL - this will take some time"
+echo "..Pulling $BASE_MODEL and $ALT_MODEL - this will take some time"
 /usr/bin/time ollama pull $BASE_MODEL
+/usr/bin/time ollama pull $ALT_MODEL
 
 echo "** Finished Ollama **"
 echo ""
