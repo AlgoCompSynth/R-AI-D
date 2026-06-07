@@ -17,6 +17,7 @@ sudo dnf --quiet --assumeyes install \
   R-CRAN-tinytex \
   R-CRAN-tuneR \
   R-devel \
+  firefox \
   libcurl-devel \
   lshw \
   neovim \

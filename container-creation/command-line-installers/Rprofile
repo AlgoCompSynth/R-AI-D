@@ -29,8 +29,10 @@ Sys.setenv(MAKE = paste0("make --jobs=", parallel::detectCores()))
 
 # set options
 options(
+  browser = "firefox",
+  bspm.sudo = TRUE,
+  install.packages.check.source = "no"
   papersize = "letter",
   timeout = 60,
-  width = 120,
-  bspm.sudo = TRUE
+  width = 120
 )
