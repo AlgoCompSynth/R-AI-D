@@ -31,6 +31,7 @@ fi
 for script in \
   ./projects.sh \
   ./nodejs.sh \
+  ./rustup.sh \
   ./ollama.sh \
   ./agents.sh
 
