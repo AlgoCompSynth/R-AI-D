@@ -5,11 +5,11 @@ set -e
 source set_container_envars
 
 for model in \
-  gemma4:e2b \
-  gemma4:e4b \
-  gemma4:12b \
-  gemma4:26b \
-  gemma4:31b \
+  gemma4:e2b-it-qat \
+  gemma4:e4b-it-qat \
+  gemma4:12b-it-qat \
+  gemma4:26b-a4b-it-qat \
+  gemma4:31b-it-qat \
   qwen3.5:0.8b \
   qwen3.5:2b \
   qwen3.5:4b \
