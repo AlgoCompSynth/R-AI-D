@@ -4,7 +4,6 @@ set -e
 
 source set_container_envars
 
-rm --force --recursive $PROJECTS
 mkdir --parents $PROJECTS
 
 pushd $PROJECTS
@@ -16,6 +15,8 @@ pushd $PROJECTS
 
   do
     echo ""
+    echo "..force-removing $(basename $project)"
+    rm --force --recursive $(basename $project)
     echo "..cloning $project"
     git clone --quiet --recurse-submodules \
       https://github.com/${project}.git
