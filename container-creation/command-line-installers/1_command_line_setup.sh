@@ -13,22 +13,9 @@ export LOGFILE=$LOGFILES/command_line_setup.log
 rm --force $LOGFILE
 
 for script in \
-  aliases.sh \
-  starship.sh \
-  nerd_fonts.sh
-
-do
-  ./$script
-
-done
-
-if [[ "$(set | grep CONTAINER_ID | wc -l)" == "0" ]]
-then
-  exit
-
-fi
-
-for script in \
+  ./aliases.sh \
+  ./starship.sh \
+  ./nerd_fonts.sh \
   ./projects.sh \
   ./nodejs.sh \
   ./rustup.sh \
