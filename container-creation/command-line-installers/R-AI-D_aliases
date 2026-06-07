@@ -6,8 +6,9 @@ then
 
 fi
 
-export EDITOR=/usr/bin/nvim
-export VISUAL=/usr/bin/nvim
+export EDITOR=nvim
+export VISUAL=nvim
+alias vim=nvim
 alias la='ls -FlAtr --color=auto'
 alias ll='ls -Fltr --color=auto'
 alias l='ls -Ftr --color=auto'
