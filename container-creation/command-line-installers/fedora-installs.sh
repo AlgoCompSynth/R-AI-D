@@ -14,6 +14,7 @@ sudo dnf --quiet --assumeyes install \
   R-CRAN-fractional \
   R-CRAN-numbers \
   R-CRAN-seewave \
+  R-CRAN-shinychat \
   R-CRAN-tinytex \
   R-CRAN-tuneR \
   R-devel \
