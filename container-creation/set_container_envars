@@ -50,19 +50,18 @@ if [[ "$ARCH" == "x86_64" \
 
 then
   export COMPUTE_MODE="CUDA"
-  export NVIDIA_PODMAN_FLAGS="--device=nvidia.com/gpu=all"
-  export NVIDIA_DISTROBOX_FLAGS="--additional-flags $NVIDIA_PODMAN_FLAGS"
+  export PODMAN_NVIDIA_FLAGS="--device=nvidia.com/gpu=all"
   # see https://distrobox.it/useful_tips/#using-nvidia-container-toolkit
 
 else
   export COMPUTE_MODE="CPU"
-  export NVIDIA_PODMAN_FLAGS=""
-  export NVIDIA_DISTROBOX_FLAGS=""
+  export PODMAN_NVIDIA_FLAGS=""
 
 fi
 
 echo "COMPUTE_MODE: $COMPUTE_MODE"
-echo "NVIDIA_PODMAN_FLAGS: $NVIDIA_PODMAN_FLAGS"
+echo "PODMAN_NVIDIA_FLAGS: $PODMAN_NVIDIA_FLAGS"
+export DISTROBOX_NVIDIA_FLAGS="--additional-flags $PODMAN_NVIDIA_FLAGS"
 
 ## SELinux logic
 ## See https://podman-desktop.io/docs/podman/gpu, Linux tab, section 4
@@ -72,7 +71,7 @@ if [[ "$(which getenforce | wc -l)" == "0" ]]
 
 then
   export SELINUX_STATUS="No_getenforce"
-  export SECURITY_FLAGS=""
+  export PODMAN_SECURITY_FLAGS=""
 
 else
   export SELINUX_STATUS=$(getenforce)
@@ -80,17 +79,18 @@ else
   if [[ "$SELINUX_STATUS" == "Disabled" ]]
 
   then
-    export SECURITY_FLAGS=""
+    export PODMAN_SECURITY_FLAGS=""
 
   else
-    export SECURITY_FLAGS="--security-opt=label=disable"
+    export PODMAN_SECURITY_FLAGS="--security-opt=label=disable"
 
   fi
 
 fi
 
 echo "SELINUX_STATUS: $SELINUX_STATUS"
-echo "SECURITY_FLAGS: $SECURITY_FLAGS"
+echo "PODMAN_SECURITY_FLAGS: $PODMAN_SECURITY_FLAGS"
+export DISTROBOX_SECURITY_FLAGS="--additional-flags $PODMAN_SECURITY_FLAGS"
 
 ## containerfile name
 export CONTAINERFILE="Containerfile.base"
@@ -105,7 +105,8 @@ export LOCALBIN=$HOME/.local/bin
 export LOGFILES=$HOME/Logfiles
 export PROJECTS=$HOME/Projects
 
-## Ollama port
+## Ollama variables
+export OLLAMA_MODELS=$HOME/.ollama/models
 export OLLAMA_PORT=11434
 echo ""
 

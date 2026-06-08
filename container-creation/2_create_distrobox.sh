@@ -27,7 +27,8 @@ distrobox create \
   --name $CONTAINER_NAME \
   --hostname $CONTAINER_NAME \
   --home $CONTAINER_HOME \
-  $NVIDIA_DISTROBOX_FLAGS \
+  $DISTROBOX_NVIDIA_FLAGS \
+  $DISTROBOX_SECURITY_FLAGS \
   --init
 
 echo "..setting up container command line"
