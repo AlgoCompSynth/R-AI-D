@@ -15,7 +15,8 @@ for model in \
   qwen3.5:4b \
   qwen3.5:9b \
   qwen3.5:27b \
-  qwen3.6:27b
+  qwen3.6:27b-mtp-q4_K_M \
+  qwen3.6:35b-a3b-mtp-q4_K_M
 
 do
   echo ""
