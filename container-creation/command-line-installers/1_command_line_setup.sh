@@ -16,7 +16,6 @@ for script in \
   ./aliases.sh \
   ./starship.sh \
   ./nerd_fonts.sh \
-  ./projects.sh \
   ./nodejs.sh \
   ./rustup.sh \
   ./ollama.sh \
