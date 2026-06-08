@@ -1,34 +1,22 @@
 echo ""
 echo "Setting container environment variables:"
 
-# Base model selector
+# Model selector
 # Pick the biggest one that will fit in your GPU / CPU RAM
 
-# NAME            ID              SIZE      MODIFIED               
-# qwen3.5:0.8b    f3817196d142    1.0 GB
-# qwen3.5:2b      324d162be6ca    2.7 GB
-# qwen3.5:4b      2a654d98e6fb    3.4 GB
-# qwen3.5:9b      6488c96fa5fa    6.6 GB
-# gemma4:e2b      7fbdbf8f5e45    7.2 GB
-# gemma4:12b      4eb23ef187e2    7.6 GB
-# gemma4:e4b      c6eb396dbd59    9.6 GB
-# gemma4:26b      5571076f3d70    17 GB
-# qwen3.5:27b     7653528ba5cb    17 GB
-# qwen3.6:27b     a50eda8ed977    17 GB
-# gemma4:31b      6316f0629137    19 GB
-
-# export BASE_MODEL=qwen3.5:0.8b
-# export BASE_MODEL=qwen3.5:2b
-# export BASE_MODEL=qwen3.5:4b
-# export BASE_MODEL=qwen3.5:9b
-# export BASE_MODEL=gemma4:e2b
-# export BASE_MODEL=gemma4:12b
-# export BASE_MODEL=gemma4:e4b
-# export BASE_MODEL=gemma4:26b
-# export BASE_MODEL=qwen3.5:27b
-# export BASE_MODEL=qwen3.6:27b
-export BASE_MODEL=gemma4:31b
-export ALT_MODEL=qwen3.6:27b
+# NAME                          ID              SIZE
+# qwen3.5:0.8b                  f3817196d142    1.0 GB
+# qwen3.5:2b                    324d162be6ca    2.7 GB
+# qwen3.5:4b                    2a654d98e6fb    3.4 GB
+# gemma4:e2b-it-qat             07ea59a47401    4.3 GB
+# gemma4:e4b-it-qat             ee6656371218    6.1 GB
+# qwen3.5:9b                    6488c96fa5fa    6.6 GB
+# gemma4:12b-it-qat             38044be4f923    7.2 GB
+# gemma4:26b-a4b-it-qat         2dd70431afed    15 GB
+# qwen3.5:27b                   7653528ba5cb    17 GB
+# qwen3.6:27b-mtp-q4_K_M        21c6dd8f67de    17 GB
+# gemma4:31b-it-qat             e0812a55773b    18 GB
+# qwen3.6:35b-a3b-mtp-q4_K_M    c7bd058dd977    22 GB
 
 # ** You should not need to change anything below here **
 
