@@ -2,8 +2,6 @@
 
 set -e
 
-source set_container_envars
-
 for model in \
   gemma4:e2b-it-qat \
   gemma4:e4b-it-qat \

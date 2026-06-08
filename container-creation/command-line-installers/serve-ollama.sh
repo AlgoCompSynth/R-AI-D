@@ -2,8 +2,6 @@
 
 set -e
 
-source set_container_envars
-
-mkdir --parents $LOGFILES
+mkdir --parents $HOME/Logfiles
 sudo systemctl enable --now ollama.service \
-  || ollama serve > $LOGFILES/ollama-serve.log 2>&1 &
+  || OLLAMA_MODELS=$HOME/.ollama/models ollama serve > $HOME/Logfiles/ollama-serve.log 2>&1 &

@@ -8,3 +8,4 @@ toolbox create --assumeyes \
   fedora-toolbox
 toolbox run --container fedora-toolbox "./fedora-installs.sh"
 toolbox run --container fedora-toolbox "./1_command_line_setup.sh"
+cp pullet.sh serve-ollama.sh $HOME/.local/bin
