@@ -18,10 +18,14 @@ sudo dnf --quiet --assumeyes install \
   R-CRAN-tinytex \
   R-CRAN-tuneR \
   R-devel \
+  curl \
   firefox \
   libcurl-devel \
   lshw \
   neovim \
   rstudio-desktop \
+  rstudio-server \
   texlive-bibtools \
   zstd
+
+sudo systemctl enable --now rstudio-server.service
