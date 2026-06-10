@@ -26,6 +26,10 @@ do
 
 done
 
+echo "..Copying model pullers to $HOME/.local/bin"
+mkdir --parents $HOME/.local/bin
+cp pull-*.sh $HOME/.local/bin
+
 echo ""
 echo "..Restart your terminal, add CascaydiaCove Nerd Font to your terminal profile and restart shell"
 
