@@ -21,6 +21,7 @@ sudo dnf --assumeyes copr enable iucar/rstudio \
 
 echo "..Installing"
 sudo dnf --assumeyes install --skip-unavailable \
+  BibTool \
   R-CoprManager \
   R-CRAN-DBI \
   R-CRAN-GA \
@@ -73,7 +74,6 @@ sudo dnf --assumeyes install --skip-unavailable \
   neovim \
   rstudio-server \
   rustc \
-  texlive-bibtools \
   zstd \
   >> $LOGFILE 2>&1
 echo "..Main install finished"
