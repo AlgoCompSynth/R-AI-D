@@ -1,0 +1,94 @@
+echo ""
+echo "Setting container environment variables:"
+
+# Model selector
+# Pick the biggest one that will fit in your GPU / CPU RAM
+
+# NAME                          ID              SIZE
+# qwen3.5:0.8b                  f3817196d142    1.0 GB
+# qwen3.5:2b                    324d162be6ca    2.7 GB
+# qwen3.5:4b                    2a654d98e6fb    3.4 GB
+# gemma4:e2b-it-qat             07ea59a47401    4.3 GB
+# gemma4:e4b-it-qat             ee6656371218    6.1 GB
+# qwen3.5:9b                    6488c96fa5fa    6.6 GB
+# gemma4:12b-it-qat             38044be4f923    7.2 GB
+# gemma4:26b-a4b-it-qat         2dd70431afed    15 GB
+# qwen3.5:27b                   7653528ba5cb    17 GB
+# qwen3.6:27b-mtp-q4_K_M        21c6dd8f67de    17 GB
+# gemma4:31b-it-qat             e0812a55773b    18 GB
+# qwen3.6:35b-a3b-mtp-q4_K_M    c7bd058dd977    22 GB
+
+# ** You should not need to change anything below here **
+
+## `COMPUTE_MODE`
+
+## The scripts can build two types of containers:
+##
+## 1. COMPUTE_MODE=CPU - only the CPU will be used, and
+## 2. COMPUTE_MODE=CUDA - the CPU and an NVIDIA GPU will be used.
+
+export ARCH="$(uname -m)"
+echo "ARCH: $ARCH"
+
+if [[ "$ARCH" == "x86_64" \
+  && "$(which nvidia-ctk 2> /dev/null | wc -l)" > "0"
+  && "$(nvidia-ctk cdi list 2> /dev/null | grep gpu | wc -l)" != "0" ]]
+
+then
+  export COMPUTE_MODE="CUDA"
+  export PODMAN_NVIDIA_FLAGS="--device=nvidia.com/gpu=all"
+  # see https://distrobox.it/useful_tips/#using-nvidia-container-toolkit
+
+else
+  export COMPUTE_MODE="CPU"
+  export PODMAN_NVIDIA_FLAGS=""
+
+fi
+
+echo "COMPUTE_MODE: $COMPUTE_MODE"
+echo "PODMAN_NVIDIA_FLAGS: $PODMAN_NVIDIA_FLAGS"
+export DISTROBOX_NVIDIA_FLAGS="--nvidia"
+
+## SELinux logic
+## See https://podman-desktop.io/docs/podman/gpu, Linux tab, section 4
+##
+
+if [[ "$(which getenforce | wc -l)" == "0" ]]
+
+then
+  export SELINUX_STATUS="No_getenforce"
+  export PODMAN_SECURITY_FLAGS=""
+
+else
+  export SELINUX_STATUS=$(getenforce)
+
+  if [[ "$SELINUX_STATUS" == "Disabled" ]]
+
+  then
+    export PODMAN_SECURITY_FLAGS=""
+
+  else
+    export PODMAN_SECURITY_FLAGS="--security-opt=label=disable"
+
+  fi
+
+fi
+
+echo "SELINUX_STATUS: $SELINUX_STATUS"
+echo "PODMAN_SECURITY_FLAGS: $PODMAN_SECURITY_FLAGS"
+export DISTROBOX_SECURITY_FLAGS="--additional-flags $PODMAN_SECURITY_FLAGS"
+
+## Desktop folders
+export LOCALBIN=$HOME/.local/bin
+export LOGFILES=$HOME/Logfiles
+export PROJECTS=$HOME/Projects
+
+## Ollama variables
+export OLLAMA_PORT=11434
+echo ""
+
+## Node.js
+## https://nodejs.org/en/download
+export NODEJS_VERSION=24.16.0 # LTS 026-06-10
+export NODEJS_TARBALL=node-v${NODEJS_VERSION}-linux-x64.tar.xz
+export NODEJS_URL=https://nodejs.org/dist/v${NODEJS_VERSION}/${NODEJS_TARBALL}
