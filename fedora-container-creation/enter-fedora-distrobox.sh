@@ -2,11 +2,11 @@
 
 set -e
 
-echo "* Run Fedora Distrobox *"
+echo "* Enter Fedora Distrobox *"
 
 distrobox enter fedora-distrobox -- sudo systemctl enable --now rstudio-server.service
 distrobox enter fedora-distrobox -- sudo systemctl enable --now ollama.service
 /usr/bin/time distrobox enter fedora-distrobox
 
-echo "* Finished Run Fedora Distrobox *"
+echo "* Finished Enter Fedora Distrobox *"
 echo ""
