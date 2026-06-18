@@ -11,5 +11,5 @@ echo "..Installing Ollama with official installer"
 curl -fsSL https://ollama.com/install.sh | sh
 echo "..Restarting / enabling ollama.service"
 sudo systemctl enable --now ollama.service
-echo "..Exporting ollama'
-distrobox export --bin $(which ollama)
+echo "..Exporting ollama to host"
+distrobox-export --bin $(which ollama)
