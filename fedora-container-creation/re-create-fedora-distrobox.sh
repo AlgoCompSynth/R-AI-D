@@ -17,8 +17,8 @@ pushd command-line-installers > /dev/null
 
 popd > /dev/null
 
-echo "Copying 'run-fedora-distrobox.sh' to $HOME/.local/bin"
-cp run-fedora-distrobox.sh $HOME/.local/bin/
+echo "Copying 'enter-fedora-distrobox.sh' to $HOME/.local/bin"
+cp enter-fedora-distrobox.sh $HOME/.local/bin/
 
 echo "* Finished Re-create Fedora Distrobox *"
 echo ""
