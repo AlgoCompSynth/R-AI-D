@@ -5,8 +5,6 @@ set -e
 for model in \
   gemma4:26b-a4b-it-qat \
   gemma4:31b-it-qat \
-  glm-4.7-flash:q4_K_M \
-  granite4.1:30b-q5_1 \
   qwen3.5:27b \
   qwen3.6:27b-mtp-q4_K_M \
   qwen3.6:35b-a3b-mtp-q4_K_M
