@@ -55,7 +55,6 @@ sudo dnf --assumeyes install --skip-unavailable \
   ffmpeg-devel \
   fftw-devel \
   fluidsynth-devel \
-  firefox \
   fontconfig-devel \
   freetype-devel \
   fribidi-devel \
@@ -78,8 +77,11 @@ sudo dnf --assumeyes install --skip-unavailable \
   >> $LOGFILE 2>&1
 echo "..Main install finished"
 
-echo "..Setting R browser to /usr/bin/firefox sitewide"
-echo "options(browser='/usr/bin/firefox')" | sudo tee /usr/lib64/R/etc/Rprofile.site.d/60-Firefox.site
+echo "..Setting R browser to firefox sitewide"
+echo "options(browser='firefox')" | sudo tee /usr/lib64/R/etc/Rprofile.site.d/60-Firefox.site
+
+echo "..Linking distrobox-host-exec to container firefox"
+sudo ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/firefox
 
 echo "..Updating packages"
 sudo Rscript -e "update.packages(ask = FALSE, repos ='https://cloud.r-project.org/')" \
