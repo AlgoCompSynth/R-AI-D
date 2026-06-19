@@ -19,6 +19,7 @@ required_packages <- c(
   "music",
   "NatureSounds",
   "numbers",
+  "ollamar",
   "phonTools",
   "rstudiothemes",
   "seewave",

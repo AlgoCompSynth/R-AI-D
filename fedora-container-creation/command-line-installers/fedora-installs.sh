@@ -37,6 +37,7 @@ sudo dnf --assumeyes install --skip-unavailable \
   R-CRAN-music \
   R-CRAN-NatureSounds \
   R-CRAN-numbers \
+  R-CRAN-ollamar \
   R-CRAN-phonTools \
   R-CRAN-rstudiothemes \
   R-CRAN-seewave \

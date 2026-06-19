@@ -31,13 +31,16 @@ Follow these important style rules when writing R code:
     b. Installed R library packages for package development, AI, and audio analysis / synthesis, and
     c. An Ollama local inference server - do `ollama list` to see the available models.
 
-2. The `btw` R package for building AI interactions is installed, and its source code is at
+2. The `ollamar` R package for managing Ollama is installed, and its source code is at
+<https://github.com/hauselin/ollama-r>
+
+3. The `btw` R package for building AI interactions is installed, and its source code is at
 <https://github.com/posit-dev/btw>.
 
-3. The Posit collection of Claude-compatible skills can be downloaded from
+4. The Posit collection of Claude-compatible skills can be downloaded from
 <https://github.com/posit-dev/skills>. The repository has been cloned to `~/Projects/skills`.
 
-4. The `eikosany` R package is installed, and its source code is at
+5. The `eikosany` R package is installed, and its source code is at
 <https://github.com/AlgoCompSynth/eikosany>. `eikosany` provides
     a. functions for manipulating xentonal scales and synthesizing samples from them, and
     b. a function `xen_chat` for interacting with a user of `eikosany` via a `btw` Shiny chat app.
