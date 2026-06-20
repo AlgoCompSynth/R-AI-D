@@ -84,10 +84,6 @@ echo "options(browser='firefox')" | sudo tee /usr/lib64/R/etc/Rprofile.site.d/60
 echo "..Linking distrobox-host-exec to container firefox"
 sudo ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/firefox
 
-echo "..Updating packages"
-sudo Rscript -e "update.packages(ask = FALSE, repos ='https://cloud.r-project.org/')" \
-  >> $LOGFILE 2>&1
-
 echo "..Backup plan if iucar/CRAN COPR isn't available"
 sudo ./R-installs.R \
   >> $LOGFILE 2>&1
