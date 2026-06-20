@@ -72,6 +72,7 @@ sudo dnf --assumeyes install --skip-unavailable \
   libxml2-devel \
   lshw \
   neovim \
+  nvtop \
   rstudio-server \
   rustc \
   zstd \
