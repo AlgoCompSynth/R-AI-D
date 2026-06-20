@@ -3,9 +3,8 @@
 set -e
 
 for model in \
-  qwen3.5:0.8b \
-  qwen3.5:2b \
-  qwen3.5:4b
+  granite4.1:3b-q8_0 \
+  qwen3.5:4b-q4_K_M
 
 do
   echo ""

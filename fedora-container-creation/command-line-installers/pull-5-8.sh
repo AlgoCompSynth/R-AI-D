@@ -3,10 +3,8 @@
 set -e
 
 for model in \
-  gemma4:e2b-it-qat \
-  gemma4:e4b-it-qat \
   gemma4:12b-it-qat \
-  qwen3.5:9b
+  qwen3.5:9b-q4_K_M
 
 do
   echo ""
