@@ -39,6 +39,7 @@ sudo dnf --assumeyes install --skip-unavailable \
   R-CRAN-numbers \
   R-CRAN-ollamar \
   R-CRAN-phonTools \
+  R-CRAN-remotes \
   R-CRAN-rstudiothemes \
   R-CRAN-seewave \
   R-CRAN-shinychat \
@@ -60,6 +61,7 @@ sudo dnf --assumeyes install --skip-unavailable \
   freetype-devel \
   fribidi-devel \
   gh \
+  git-lfs \
   harfbuzz-devel \
   libcurl-devel \
   libgit2-devel \
@@ -96,6 +98,11 @@ cp btw.md $HOME/btw.md
 
 echo "..Enabling RStudio Server"
 sudo systemctl enable --now rstudio-server.service
+
+echo "..Installing 'eikosany' from GitHub"
+sudo Rscript -e \
+  "devtools::install_github('AlgoCompSynth/eikosany', dependencies = TRUE, build_vignettes = TRUE)" \
+  > /dev/null
 
 echo "** Finished Fedora Installs **"
 echo ""
