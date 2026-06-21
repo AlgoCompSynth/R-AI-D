@@ -30,6 +30,7 @@ Sys.setenv(MAKE = paste0("make --jobs=", parallel::detectCores()))
 # set options
 options(
   bspm.sudo = TRUE,
+  install.packages.check.source = "yes",
   papersize = "letter",
   timeout = 60,
   width = 120
