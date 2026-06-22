@@ -102,7 +102,12 @@ sudo systemctl enable --now rstudio-server.service
 echo "..Installing 'eikosany' from GitHub"
 sudo Rscript -e \
   "devtools::install_github('AlgoCompSynth/eikosany', dependencies = TRUE, build_vignettes = TRUE)" \
-  > /dev/null
+  > /dev/null 2>&1
+
+echo "..Installing 'consonaR' from GitHub"
+sudo Rscript -e \
+  "devtools::install_github('AlgoCompSynth/consonaR', dependencies = TRUE, build_vignettes = TRUE)" \
+  > /dev/null 2>&1
 
 echo "** Finished Fedora Installs **"
 echo ""

@@ -1,6 +1,8 @@
 #! /usr/bin/env Rscript
 
 # detonate on first uninstallable
+update.packages(ask = FALSE, repos = "https://cloud.r-project.org/")
+
 options(warn=2)
 already_installed <- rownames(installed.packages())
 required_packages <- c(
@@ -21,6 +23,7 @@ required_packages <- c(
   "numbers",
   "ollamar",
   "phonTools",
+  "remotes",
   "rstudiothemes",
   "seewave",
   "shinychat",
