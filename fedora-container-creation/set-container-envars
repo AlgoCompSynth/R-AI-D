@@ -47,7 +47,7 @@ fi
 
 echo "COMPUTE_MODE: $COMPUTE_MODE"
 echo "PODMAN_NVIDIA_FLAGS: $PODMAN_NVIDIA_FLAGS"
-export DISTROBOX_NVIDIA_FLAGS="--nvidia"
+export DISTROBOX_NVIDIA_FLAGS="--additional-flags $PODMAN_NVIDIA_FLAGS"
 
 ## SELinux logic
 ## See https://podman-desktop.io/docs/podman/gpu, Linux tab, section 4
