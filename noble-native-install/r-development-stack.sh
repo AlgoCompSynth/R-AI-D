@@ -2,6 +2,8 @@
 
 set -eu
 source set-envars
+export LOGFILE=/tmp/r-development-stack.log
+rm --force $LOGFILE
 
 ## From https://github.com/eddelbuettel/r2u/blob/master/inst/scripts/add_cranapt_noble.sh
 ## Modified 2026-06-29 znmeb@algocompsynth.net
@@ -29,8 +31,9 @@ export DEBIAN_FRONTEND=noninteractive
 
 echo "..install dependencies and get keys"
 apt-get update -qq >> $LOGFILE \
-  && apt install -qqy --no-install-recommends \
+  && apt-get install -qqy --no-install-recommends \
   alsa-utils \
+  bibtool \
   ca-certificates \
   cmake \
   curl \
@@ -39,6 +42,7 @@ apt-get update -qq >> $LOGFILE \
   gnupg \
   lshw \
   neovim \
+  qpdf \
   zstd >> $LOGFILE
 
 ## use gpg directly instead of the now-deprecated apt-key command
