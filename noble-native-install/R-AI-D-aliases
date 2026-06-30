@@ -1,0 +1,16 @@
+
+# R-AI-D-aliases
+if ! [[ "$PATH" =~ "$HOME/.local/bin" ]]
+then
+  export PATH="$HOME/.local/bin:$PATH"
+
+fi
+
+export EDITOR=nvim
+export VISUAL=nvim
+alias vim=nvim
+alias la='ls -FlAtr --color=auto'
+alias ll='ls -Fltr --color=auto'
+alias l='ls -Ftr --color=auto'
+# R-AI-D-aliases
+

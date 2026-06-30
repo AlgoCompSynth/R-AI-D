@@ -1,0 +1,11 @@
+#! /usr/bin/env -S bash -l
+
+set -eu
+source set-envars > /dev/null
+
+echo "..Installing Node.js"
+curl -fsSL $NODEJS_URL \
+  | tar xJf - --strip-components=1 --directory=$HOME/.local \
+  > /dev/null
+echo "npm --version $(npm --version)"
+echo "..Node.js is installed locally"
