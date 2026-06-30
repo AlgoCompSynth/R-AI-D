@@ -1,0 +1,16 @@
+[submodule "r-ai-d-book"]
+	path = r-ai-d-book
+	url = https://github.com/AlgoCompSynth/r-ai-d-book.git
+	branch = main
+[submodule "eikosany"]
+	path = eikosany
+	url = https://github.com/AlgoCompSynth/eikosany.git
+	branch = main
+[submodule "consonaR"]
+	path = consonaR
+	url = https://github.com/AlgoCompSynth/consonaR.git
+	branch = main
+[submodule "Cascadia2026Slides"]
+	path = Cascadia2026Slides
+	url = https://github.com/AlgoCompSynth/Cascadia2026Slides.git
+	branch = main
