@@ -16,6 +16,7 @@ cp Rprofile $HOME/.Rprofile
 cp Renviron $HOME/.Renviron
 
 sudo ./r-development-stack.sh
+Rscript -e 'tinytex::reinstall_tinytex()'
 
 for script in \
   ./aliases.sh \

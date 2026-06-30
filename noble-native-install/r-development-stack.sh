@@ -28,24 +28,25 @@ echo "** R development stack **"
 export DEBIAN_FRONTEND=noninteractive
 
 echo "..install dependencies and get keys"
-apt-get update -qq \
+apt-get update -qq >> $LOGFILE \
   && apt install -qqy --no-install-recommends \
   alsa-utils \
   ca-certificates \
+  cmake \
   curl \
   gdebi-core \
   gh \
   gnupg \
   lshw \
   neovim \
-  zstd
+  zstd >> $LOGFILE
 
 ## use gpg directly instead of the now-deprecated apt-key command
 gpg --homedir /tmp \
   --no-default-keyring \
   --keyring /usr/share/keyrings/r2u.gpg \
   --keyserver keyserver.ubuntu.com \
-  --recv-keys A1489FE2AB99A21A 67C2D66C4B1D4339 51716619E084DAB9
+  --recv-keys A1489FE2AB99A21A 67C2D66C4B1D4339 51716619E084DAB9 >> $LOGFILE
 
 echo "..add the r2u repo"
 cat > /etc/apt/sources.list.d/r2u.sources <<EOF
@@ -66,8 +67,8 @@ Components:
 Arch: amd64, arm64
 Signed-By: /usr/share/keyrings/r2u.gpg
 EOF
-apt-get update -qq
-apt-get install --yes --no-install-recommends r-base-dev
+apt-get update -qq >> $LOGFILE
+apt-get install -qqy --no-install-recommends r-base-dev >> $LOGFILE
 
 echo "..add pinning to ensure package sorting"
 cat > /etc/apt/preferences.d/99cranapt <<EOF
@@ -79,25 +80,25 @@ EOF
 
 echo "..install/enable bspm"
 ## If needed (in bare container, say) install python tools for bspm and R itself
-apt-get install --yes --no-install-recommends python3-{dbus,gi,apt} make
+apt-get install -qqy --no-install-recommends python3-{dbus,gi,apt} make >> $LOGFILE
 ## Then install bspm (as root) and enable it, and enable a speed optimization
-Rscript -e 'install.packages("bspm")'
+Rscript -e 'install.packages("bspm")' >> $LOGFILE
 cat >> /etc/R/Rprofile.site <<EOF
 suppressMessages(bspm::enable())
 options(bspm.version.check=FALSE)
 EOF
 
 echo "..update packages"
-Rscript -e 'update.packages(ask=FALSE)'
+Rscript -e 'update.packages(ask=FALSE)' >> $LOGFILE
 
-echo "..install devtools"
-Rscript -e 'install.packages("devtools")'
+echo "..install eikosany and consonaR dependencies"
+./R-installs.R >> $LOGFILE
 
 echo "..install RStudio Server"
 pushd /tmp
   rm --force *.deb
   wget --quiet $RSTUDIO_URL
-  gdebi -n -q $RSTUDIO_PACKAGE
+  gdebi -n -q $RSTUDIO_PACKAGE >> $LOGFILE
 
 popd
 
