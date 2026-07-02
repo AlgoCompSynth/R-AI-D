@@ -2,6 +2,7 @@
 
 set -eu
 
+echo "** Ollama **"
 source set-container-envars > /dev/null
 
 # https://docs.ollama.com/linux#install
@@ -11,3 +12,6 @@ echo "..Installing Ollama with official installer"
 curl -fsSL https://ollama.com/install.sh | sh
 echo "..Restarting / enabling ollama.service"
 sudo systemctl enable --now ollama.service
+
+echo "** Finished Ollama **"
+echo ""
