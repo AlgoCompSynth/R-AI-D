@@ -1,7 +1,8 @@
 #! /usr/bin/env -S bash -l
 
 set -eu
-source set-envars > /dev/null
+
+source set-container-envars > /dev/null
 
 # https://docs.ollama.com/linux#install
 echo "..Stopping existing ollama.service if any"

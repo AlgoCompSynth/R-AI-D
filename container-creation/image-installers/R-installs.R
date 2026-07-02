@@ -20,6 +20,7 @@ required_packages <- c(
   "pkgdown",
   "quarto",
   "Rdpack",
+  "remotes",
   "rmarkdown",
   "shiny",
   "shinychat",

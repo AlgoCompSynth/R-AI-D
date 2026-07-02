@@ -1,7 +1,8 @@
 #! /usr/bin/env -S bash -l
 
 set -eu
-source set-envars > /dev/null
+
+source set-container-envars > /dev/null
 
 echo "..Setting starship configuration file" 1>&2
 mkdir --parents $HOME/.config

@@ -2,25 +2,22 @@
 
 set -e
 
-echo "** Fedora Installs **"
+echo "** R Developer Stack **"
 
 source set-container-envars
-mkdir --parents $LOGFILES
-export LOGFILE=$LOGFILES/fedora-installs.log
-rm --force $LOGFILE
 
 echo "..Upgrading"
-sudo dnf --assumeyes upgrade \
-  >> $LOGFILE 2>&1
+dnf --assumeyes upgrade \
+  > /dev/null 2>&1
 
 echo "..Enabling COPRs"
-sudo dnf --assumeyes copr enable iucar/cran \
-  >> $LOGFILE 2>&1
-sudo dnf --assumeyes copr enable iucar/rstudio \
-  >> $LOGFILE 2>&1
+dnf --assumeyes copr enable iucar/cran \
+  > /dev/null 2>&1
+dnf --assumeyes copr enable iucar/rstudio \
+  > /dev/null 2>&1
 
 echo "..Installing"
-sudo dnf --assumeyes install --skip-unavailable \
+dnf --assumeyes install --skip-unavailable \
   BibTool \
   R \
   R-CoprManager \
@@ -75,33 +72,28 @@ sudo dnf --assumeyes install --skip-unavailable \
   rstudio-server \
   rustc \
   zstd \
-  >> $LOGFILE 2>&1
+> /dev/null 2>&1
 echo "..Main install finished"
 
 echo "..Setting R browser to firefox sitewide"
-echo "options(browser='firefox')" | sudo tee /usr/lib64/R/etc/Rprofile.site.d/60-Firefox.site
-
-echo "..Copying R / btw settings files to $HOME"
-cp Rprofile $HOME/.Rprofile
-cp Renviron $HOME/.Renviron
-cp btw.md $HOME/btw.md
+echo "options(browser='firefox')" | tee /usr/lib64/R/etc/Rprofile.site.d/60-Firefox.site
 
 echo "..Backup plan if iucar/CRAN COPR isn't available"
-sudo ./R-installs.R \
-  >> $LOGFILE 2>&1
+./R-installs.R \
+  > /dev/null 2>&1
 
 echo "..Installing 'eikosany' from GitHub"
-sudo Rscript -e \
+Rscript -e \
   "devtools::install_github('AlgoCompSynth/eikosany', dependencies = TRUE, build_vignettes = TRUE)" \
   > /dev/null 2>&1
 
 echo "..Installing 'consonaR' from GitHub"
-sudo Rscript -e \
+Rscript -e \
   "devtools::install_github('AlgoCompSynth/consonaR', dependencies = TRUE, build_vignettes = TRUE)" \
   > /dev/null 2>&1
 
 echo "..Enabling RStudio Server"
-sudo systemctl enable --now rstudio-server.service
+systemctl enable --now rstudio-server.service
 
-echo "** Finished Fedora Installs **"
+echo "** Finished R Developer Stack **"
 echo ""

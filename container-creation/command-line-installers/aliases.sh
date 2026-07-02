@@ -1,6 +1,6 @@
 #! /usr/bin/env -S bash -l
 
-set -e
+set -eu
 
 source set-container-envars > /dev/null
 

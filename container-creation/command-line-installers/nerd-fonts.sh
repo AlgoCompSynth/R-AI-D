@@ -1,7 +1,8 @@
 #! /usr/bin/env -S bash -l
 
 set -eu
-source set-envars > /dev/null
+
+source set-container-envars > /dev/null
 
 mkdir --parents $HOME/.fonts
 pushd /tmp > /dev/null

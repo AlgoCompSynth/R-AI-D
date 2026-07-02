@@ -1,0 +1,80 @@
+echo ""
+echo "Setting container environment variables:"
+
+# ** You should not need to change anything below here **
+
+## `COMPUTE_MODE`
+
+## R-AI-D can build two types of containers:
+##
+## 1. COMPUTE_MODE=CPU - only the CPU will be used, and
+## 2. COMPUTE_MODE=CUDA - the CPU and an NVIDIA GPU will be used.
+
+## If the NVIDIA container toolkit detects one or more GPUs
+## AND the architecture is `x86_64`, `COMPUTE_MODE` will be set to
+## `CUDA`; otherwise it will be set to `CPU`.
+export ARCH="$(uname -m)"
+echo "ARCH: $ARCH"
+
+if [[ "$ARCH" == "x86_64" \
+  && "$(which nvidia-ctk 2> /dev/null | wc -l)" > "0" \
+  && "$(nvidia-ctk cdi list | grep gpu | wc -l)" > "0" ]]
+
+then
+  export COMPUTE_MODE="CUDA"
+  export NVIDIA_FLAGS="--device=nvidia.com/gpu=all"
+  # see https://distrobox.it/useful_tips/#using-nvidia-container-toolkit
+
+else
+  export COMPUTE_MODE="CPU"
+  export NVIDIA_FLAGS=""
+
+fi
+
+echo "COMPUTE_MODE: $COMPUTE_MODE"
+echo "NVIDIA_FLAGS: $NVIDIA_FLAGS"
+
+## SELinux logic
+## See https://podman-desktop.io/docs/podman/gpu, Linux tab, section 4
+##
+
+if [[ "$(which getenforce | wc -l)" == "0" ]]
+
+then
+  export SELINUX_STATUS="No_getenforce"
+  export SECURITY_FLAGS=""
+
+else
+  export SELINUX_STATUS=$(getenforce)
+
+  if [[ "$SELINUX_STATUS" == "Disabled" ]]
+
+  then
+    export SECURITY_FLAGS=""
+
+  else
+    export SECURITY_FLAGS="--security-opt=label=disable"
+
+  fi
+
+fi
+
+echo "SELINUX_STATUS: $SELINUX_STATUS"
+echo "SECURITY_FLAGS: $SECURITY_FLAGS"
+
+## Distrobox
+export CONTAINER_NAME="R-AI-D-$COMPUTE_MODE"
+export CONTAINER_IMAGE="localhost/r-ai-d-${COMPUTE_MODE,,}:latest"
+
+## Port numbers
+export RSTUDIO_SERVER_PORT="8787"
+
+# audio plumbing
+export AUDIO_FLAGS="--device=/dev/snd --group-add keep-groups"
+
+echo ""
+
+# home directory
+export PROJECTS=$HOME/Projects
+export LOGFILES=$HOME/Logfiles
+export LOCALBIN=$HOME/.local/bin

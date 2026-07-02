@@ -1,0 +1,12 @@
+FROM ghcr.io/ublue-os/fedora-toolbox
+LABEL maintainer="M. Edward (Ed) Borasky <znmeb@algocompsynth.com>"
+
+USER root
+WORKDIR /usr/local/src/
+
+# systemd container
+CMD /sbin/init
+
+COPY image-installers/* ./
+RUN ./r-developer-stack.sh
+RUN ./ollama.sh
