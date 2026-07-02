@@ -6,33 +6,28 @@ update.packages(ask = FALSE, repos = "https://cloud.r-project.org/")
 options(warn=2)
 already_installed <- rownames(installed.packages())
 required_packages <- c(
-  "DBI",
-  "GA",
-  "Rdpack",
-  "audio",
-  "av",
+  "bslib",
   "btw",
   "data.table",
   "devtools",
-  "diffviewer",
   "duckdb",
+  "ellmer",
   "fractional",
-  "monitoR",
-  "music",
-  "NatureSounds",
+  "knitr",
+  "markdown",
   "numbers",
   "ollamar",
-  "phonTools",
+  "pkgdown",
+  "quarto",
+  "Rdpack",
   "remotes",
-  "rstudiothemes",
-  "seewave",
+  "rmarkdown",
+  "shiny",
   "shinychat",
-  "signal",
-  "soundecology",
-  "soundgen",
+  "testthat",
   "tinytex",
   "tuneR",
-  "warbleR"
+  "withr"
 )
 to_install <- setdiff(required_packages, already_installed)
 cat("\nInstalling:\n")
