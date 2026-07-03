@@ -1,7 +1,3 @@
-[submodule "r-ai-d-book"]
-	path = r-ai-d-book
-	url = https://github.com/AlgoCompSynth/r-ai-d-book.git
-	branch = main
 [submodule "eikosany"]
 	path = eikosany
 	url = https://github.com/AlgoCompSynth/eikosany.git
