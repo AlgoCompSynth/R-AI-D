@@ -1,171 +1,168 @@
-R-AI-D - Rtificial Audio Intelligencw Distribution
+R-AI-D - Rtificial Audio Intelligence Distribution
 ================
 
 ## Introduction
 
-R-AI-D is a [Distrobox](https://distrobox.it/ "Distrobox documentation")
-pet container for artificially intelligent sound analysis and synthesis.
-R-AI-D is based on the [Rocker “Noble Numbat” r2u container
-image](https://github.com/rocker-org/r2u "r2u GitHub repository").
-R-AI-D features:
+R-AI-D is a pet container for algorithmic musical composition and
+synthesis using the R programming language. The R-AI-D container is a
+Fedora 44 Linux server featuring
 
-- the [Ubuntu 24.04 LTS “Noble
-  Numbat”](https://help.ubuntu.com/ "Ubuntu help") operating system,
-- the R programming language (R Core Team 2022),
-- [r2u: CRAN as Ubuntu
-  Binaries](https://eddelbuettel.github.io/r2u/ "r2u: CRAN as Ubuntu Binaries")
-- bspm: Bridge to System Package Manager (Ucar 2026),
-- the [Quarto](https://quarto.org/ "Quarto home page") scientific and
-  technical publishing system,
-- R packages for package development (H. Wickham and Bryan 2023),
-- R packages for interfacing with AI tools (Verde Arregoitia, Luis D.
-  2026):
-  - ellmer (Hadley Wickham et al. 2025),
-  - mcptools (Couch, Chang, and Gao 2026),
-  - ollamar (Lin and Safi 2025),
-  - ragnar (Kalinowski and Falbel 2026),
-  - shinychat (Cheng et al. 2025),
-  - vitals (Couch 2025),
-- the
-  [Faust](https://github.com/grame-cncm/faust/blob/master-dev/documentation/faust-quick-reference.pdf "Faust Quick Reference (PDF)")
-  functional programming language for sound synthesis and audio
-  processing,
-- the [Ollama](https://docs.ollama.com/ "Ollama Documentation")
-  framework for managing local models, and
-- a modern command line, including the Ollama-launchable
-  [OpenCode](https://opencode.ai/ "OpenCode home page") open source AI
-  coding agent.
+- A complete R development stack, including the open-source edition of
+  [RStudio
+  Server](https://posit.co/products/open-source/rstudio-server), the
+  `devtools` R package development and documentation suite (Wickham et
+  al. 2026), and the `btw` package for AI workflow development
+  (Aden-Buie et al. 2026),
+- the [Ollama](https://docs.ollama.com/) framework for managing local
+  and cloud models,
+- a modern command line, including the [Goose](https://goose-docs.ai/)
+  open-source AI agent,
+- the `consonaR` package for consonance-based algorithmic composition
+  (Borasky 2026a), and
+- the `eikosany` package for algorithmic composition with xentonal
+  scales (Borasky 2026b).
 
 R-AI-D was developed on [Bluefin
 DX](https://projectbluefin.io "Bluefin home page"), but should run on
-any Linux host system supporting Distrobox. I test on a Raspberry Pi 5,
-and the release hosting setup scripts should work on any recent Debian
-or Ubuntu host. On `x86_64` systems, an NVIDIA GPU will be detected and
-used automatically.
+any Linux host system supporting [Podman](https://podman.io/). On
+`x86_64` systems, an NVIDIA GPU will be detected and used automatically.
 
-Like its Bluefix DX inspiration, the R-AI-D command line features
-[Homebrew](https://brew.sh/ "Homebrew home page") and the
-[Starship](https://starship.rs/ "Starship home page") cross-shell prompt
-generator. The [Cascaydia Cove nerd
-font](https://www.nerdfonts.com/ "nerd font aggregator") is included and
-other nerd fonts are available.
+## The vision
 
-## Licensing, contributing, roadmap, etc.
+A traditional orchestral composer starts with an idea, a commission or
+both. Most often they will sit down at a piano and develop a score. The
+score will be printed and the parts will be distributed to the musicians
+for rehearsal, performance, and most likely, recording.
 
-R-AI-D uses the [Creative Commons
-CC0](https://creativecommons.org/public-domain/cc0/ "CC0 license text")
-license, which is a bunch of words that say mostly “R-AI-D is public
-domain.” R-AI-D is just some `bash` scripts that download some open
-source software and build it into a container. Why would I copyright
-that?
+My vision for R-AI-D is different. Instead of a piano, the composer has
+a workstation, containing or connected to a model with the kind of
+immense database of world music history and theory that today’s large
+language models have of English, Chinese, Spanish, French, logical
+reasoning and computer programming.
 
-Contributing? Forks, [bug reports and feature
-requests](https://github.com/AlgoCompSynth/R-AI-D/issues/new "open an issue")
-are welcome. Pull requests, on the other hand, probably not. I don’t
-have the time to review other peoples’ code beyond fixing typos.
+And as well as conventional scores, the workstation can generate
+graphical scores, MIDI files, code in a music programming language like
+ChucK (Salazar et al. 2014), and even direct digital recordings of the
+compositions. The goal of R-AI-D is an intelligence amplifier for
+composers.
 
-The roadmap is mostly determined by what I need and when. The only
-feature I want to add is a “native” port to Ubuntu running in Windows
-Subsystem for Linux. Hosting setup scripts for Fedora, CentOS Stream,
-Arch Linux and openSUSE Tumbleweed are easy to do but I have no need for
-them. If you do, open an issue and I’ll put them in.
+## Current status
 
-Later in my exploration of AI I will probably need some AI engineering
-tools like JupyterLab, PyTorch, and CUDA, but the image is pretty big
-already, so I won’t add them until I need them. And R AI packages cover
-a lot of the bases already, such as interfacing with Ollama and other
-local LLM tools, retrieval augmented generation (RAG), and model context
-protocol (MCP).
+I’ve focused on two facets of experimental music:
 
-## Building the Image and Container
+- xentonal scales, mostly those developed by Harry Partch (Partch 1979),
+  Erv Wilson (Narushima 2019), and Wendy Carlos (Carlos 1987), and
 
-See
-[container-creation/README-Building-the-Image-and-Container.md](container-creation/README-Building-the-Image-and-Container.md)
+- consonance-based analysis and synthesis, as devloped by William A.
+  Sethares Sethares (2013).
 
-## Raspberry Pi 5 Hosting
+If that’s the kind of music that interests you, R-AI-D and I are more or
+less ready. You can [open
+issues](https://github.com/AlgoCompSynth/R-AI-D/issues/new) for bug
+reports / feature requests, and if you’ve got a Linux system with a
+decent amount of RAM, or have the money to subscribe to a cloud model,
+you can download R-AI-D and run it.
 
-See
-[hosting-setup/README-Setting-up-container-hosting.md](hosting-setup/README-Setting-up-container-hosting.md)
+## Road map
+
+The immediate road map is:
+
+- Add a comprehensive users’ guide. The two core packages are usable if
+  you’re familiar with the books on which they’re based, but they need
+  more documentation. And although the operation of the container is
+  relatively simple, the documentation on getting it running and
+  connecting to it needs to be done.
+- Produce a xentonal album. This is going to require expanding the
+  capabilities of `consonaR`, and probably a real-time synthesis engine
+  like `ChucK`.
+
+Longer term, I want to add more computational music theory, especially
+counterpoint and geometric / algebraic approaches like (Tymoczko 2010).
+This is well-suited to the capabilites of R and AI models, and the
+databases exist for post-training.
 
 ## References
 
-<div id="refs" class="references csl-bib-body hanging-indent"
-entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
 
-<div id="ref-cheng2026s" class="csl-entry">
+<div id="ref-aden-buie2026" class="csl-entry">
 
-Cheng, Joe, Carson Sievert, Garrick Aden-Buie, and Barret Schloerke.
-2025. *Shinychat: Chat UI Component for ’Shiny’*.
-<https://posit-dev.github.io/shinychat/r/>.
-
-</div>
-
-<div id="ref-couch2026v" class="csl-entry">
-
-Couch, Simon. 2025. *Vitals: Large Language Model Evaluation*.
-<https://github.com/tidyverse/vitals>.
+Aden-Buie, Garrick, Simon Couch, and Joe Cheng. 2026. *Btw: A Toolkit
+for Connecting r and Large Language Models*.
+<https://github.com/posit-dev/btw>.
 
 </div>
 
-<div id="ref-couch2026m" class="csl-entry">
+<div id="ref-borasky2026consonar" class="csl-entry">
 
-Couch, Simon, Winston Chang, and Charlie Gao. 2026. *Mcptools: Model
-Context Protocol Servers and Clients*.
-<https://github.com/posit-dev/mcptools>.
-
-</div>
-
-<div id="ref-kalinowski2026r" class="csl-entry">
-
-Kalinowski, Tomasz, and Daniel Falbel. 2026. *Ragnar:
-Retrieval-Augmented Generation (RAG) Workflows*.
-<https://ragnar.tidyverse.org/>.
+Borasky, M. Edward (Ed). 2026a. *consonaR: Consonance-Based Algorithmic
+Composition*. <https://algocompsynth.github.io/consonaR/>.
 
 </div>
 
-<div id="ref-lin2026o" class="csl-entry">
+<div id="ref-borasky2026eikosany" class="csl-entry">
 
-Lin, Hause, and Tawab Safi. 2025. “Ollamar: An r Package for Running
-Large Language Models.” *Journal of Open Source Software*, January.
-<https://doi.org/10.21105/joss.07211>.
-
-</div>
-
-<div id="ref-r-base" class="csl-entry">
-
-R Core Team. 2022. *R: A Language and Environment for Statistical
-Computing*. Vienna, Austria: R Foundation for Statistical Computing.
-<https://www.R-project.org/>.
+Borasky, M. Edward (Ed). 2026b. *Eikosany: Algorithmic Composition with
+Erv Wilson’s Combination Product Sets*.
+<https://algocompsynth.github.io/eikosany/>.
 
 </div>
 
-<div id="ref-ucar2026" class="csl-entry">
+<div id="ref-carlos1987tuning" class="csl-entry">
 
-Ucar, Iñaki. 2026. *Bspm: Bridge to System Package Manager*.
-<https://cran4linux.github.io/bspm/>.
-
-</div>
-
-<div id="ref-verdearregoitia2026llmsr" class="csl-entry">
-
-Verde Arregoitia, Luis D. 2026. *Large Language Model Tools for r*.
-Verde Arregoitia, Luis D. <https://doi.org/10.5281/zenodo.19260391>.
+Carlos, Wendy. 1987. “Tuning: At the Crossroads.” *Computer Music
+Journal* 11 (1): 29–43.
 
 </div>
 
-<div id="ref-wickham2026" class="csl-entry">
+<div id="ref-narushima2019microtonality" class="csl-entry">
 
-Wickham, Hadley, Joe Cheng, Aaron Jacobs, Garrick Aden-Buie, and Barret
-Schloerke. 2025. *Ellmer: Chat with Large Language Models*.
-<https://ellmer.tidyverse.org>.
+Narushima, T. 2019. *Microtonality and the Tuning Systems of Erv
+Wilson*. Routledge Studies in Music Theory. Taylor & Francis Limited.
 
 </div>
 
-<div id="ref-wickham2023r" class="csl-entry">
+<div id="ref-partch1979genesis" class="csl-entry">
 
-Wickham, H., and J. Bryan. 2023. *R Packages: Organize, Test, Document,
-and Share Your Code*. O’Reilly Media.
-<https://books.google.com/books?id=kTHFEAAAQBAJ>.
+Partch, H. 1979. *Genesis of a Music: An Account of a Creative Work, Its
+Roots, and Its Fulfillments, Second Edition*. Hachette Books.
+
+</div>
+
+<div id="ref-salazar2014programming" class="csl-entry">
+
+Salazar, S., A. Kapur, G. Wang, and P. Cook. 2014. *Programming for
+Musicians and Digital Artists: Creating Music with ChucK*. Manning.
+
+</div>
+
+<div id="ref-sethares1998tuning" class="csl-entry">
+
+Sethares, W. A. 1998. *Tuning, Timbre, Spectrum, Scale*. Springer
+London.
+
+</div>
+
+<div id="ref-sethares2013tuning" class="csl-entry">
+
+Sethares, W. A. 2013. *Tuning, Timbre, Spectrum, Scale, Second Edition*.
+Springer London.
+
+</div>
+
+<div id="ref-tymoczko2010geometry" class="csl-entry">
+
+Tymoczko, D. 2010. *A Geometry of Music: Harmony and Counterpoint in the
+Extended Common Practice*. Oxford Studies in Music Theory. Oxford
+University Press.
+
+</div>
+
+<div id="ref-wickham2026devtools" class="csl-entry">
+
+Wickham, Hadley, Jim Hester, Winston Chang, and Jennifer Bryan. 2026.
+*Devtools: Tools to Make Developing r Packages Easier*.
+<https://devtools.r-lib.org/>.
 
 </div>
 
