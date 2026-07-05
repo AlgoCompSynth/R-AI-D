@@ -14,7 +14,7 @@ sudo dnf --assumeyes copr enable iucar/cran \
 sudo dnf --assumeyes copr enable iucar/rstudio \
   >> $LOGFILE 2>&1
 
-echo "..Installing"
+echo "..Installing RPMs"
 sudo dnf --assumeyes install --skip-unavailable \
   BibTool \
   R \
@@ -70,21 +70,22 @@ sudo dnf --assumeyes install --skip-unavailable \
   rustc \
   zstd \
   >> $LOGFILE 2>&1
-echo "..Main install finished"
+echo "..RPM install finished"
 
-echo "..Backup plan if iucar/CRAN COPR isn't available"
+echo "..Updating / installing R packages"
 sudo ./R-installs.R \
-  >> $LOGFILE
+  >> $LOGFILE 2>&1
+echo "..R package install finished"
 
 echo "..Installing 'eikosany' from GitHub"
 sudo Rscript -e \
   "devtools::install_github('AlgoCompSynth/eikosany', dependencies = TRUE, build_vignettes = TRUE)" \
-  >> $LOGFILE
+  >> $LOGFILE 2>&1
 
 echo "..Installing 'consonaR' from GitHub"
 sudo Rscript -e \
   "devtools::install_github('AlgoCompSynth/consonaR', dependencies = TRUE, build_vignettes = TRUE)" \
-  >> $LOGFILE
+  >> $LOGFILE 2>&1
 
 echo "..Enabling RStudio Server"
 sudo systemctl enable --now rstudio-server.service
