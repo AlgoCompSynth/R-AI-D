@@ -10,9 +10,9 @@ sudo dnf --assumeyes upgrade \
 
 echo "..Enabling COPRs"
 sudo dnf --assumeyes copr enable iucar/cran \
-  >> $LOGFILE
+  >> $LOGFILE 2>&1
 sudo dnf --assumeyes copr enable iucar/rstudio \
-  >> $LOGFILE
+  >> $LOGFILE 2>&1
 
 echo "..Installing"
 sudo dnf --assumeyes install --skip-unavailable \
@@ -45,7 +45,6 @@ sudo dnf --assumeyes install --skip-unavailable \
   cargo \
   cmake \
   curl \
-  ffmpeg-devel \
   fftw-devel \
   fluidsynth-devel \
   fontconfig-devel \
