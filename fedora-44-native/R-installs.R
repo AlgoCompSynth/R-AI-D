@@ -6,12 +6,14 @@ update.packages(ask = FALSE, repos = "https://cloud.r-project.org/")
 options(warn=2)
 already_installed <- rownames(installed.packages())
 required_packages <- c(
+  "av",
   "bslib",
   "btw",
   "data.table",
   "devtools",
   "duckdb",
   "ellmer",
+  "fluidsynth",
   "fractional",
   "knitr",
   "markdown",

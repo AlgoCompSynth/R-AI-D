@@ -2,8 +2,6 @@
 
 set -eu
 
-source set-container-envars > /dev/null
-
 if [[ "$(grep R-AI-D-aliases $HOME/.bashrc | wc -l)" == "0" ]]
 then
   echo "..Appending R-AI-D-aliases to $HOME/.bashrc" 1>&2

@@ -2,8 +2,6 @@
 
 set -eu
 
-source set-container-envars > /dev/null
-
 echo "..Setting starship configuration file" 1>&2
 mkdir --parents $HOME/.config
 cp starship.toml $HOME/.config/starship.toml

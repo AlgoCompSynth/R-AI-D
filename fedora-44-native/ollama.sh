@@ -3,7 +3,6 @@
 set -eu
 
 echo "** Ollama **"
-source set-container-envars > /dev/null
 
 # https://docs.ollama.com/linux#install
 echo "..Stopping existing ollama.service if any"

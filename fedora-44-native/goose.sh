@@ -2,8 +2,6 @@
 
 set -eu
 
-source set-container-envars > /dev/null
-
 # https://goose-docs.ai/docs/getting-started/installation/
 echo "..Installing goose"
 curl -fsSL https://github.com/aaif-goose/goose/releases/download/stable/download_cli.sh | CONFIGURE=false bash -l > /dev/null
