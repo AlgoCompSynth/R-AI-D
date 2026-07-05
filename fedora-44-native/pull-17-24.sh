@@ -5,6 +5,9 @@ set -eu
 for model in \
   gemma4:26b-a4b-it-qat \
   gemma4:31b-it-qat \
+  laguna-xs-2.1:q4_K_M \
+  north-mini-code-1.0:q4_K_M \
+  ornith:35b-q4_K_M \
   qwen3.6:27b-mtp-q4_K_M \
   qwen3.6:35b-a3b-mtp-q4_K_M
 
