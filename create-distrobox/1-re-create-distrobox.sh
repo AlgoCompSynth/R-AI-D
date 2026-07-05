@@ -15,5 +15,9 @@ pushd ../fedora-44-native
   distrobox enter $CONTAINER_NAME -- ./1-system-setup.sh
 popd
 
+echo "..Copying 'enter-distrobox.sh' to $HOME/.local/bin"
+mkdir --parents $HOME/.local/bin
+cp enter-distrobox.sh $HOME/.local/bin
+
 echo "* Finished Re-create Distrobox *"
 echo ""
