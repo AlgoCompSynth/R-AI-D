@@ -6,7 +6,7 @@ echo "** R Developer Stack **"
 
 echo "..Upgrading"
 sudo dnf --assumeyes upgrade \
-  >> $LOGFILE
+  >> $LOGFILE 2>&1
 
 echo "..Enabling COPRs"
 sudo dnf --assumeyes copr enable iucar/cran \
@@ -54,6 +54,7 @@ sudo dnf --assumeyes install --skip-unavailable \
   gh \
   git-lfs \
   harfbuzz-devel \
+  libavfilter-free-devel \
   libcurl-devel \
   libgit2-devel \
   libjpeg-devel \
@@ -69,7 +70,7 @@ sudo dnf --assumeyes install --skip-unavailable \
   rstudio-server \
   rustc \
   zstd \
-  >> $LOGFILE
+  >> $LOGFILE 2>&1
 echo "..Main install finished"
 
 echo "..Backup plan if iucar/CRAN COPR isn't available"
