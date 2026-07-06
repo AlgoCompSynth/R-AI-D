@@ -23,8 +23,5 @@ do
 
 done
 
-echo "..Copying model pullers to $HOME/.local/bin"
-cp pull-*.sh $HOME/.local/bin
-
 echo "* Finished System Setup *"
 echo ""
