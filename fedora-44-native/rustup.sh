@@ -1,6 +1,0 @@
-#! /usr/bin/env -S bash -l
-
-set -eu
-
-echo "..Installing RustUp"
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y > /dev/null 2>&1

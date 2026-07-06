@@ -66,7 +66,7 @@ sudo dnf --assumeyes install --skip-unavailable \
   lshw \
   neovim \
   nvtop \
-  rstudio-server \
+  rstudio-desktop \
   rustc \
   zstd \
   >> $LOGFILE 2>&1
@@ -86,9 +86,6 @@ echo "..Installing 'consonaR' from GitHub"
 sudo Rscript -e \
   "devtools::install_github('AlgoCompSynth/consonaR', dependencies = TRUE, build_vignettes = TRUE)" \
   >> $LOGFILE 2>&1
-
-echo "..Enabling RStudio Server"
-sudo systemctl enable --now rstudio-server.service
 
 echo "** Finished R Developer Stack **"
 echo ""

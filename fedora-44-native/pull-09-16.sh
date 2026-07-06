@@ -13,3 +13,5 @@ do
   /usr/bin/time ollama pull $model
 
 done
+
+ollama list | sort -k 3 -n
