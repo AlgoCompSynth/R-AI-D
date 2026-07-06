@@ -3,8 +3,9 @@
 set -eu
 
 for model in \
-  granite4.1:3b-q8_0 \
-  qwen3.5:4b-q4_K_M
+  gemma4:12b-it-qat \
+  gemma4:12b-it-q4_K_M \
+  qwen3.5:9b-q4_K_M
 
 do
   echo ""
