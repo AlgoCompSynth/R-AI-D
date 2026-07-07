@@ -4,8 +4,8 @@ set -eu
 
 echo "* Enter Toolbox *"
 
-pushd ./fedora-44-native
-  toolbox enter R-AI-D-f44
+pushd ./populate-toolbox
+  toolbox enter R-AI-D-toolbox
 
 popd
 

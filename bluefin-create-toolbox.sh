@@ -2,11 +2,9 @@
 
 set -eu
 
-echo "* Ubuntu: Create Toolbox *"
+echo "* Bluefin: Create Toolbox *"
 
-echo "..Making sure 'toolbox' is installed"
-export DEBIAN_FRONTEND=noninteractive
-sudo apt-get install -qqy podman-toolbox
+echo "..Toolbox is standard equipment on Bluefin!!"
 
 echo "..Creating toolbox"
 toolbox --assumeyes create \
@@ -21,5 +19,5 @@ pushd ./populate-toolbox
 
 popd
 
-echo "* Finished Ubuntu: Create Toolbox *"
+echo "* Finished Bluefin: Create Toolbox *"
 echo ""

@@ -15,8 +15,7 @@ cp Renviron $HOME/.Renviron
 
 for script in \
   r-developer-stack.sh \
-  ollama.sh \
-  goose.sh
+  ollama.sh
 
 do
   ./$script
