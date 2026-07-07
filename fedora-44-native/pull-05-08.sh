@@ -4,7 +4,6 @@ set -eu
 
 for model in \
   gemma4:12b-it-qat \
-  gemma4:12b-it-q4_K_M \
   qwen3.5:9b-q4_K_M
 
 do
