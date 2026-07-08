@@ -6,7 +6,9 @@ echo "* Ubuntu: Create Toolbox *"
 
 echo "..Making sure 'toolbox' is installed"
 export DEBIAN_FRONTEND=noninteractive
-sudo apt-get install -qqy podman-toolbox
+sudo apt-get install -qqy 
+  git \
+  podman-toolbox
 
 echo "..Creating toolbox"
 toolbox --assumeyes create \
