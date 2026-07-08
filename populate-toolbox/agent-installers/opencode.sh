@@ -3,6 +3,8 @@
 set -eu
 
 # https://opencode.ai/
+echo "..Activating nvm"
+source $HOME/.nvm/nvm.sh
 echo "..Installing OpenCode"
-curl -fsSL https://opencode.ai/install | bash
+npm i -g opencode-ai
 echo "..OpenCode is installed."

@@ -15,6 +15,7 @@ cp Renviron $HOME/.Renviron
 
 for script in \
   r-developer-stack.sh \
+  local-nodejs.sh \
   ollama.sh
 
 do
