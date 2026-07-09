@@ -14,6 +14,8 @@ sudo dnf --assumeyes copr enable iucar/cran \
   >> $LOGFILE 2>&1
 sudo dnf --assumeyes copr enable iucar/rstudio \
   >> $LOGFILE 2>&1
+sudo dnf --assumeyes copr enable scottames/ghostty \
+  >> $LOGFILE 2>&1
 
 echo "..Installing RPMs"
 sudo dnf --assumeyes install --skip-unavailable \
@@ -28,7 +30,7 @@ sudo dnf --assumeyes install --skip-unavailable \
   R-CRAN-duckdb \
   R-CRAN-ellmer \
   R-CRAN-fractional \
-  R-CRAN-kintr \
+  R-CRAN-knitr \
   R-CRAN-markdown \
   R-CRAN-numbers \
   R-CRAN-ollamar \
@@ -44,6 +46,8 @@ sudo dnf --assumeyes install --skip-unavailable \
   R-CRAN-withr \
   alsa-utils \
   cargo \
+  cascadia-code-nf-fonts \
+  cascadia-mono-nf-fonts \
   cmake \
   curl \
   fftw-devel \
@@ -52,6 +56,7 @@ sudo dnf --assumeyes install --skip-unavailable \
   freetype-devel \
   fribidi-devel \
   gh \
+  ghostty \
   git-lfs \
   harfbuzz-devel \
   libavfilter-free-devel \
@@ -69,6 +74,9 @@ sudo dnf --assumeyes install --skip-unavailable \
   nvtop \
   rstudio-desktop \
   rustc \
+  time \
+  tree \
+  tmux \
   vim-enhanced \
   zstd \
   >> $LOGFILE 2>&1
