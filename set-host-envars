@@ -1,6 +1,8 @@
 echo ""
 echo "Setting container environment variables:"
 
+export HOST_MODEL_PERSISTENCE=$HOME/.ollama/models
+
 # ** You should not need to change anything below here **
 
 ## `COMPUTE_MODE`
