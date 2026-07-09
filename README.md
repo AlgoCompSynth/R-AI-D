@@ -1,49 +1,47 @@
-R-AI-D - Rtificial Audio Intelligence Distribution
+R-AI-D - Rtificial Audio Intelligence Distrobox
 ================
 
 ## Introduction
 
-R-AI-D is a pet container for algorithmic musical composition and
-synthesis using the R programming language. The R-AI-D container is a
-Fedora 44 Linux server featuring
+R-AI-D is a [Distrobox](https://distrobox.it/) container for algorithmic
+musical composition and synthesis using the R programming language. The
+R-AI-D container is a Fedora 44 Linux environment featuring
 
 - A complete R development stack, including the open-source edition of
-  [RStudio
-  Server](https://posit.co/products/open-source/rstudio-server), the
-  `devtools` R package development and documentation suite (Wickham et
-  al. 2026), and the `btw` package for AI workflow development
-  (Aden-Buie et al. 2026),
-- the [Ollama](https://docs.ollama.com/) framework for managing local
-  and cloud models,
-- a modern command line, including the [Goose](https://goose-docs.ai/)
-  open-source AI agent,
+  [RStudio Desktop](https://posit.co/downloads), the `devtools` R
+  package development and documentation suite (Wickham et al. 2026), and
+  the `btw` package for AI workflow development (Aden-Buie et al. 2026),
+- the [Ollama](https://docs.ollama.com/) framework for using local and
+  cloud models,
+- install scripts for the [Goose](https://goose-docs.ai/),
+  [OpenCode](https://opencode.ai/), and [Pi](https://pi.dev/)
+  open-source command-line coding agents,
 - the `consonaR` package for consonance-based algorithmic composition
   (Borasky 2026a), and
 - the `eikosany` package for algorithmic composition with xentonal
   scales (Borasky 2026b).
 
-R-AI-D was developed on [Bluefin
-DX](https://projectbluefin.io "Bluefin home page"), but should run on
-any Linux host system supporting [Podman](https://podman.io/). On
-`x86_64` systems, an NVIDIA GPU will be detected and used automatically.
+R-AI-D was developed on [Bluefin DX](https://projectbluefin.io), but
+should work on any Linux host system supporting Distrobox. On `x86_64`
+systems, an NVIDIA GPU will be detected and used automatically.
 
 ## The vision
 
 A traditional orchestral composer starts with an idea, a commission or
-both. Most often they will sit down at a piano and develop a score. The
-score will be printed and the parts will be distributed to the musicians
-for rehearsal, performance, and most likely, recording.
+both. Most often they will then sit down at a piano and develop a score.
+The score will be printed and the parts will be distributed to the
+musicians for rehearsal, performance, and most likely, recording.
 
 My vision for R-AI-D is different. Instead of a piano, the composer has
-a workstation, containing or connected to a model with the kind of
+a workstation, containing or connected to an AI model with the kind of
 immense database of world music history and theory that today’s large
-language models have of English, Chinese, Spanish, French, logical
-reasoning and computer programming.
+language models have of languages, logical / mathematical reasoning, and
+computer programming.
 
 And as well as conventional scores, the workstation can generate
 graphical scores, MIDI files, code in a music programming language like
 ChucK (Salazar et al. 2014), and even direct digital recordings of the
-compositions. The goal of R-AI-D is an intelligence amplifier for
+compositions. R-AI-D is intended to be an *intelligence amplifier* for
 composers.
 
 ## Current status
@@ -52,9 +50,8 @@ I’ve focused on two facets of experimental music:
 
 - xentonal scales, mostly those developed by Harry Partch (Partch 1979),
   Erv Wilson (Narushima 2019), and Wendy Carlos (Carlos 1987), and
-
-- consonance-based analysis and synthesis, as devloped by William A.
-  Sethares Sethares (2013).
+- consonance-based analysis and synthesis, as developed by William A.
+  Sethares (Sethares 2013).
 
 If that’s the kind of music that interests you, R-AI-D and I are more or
 less ready. You can [open
@@ -69,16 +66,15 @@ The immediate road map is:
 
 - Add a comprehensive users’ guide. The two core packages are usable if
   you’re familiar with the books on which they’re based, but they need
-  more documentation. And although the operation of the container is
-  relatively simple, the documentation on getting it running and
-  connecting to it needs to be done.
+  much more documentation. And although the operation of the container
+  is relatively simple, the documentation on getting it running and
+  connecting to it needs to be improved.
 - Produce a xentonal album. This is going to require expanding the
-  capabilities of `consonaR`, and probably a real-time synthesis engine
-  like `ChucK`.
+  capabilities of both `eikosany` and `consonaR`.
 
 Longer term, I want to add more computational music theory, especially
 counterpoint and geometric / algebraic approaches like (Tymoczko 2010).
-This is well-suited to the capabilites of R and AI models, and the
+Both are well-suited to the capabilites of R and AI models, and the
 databases exist for post-training.
 
 ## References
@@ -133,13 +129,6 @@ Roots, and Its Fulfillments, Second Edition*. Hachette Books.
 
 Salazar, S., A. Kapur, G. Wang, and P. Cook. 2014. *Programming for
 Musicians and Digital Artists: Creating Music with ChucK*. Manning.
-
-</div>
-
-<div id="ref-sethares1998tuning" class="csl-entry">
-
-Sethares, W. A. 1998. *Tuning, Timbre, Spectrum, Scale*. Springer
-London.
 
 </div>
 
