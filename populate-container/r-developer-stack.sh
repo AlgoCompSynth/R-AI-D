@@ -68,6 +68,7 @@ sudo dnf --assumeyes install --skip-unavailable \
   nvtop \
   rstudio-desktop \
   rustc \
+  vim-enhanced \
   zstd \
   >> $LOGFILE 2>&1
 echo "..RPM install finished"
