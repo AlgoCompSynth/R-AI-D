@@ -5,6 +5,8 @@ set -eu
 echo "* System Setup *"
 
 mkdir --parents $HOME/Logfiles
+mkdir --parents $HOME/Projects
+mkdir --parents $HOME/.local/bin
 
 export LOGFILE=$HOME/Logfiles/system-setup.log
 rm --force $LOGFILE
