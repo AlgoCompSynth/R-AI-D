@@ -2,7 +2,8 @@
 
 set -eu
 
-echo "* System Setup *"
+echo ""
+echo "** System Setup **"
 
 mkdir --parents $HOME/Logfiles
 mkdir --parents $HOME/Projects
@@ -25,5 +26,5 @@ do
 
 done
 
-echo "* Finished System Setup *"
+echo "** Finished System Setup **"
 echo ""

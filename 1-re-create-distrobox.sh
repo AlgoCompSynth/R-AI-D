@@ -8,12 +8,21 @@ echo "..Re-creating $CONTAINER_NAME"
 distrobox assemble create \
   --name $CONTAINER_NAME
 
-echo "..You need to set a password for $USER in $CONTAINER_NAME:"
-distrobox enter $CONTAINER_NAME -- sudo passwd $USER
-
 pushd populate-container
   distrobox enter $CONTAINER_NAME -- ./1-system-setup.sh
 popd
+
+mkdir --parents $HOME/.local/bin
+export ENTRY_SCRIPT=$HOME/.local/bin/$CONTAINER_NAME
+echo "..Creating command line entry script $ENTRY_SCRIPT"
+echo \
+  "distrobox enter $CONTAINER_NAME -- sudo systemctl enable --now ollama.service" \
+  > $ENTRY_SCRIPT
+
+echo \
+  "distrobox enter $CONTAINER_NAME -- su $USER" \
+  >> $ENTRY_SCRIPT
+chmod +x $ENTRY_SCRIPT
 
 echo "* Finished Re-create Distrobox *"
 echo ""

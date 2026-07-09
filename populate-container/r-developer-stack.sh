@@ -2,7 +2,8 @@
 
 set -e
 
-echo "** R Developer Stack **"
+echo ""
+echo "*** R Developer Stack ***"
 
 echo "..Upgrading"
 sudo dnf --assumeyes upgrade \
@@ -88,5 +89,5 @@ sudo Rscript -e \
   "devtools::install_github('AlgoCompSynth/consonaR', dependencies = TRUE, build_vignettes = TRUE)" \
   >> $LOGFILE 2>&1
 
-echo "** Finished R Developer Stack **"
+echo "*** Finished R Developer Stack ***"
 echo ""
