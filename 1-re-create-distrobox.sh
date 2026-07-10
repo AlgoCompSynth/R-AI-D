@@ -8,7 +8,17 @@ echo "..Re-creating $CONTAINER_NAME"
 distrobox assemble create \
   --name $CONTAINER_NAME
 
-pushd populate-container
+echo "..Copying 'agent-installers' into $CONTAINER_HOME"
+cp -rp agent-installers $CONTAINER_HOME
+
+echo "..Copying 'model-pullers' into $CONTAINER_HOME"
+cp -rp model-pullers $CONTAINER_HOME
+
+echo "..Copying 'populate-container' into $CONTAINER_HOME"
+cp -rp populate-container $CONTAINER_HOME
+
+echo "..Populating container"
+pushd $CONTAINER_HOME/populate-container/
   distrobox enter $CONTAINER_NAME -- ./1-system-setup.sh
 popd
 

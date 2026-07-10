@@ -22,6 +22,7 @@ for script in \
   nerd-fonts.sh \
   local-nodejs.sh \
   ollama.sh \
+  download-posit-skills.sh \
   export-apps.sh
 
 do

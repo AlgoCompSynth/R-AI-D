@@ -2,6 +2,7 @@ echo ""
 echo "Setting container environment variables:"
 
 export HOST_MODEL_PERSISTENCE=$HOME/.ollama/models
+export HOST_CONTAINER_HOMES=$HOME/dbx-homes
 
 # ** You should not need to change anything below here **
 
@@ -35,3 +36,5 @@ echo "COMPUTE_MODE: $COMPUTE_MODE"
 ## Distrobox
 export CONTAINER_NAME="R-AI-D-$COMPUTE_MODE"
 echo "CONTAINER_NAME: $CONTAINER_NAME"
+export CONTAINER_HOME="$HOST_CONTAINER_HOMES/$CONTAINER_NAME"
+echo "CONTAINER_HOME: $CONTAINER_HOME"

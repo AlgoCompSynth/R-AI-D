@@ -2,7 +2,7 @@
 
 set -eu
 
-echo "* Download Posit Skills *"
+echo "*** Download Posit Skills ***"
 
 echo "..Creating $HOME/Projects if necessary"
 mkdir --parents $HOME/Projects
@@ -20,5 +20,5 @@ pushd $HOME/Projects
 
 popd
 
-echo "* Finished Download Posit Skills *"
+echo "*** Finished Download Posit Skills ***"
 echo ""
