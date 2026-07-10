@@ -46,8 +46,6 @@ sudo dnf --assumeyes install --skip-unavailable \
   R-CRAN-withr \
   alsa-utils \
   cargo \
-  cascadia-code-nf-fonts \
-  cascadia-mono-nf-fonts \
   cmake \
   curl \
   fftw-devel \

@@ -18,8 +18,11 @@ cp Renviron $HOME/.Renviron
 
 for script in \
   r-developer-stack.sh \
+  starship.sh \
+  nerd-fonts.sh \
   local-nodejs.sh \
-  ollama.sh
+  ollama.sh \
+  export-apps.sh
 
 do
   ./$script
