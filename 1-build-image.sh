@@ -7,7 +7,7 @@ echo "* Build Image *"
 
 mkdir --parents $HOME/Logfiles
 echo "..Starting build - logfile is $HOME/Logfiles/build-image.log"
-/usr/bin/time podman image build \
+podman image build \
   --file Containerfile \
   --format docker \
   --squash-all \
