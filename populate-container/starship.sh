@@ -20,6 +20,7 @@ popd > /dev/null
 if [[ "$(grep starship $HOME/.bashrc | wc -l)" == 0 ]]
 then
   echo "..Appending starship init to $HOME/.bashrc" 1>&2
+  cat check-path.sh >> $HOME/.bashrc
   echo 'eval "$(starship init bash)"' >> $HOME/.bashrc
 
 fi
@@ -27,6 +28,7 @@ fi
 if [[ -f $HOME/.zshrc && "$(grep starship $HOME/.zshrc | wc -l)" == 0 ]]
 then
   echo "..Appending starship init to $HOME/.zshrc" 1>&2
+  cat check-path.sh >> $HOME/.zshrc
   echo 'eval "$(starship init zsh)"' >> $HOME/.zshrc
 
 fi
