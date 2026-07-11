@@ -12,6 +12,7 @@ RUN userdel --remove ubuntu 2>&1 \
     gh \
     git-lfs \
     lshw \
+    lynx \
     neovim \
     nvtop \
     time \
