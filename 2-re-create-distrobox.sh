@@ -4,6 +4,9 @@ echo "* Re-create Distrobox *"
 
 source set-host-envars
 
+echo "..Creating $HOST_MODEL_PERSISTENCE if needed"
+mkdir --parents $HOST_MODEL_PERSISTENCE
+
 echo "..Re-creating $CONTAINER_NAME"
 distrobox assemble create \
   --name $CONTAINER_NAME
@@ -30,7 +33,7 @@ echo \
   > $ENTRY_SCRIPT
 
 echo \
-  "distrobox enter $CONTAINER_NAME -- su $USER" \
+  "distrobox enter $CONTAINER_NAME" \
   >> $ENTRY_SCRIPT
 chmod +x $ENTRY_SCRIPT
 

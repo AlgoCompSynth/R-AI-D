@@ -3,10 +3,8 @@
 set -eu
 
 for app in \
-  /usr/share/applications/com.mitchellh.ghostty.desktop \
   /usr/share/applications/nvim.desktop \
-  /usr/share/applications/nvtop.desktop \
-  /usr/share/applications/rstudio.desktop
+  /usr/share/applications/nvtop.desktop
 
 do
   echo "..Exporting $app"

@@ -15,18 +15,14 @@ pushd /tmp > /dev/null
 
   echo "..Copying nerd font files to $HOME/.fonts"
   mkdir --parents $HOME/.fonts
-  cp *.ttf $HOME/.fonts/
+  cp FiraCodeNerdFont-Regular.ttf $HOME/.fonts/
 
   echo "..Copying nerd font files to $HOME/.local/share/fonts/"
   mkdir --parents $HOME/.local/share/fonts
-  cp *.ttf $HOME/.local/share/fonts/
+  cp FiraCodeNerdFont-Regular.ttf $HOME/.local/share/fonts/
 
   echo "..Copying nerd font files to $HOME/.config/rstudio/fonts/"
   mkdir --parents $HOME/.config/rstudio/fonts
-  cp *.ttf $HOME/.config/rstudio/fonts/
+  cp FiraCodeNerdFont-Regular.ttf $HOME/.config/rstudio/fonts/
 
 popd > /dev/null
-
-echo "..Copying config.ghostty to $HOME/.config/ghostty/"
-mkdir --parents $HOME/.config/ghostty
-cp config.ghostty $HOME/.config/ghostty/
