@@ -9,15 +9,11 @@ RUN userdel --remove ubuntu 2>&1 \
   && apt-get upgrade -qqy \
   && apt-get install -qqy \
     curl \
-    fonts-font-awesome \
-    fonts-material-design-icons-iconfont \
-    fonts-weather-icons \
     gh \
     git-lfs \
     lshw \
     neovim \
     nvtop \
-    starship \
     time \
     unminimize \
     zstd \

@@ -18,8 +18,8 @@ cp Renviron $HOME/.Renviron
 
 for script in \
   r-developer-stack.sh \
-  starship.sh \
   nerd-fonts.sh \
+  starship.sh \
   local-nodejs.sh \
   ollama.sh \
   download-posit-skills.sh
