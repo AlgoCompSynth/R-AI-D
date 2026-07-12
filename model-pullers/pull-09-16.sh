@@ -3,7 +3,7 @@
 set -eu
 
 for model in \
-  gemma4:12b-it-q8_0 \
+  gemma4:12b-it-qat \
   gpt-oss:20b
 do
   echo ""
