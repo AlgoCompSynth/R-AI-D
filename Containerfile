@@ -12,11 +12,13 @@ RUN userdel --remove ubuntu 2>&1 \
     firefox \
     gh \
     git-lfs \
-    luajit \
+    libpam-systemd \
     lshw \
-    lynx \
+    luajit \
     neovim \
     nvtop \
+    python3-venv \
+    systemd \
     time \
     unminimize \
     zstd \
