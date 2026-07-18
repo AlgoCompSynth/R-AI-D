@@ -8,20 +8,26 @@ RUN userdel --remove ubuntu 2>&1 \
   && apt-get update -qq \
   && apt-get upgrade -qqy \
   && apt-get install -qqy \
-    curl \
-    firefox \
-    gh \
-    git-lfs \
-    libpam-systemd \
-    lshw \
-    luajit \
-    neovim \
-    nvtop \
-    python3-venv \
-    systemd \
-    time \
-    tmux \
-    tree \
+    software-properties-common \
     unminimize \
-    zstd \
-  && echo "y" | unminimize
+  && echo "y" | unminimize \
+  && add-apt-repository -y ppa:mozillateam/ppa
+RUN apt-get install -qqy \
+  apt-file \
+  curl \
+  firefox-esr \
+  gh \
+  git-lfs \
+  libpam-systemd \
+  lshw \
+  luajit \
+  neovim \
+  nvtop \
+  plocate \
+  python3-venv \
+  systemd \
+  time \
+  tmux \
+  tree \
+  zstd \
+  && apt-get clean
