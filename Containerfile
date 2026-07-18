@@ -20,6 +20,8 @@ RUN userdel --remove ubuntu 2>&1 \
     python3-venv \
     systemd \
     time \
+    tmux \
+    tree \
     unminimize \
     zstd \
   && echo "y" | unminimize
