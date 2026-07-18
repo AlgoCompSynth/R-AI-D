@@ -9,6 +9,7 @@ RUN userdel --remove ubuntu 2>&1 \
   && apt-get upgrade -qqy \
   && apt-get install -qqy \
     curl \
+    firefox \
     gh \
     git-lfs \
     luajit \
