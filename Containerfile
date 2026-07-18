@@ -11,6 +11,7 @@ RUN userdel --remove ubuntu 2>&1 \
     curl \
     gh \
     git-lfs \
+    luajit \
     lshw \
     lynx \
     neovim \
