@@ -4,7 +4,8 @@ set -eu
 
 for model in \
   gemma4:12b-it-qat \
-  gpt-oss:20b
+  gemma4:e4b-it-qat \
+  gemma4:e2b-it-qat
 do
   echo ""
   echo "Pulling $model"
