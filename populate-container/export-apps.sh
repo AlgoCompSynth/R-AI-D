@@ -3,10 +3,13 @@
 set -eu
 
 for app in \
-  /usr/share/applications/nvtop.desktop
+  R.desktop \
+  firefox-devedition.desktop \
+  nvtop.desktop \
+  vim.desktop
 
 do
   echo "..Exporting $app"
-  distrobox-export --app $app
+  distrobox-export --app /usr/share/applications/$app
 
 done
