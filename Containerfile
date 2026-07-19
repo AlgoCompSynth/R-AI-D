@@ -8,14 +8,13 @@ RUN userdel --remove ubuntu 2>&1 \
   && apt-get update -qq \
   && apt-get upgrade -qqy \
   && apt-get install -qqy \
-    software-properties-common \
     unminimize \
-  && echo "y" | unminimize \
-  && add-apt-repository -y ppa:mozillateam/ppa
+  && echo "y" | unminimize
+COPY image-installers/firefox-dev-edition.sh ./
+RUN ./firefox-dev-edition.sh
 RUN apt-get install -qqy \
   apt-file \
   curl \
-  firefox-esr \
   gh \
   git-lfs \
   libpam-systemd \
@@ -31,3 +30,5 @@ RUN apt-get install -qqy \
   tree \
   zstd \
   && apt-get clean
+RUN echo "options(browser = 'firefox-devedition')" \
+  | tee --append /etc/R/Rprofile.site
