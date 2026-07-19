@@ -5,7 +5,7 @@ R-AI-D - Rtificial Audio Intelligence Distrobox
 
 R-AI-D is a [Distrobox](https://distrobox.it/) container for algorithmic
 musical composition and synthesis using the R programming language. The
-R-AI-D container is a Fedora 44 Linux environment featuring
+R-AI-D container is an Ubuntu 26.04 LTS Linux environment featuring
 
 - A complete R development stack, including the open-source edition of
   [RStudio Desktop](https://posit.co/downloads), the `devtools` R
