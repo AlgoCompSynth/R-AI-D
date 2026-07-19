@@ -9,5 +9,5 @@ alias l='ls -CF --color=auto'
 alias ll='ls -Fltr'
 alias la='ls -FAltr'
 
-export EDITOR=nvim
-export VISUAL=nvim
+export EDITOR=vim
+export VISUAL=vim

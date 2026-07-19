@@ -19,8 +19,6 @@ RUN apt-get install -qqy \
   git-lfs \
   libpam-systemd \
   lshw \
-  luajit \
-  neovim \
   nvtop \
   plocate \
   python3-venv \
@@ -28,6 +26,7 @@ RUN apt-get install -qqy \
   time \
   tmux \
   tree \
+  vim-nox \
   zstd \
   && apt-get clean
 RUN echo "options(browser = 'firefox-devedition')" \

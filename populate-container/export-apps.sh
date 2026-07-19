@@ -3,7 +3,6 @@
 set -eu
 
 for app in \
-  /usr/share/applications/nvim.desktop \
   /usr/share/applications/nvtop.desktop
 
 do
