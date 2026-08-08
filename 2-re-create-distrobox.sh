@@ -7,6 +7,10 @@ source set-host-envars
 echo "..Creating $HOST_MODEL_PERSISTENCE if needed"
 mkdir --parents $HOST_MODEL_PERSISTENCE
 
+echo "..Force-removing any existing $CONTAINER_NAME and $CONTAINER_HOME"
+distrobox rm --force $CONTAINER_NAME
+rm --recursive --force $CONTAINER_HOME
+
 echo "..Re-creating $CONTAINER_NAME"
 distrobox assemble create \
   --name $CONTAINER_NAME

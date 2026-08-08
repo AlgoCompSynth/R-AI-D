@@ -1,8 +1,8 @@
 echo ""
 echo "Setting container environment variables:"
 
-export HOST_MODEL_PERSISTENCE=$HOME/.ollama/models
-export HOST_CONTAINER_HOMES=$HOME/dbx-homes
+export HOST_MODEL_PERSISTENCE=/home/data/ollama_models
+export HOST_CONTAINER_HOMES=$HOME
 
 # ** You should not need to change anything below here **
 
