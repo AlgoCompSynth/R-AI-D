@@ -8,15 +8,10 @@ export GFORTH_TARBALL="gforth-${GFORTH_VERSION}.tar.xz"
 export GFORTH_URL="https://www.complang.tuwien.ac.at/forth/gforth/Snapshots/${GFORTH_VERSION}/${GFORTH_TARBALL}"
 export GFORTH_DIR="gforth-${GFORTH_VERSION}"
 
-echo "....Creating logfile"
 export LOGFILE=$HOME/Logfiles/gforth-from-source.log
 echo "" > $LOGFILE
 
-#echo "....Adding packages"
-#doas apk add -vv \
-    #>> $LOGFILE 2>&1
-
-pushd /tmp
+pushd /tmp > /dev/null
 
     echo "....Downloading $GFORTH_URL"
     rm -fr $GFORTH_TARBALL $GFORTH_DIR
@@ -42,7 +37,7 @@ pushd /tmp
     sudo make install \
         >> $LOGFILE 2>&1
 
-    popd
+    popd > /dev/null
 
 echo "....Finished"
 echo ""
