@@ -17,6 +17,7 @@ cp Rprofile $HOME/.Rprofile
 cp Renviron $HOME/.Renviron
 
 for script in \
+  gforth-from-source.sh \
   r-developer-stack.sh \
   nerd-fonts.sh \
   starship.sh \
