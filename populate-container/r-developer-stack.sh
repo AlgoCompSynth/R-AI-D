@@ -10,6 +10,9 @@ sudo ./R-installs.R \
   >> $LOGFILE 2>&1
 echo "..R package install finished"
 
+echo "..Installing tinytex"
+Rscript -e "tinytex::install_tinytex()"
+
 echo "..Installing 'eikosany' from GitHub"
 sudo Rscript -e \
   "devtools::install_github('AlgoCompSynth/eikosany', dependencies = TRUE, build_vignettes = TRUE)" \
