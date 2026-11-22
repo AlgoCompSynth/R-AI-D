@@ -11,7 +11,7 @@ export GFORTH_DIR="gforth-${GFORTH_VERSION}"
 export LOGFILE=$HOME/Logfiles/gforth-from-source.log
 echo "" > $LOGFILE
 
-pushd /tmp > /dev/null
+pushd $HOME/Projects > /dev/null
 
     echo "....Downloading $GFORTH_URL"
     rm -fr $GFORTH_TARBALL $GFORTH_DIR
@@ -30,6 +30,10 @@ pushd /tmp > /dev/null
         >> $LOGFILE 2>&1
 
     echo "....Compiling"
+    make \
+        >> $LOGFILE 2>&1
+
+    echo "....Making documentation"
     make \
         >> $LOGFILE 2>&1
 

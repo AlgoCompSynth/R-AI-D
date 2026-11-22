@@ -17,6 +17,7 @@ RUN apt-get install -qqy \
   curl \
   gh \
   git-lfs \
+  info \
   libpam-systemd \
   lshw \
   nvtop \
