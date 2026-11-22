@@ -37,6 +37,10 @@ echo \
   > $ENTRY_SCRIPT
 
 echo \
+  "xdg-open http://localhost:8787" \
+  >> $ENTRY_SCRIPT
+
+echo \
   "distrobox enter $CONTAINER_NAME" \
   >> $ENTRY_SCRIPT
 chmod +x $ENTRY_SCRIPT
