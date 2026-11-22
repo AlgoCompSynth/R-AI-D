@@ -17,13 +17,13 @@ cp Rprofile $HOME/.Rprofile
 cp Renviron $HOME/.Renviron
 
 for script in \
-  gforth-from-source.sh \
   r-developer-stack.sh \
   nerd-fonts.sh \
   starship.sh \
   local-nodejs.sh \
   ollama.sh \
-  download-posit-skills.sh
+  download-posit-skills.sh \
+  gforth-from-source.sh
 
 do
   ./$script
